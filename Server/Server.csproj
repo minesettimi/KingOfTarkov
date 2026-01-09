@@ -2,12 +2,18 @@
 
     <PropertyGroup>
         <TargetFramework>net9.0</TargetFramework>
+        <LangVersion>latest</LangVersion>
+
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <OutputType>Library</OutputType>
+        
         <Version>0.0.1</Version>
+        <RootNamespace>KoTServer</RootNamespace>
+        <AssemblyName>KingOfTarkov</AssemblyName>
+        
         <!-- The two lines below will set the output path for the binaries -->
-        <OutputPath>bin\$(Configuration)\$(ProjectName)\$(AssemblyName)\</OutputPath>
+        <OutputPath>bin\$(Configuration)\$(SolutionName)\$(AssemblyName)\</OutputPath>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     </PropertyGroup>
 

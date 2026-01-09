@@ -1,8 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KoTServer", "KoTServer\KoTServer.csproj", "{1667F9AC-2C46-49F6-AC23-949BBE9E5803}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "Server\Server.csproj", "{1667F9AC-2C46-49F6-AC23-949BBE9E5803}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KoTClient", "KoTClient\KoTClient.csproj", "{26DF49D6-63A6-4425-AB64-5F4445E3307C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{26DF49D6-63A6-4425-AB64-5F4445E3307C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
