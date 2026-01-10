@@ -16,15 +16,16 @@ public class QuestService(ModHelper helper,
     JsonUtil jsonUtil,
     DatabaseServer databaseServer,
     KingQuestHelper kotQuestHelper,
+    ConfigService config,
     ISptLogger<QuestService> logger)
 {
-    public readonly string ModPath = helper.GetAbsolutePathToModFolder(Assembly.GetExecutingAssembly());
+    
     
     private Dictionary<MongoId, Quest> _replaceableQuests = new();
     
     public async Task Load()
     {
-        string questPath = Path.Join(ModPath, "Assets", "Database", "Quests");
+        string questPath = Path.Join(config.ModPath, "Assets", "Database", "Quests");
 
         string staticPath = Path.Join(questPath, "quests_static.json");
         string dynamicPath = Path.Join(questPath, "quests_dynamic.json");
@@ -36,7 +37,7 @@ public class QuestService(ModHelper helper,
         {
             //custom conditions
             if (value.Conditions.AvailableForFinish != null)
-                kotQuestHelper.CacheTrialQuest(key, value);
+                kotQuestHelper.CacheTrialQuest(value);
             
             databaseServer.GetTables().Templates.Quests[key] = value;
         }

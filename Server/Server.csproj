@@ -30,8 +30,9 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Assets\" />
-      <Folder Include="Models\" />
+        <None Update="Assets/**">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
     </ItemGroup>
 
     <Target  Name="PostBuild" AfterTargets="PostBuildEvent">

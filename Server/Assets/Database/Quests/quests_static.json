@@ -12,49 +12,13 @@
     "conditions": {
       "AvailableForFinish": [
         {
-          "completeInSeconds": 0,
-          "conditionType": "CounterCreator",
-          "counter": {
-            "conditions": [
-              {
-                "bodyPart": [],
-                "compareMethod": ">=",
-                "conditionType": "Kills",
-                "daytime": {
-                  "from": 0,
-                  "to": 0
-                },
-                "distance": {
-                  "compareMethod": ">=",
-                  "value": 999999999
-                },
-                "dynamicLocale": false,
-                "enemyEquipmentExclusive": [],
-                "enemyEquipmentInclusive": [],
-                "enemyHealthEffects": [],
-                "id": "6961f51d9c8a1ed3c6af5fb8",
-                "resetOnSessionEnd": false,
-                "savageRole": [],
-                "target": "Savage",
-                "value": 1,
-                "weapon": [
-                  "5c06779c86f77426e00dd782"
-                ],
-                "weaponCaliber": [],
-                "weaponModsExclusive": [],
-                "weaponModsInclusive": []
-              }
-            ],
-            "id": "6961f4a8094d67fde8af5fb6"
-          },
-          "doNotResetIfCounterCompleted": false,
+          "conditionType": "TrialCompletion",
           "dynamicLocale": false,
           "globalQuestCounterId": "",
           "id": "6961f4c5ef60c44df4af5fb7",
           "index": 0,
-          "isNecessary": false,
-          "isResetOnConditionFailed": false,
           "oneSessionOnly": false,
+          "isEncoded": false,
           "parentId": "",
           "type": "Levelling",
           "value": 1,
@@ -96,14 +60,14 @@
               "_id": "6961ebba21700be183af5fb3",
               "_tpl": "5449016a4bdc2d6f028b456f",
               "upd": {
-                "StackObjectsCount": 100000
+                "StackObjectsCount": 1000000
               }
             }
           ],
           "target": "6961ebba21700be183af5fb3",
           "type": "Item",
           "unknown": false,
-          "value": 100000
+          "value": 1000000
         },
         {
           "availableInGameEditions": [],
@@ -136,7 +100,7 @@
     "startedMessageText": "6961dd8211328d671eaf5faf startedMessageText",
     "status": 0,
     "successMessageText": "6961dd8211328d671eaf5faf successMessageText",
-    "traderId": "6617beeaa9cfa777ca915b7c",
+    "traderId": "579dc571d53a0658a154fbec",
     "type": "Levelling"
   }
 }
