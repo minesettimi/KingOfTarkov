@@ -33,6 +33,13 @@
         <None Update="Assets/**">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
+        <None Update="Assets\Database\Locales\en.jsonc">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Models\Database\" />
     </ItemGroup>
 
     <Target  Name="PostBuild" AfterTargets="PostBuildEvent">

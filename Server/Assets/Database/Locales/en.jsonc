@@ -1,8 +1,11 @@
 {
+  //profiles
+  "launcher-profile_kot": "The standard profile for King Of Tarkov. This profile is recommended for the full experience. Based on the Standard profile.",
+  
   //quests
   //trial quests
   "6961dd8211328d671eaf5faf name": "Stepping Stones",
   "6961dd8211328d671eaf5faf description": "Welcome to the King of Tarkov challenge, champion. It will be a grueling fight but if you can beat all 10 trials you will be crowned the king.\n\nEach trial consists of several locations you need to escape alive, complete all of them to beat the trial.\n\nLets start easy, complete the first trial and I will give you a little something to help you out.",
   "6961dd8211328d671eaf5faf successMessageText": "I knew you had it in you, champion. I see a promising upstart in front of me. Rest up and get ready, for it only gets harder from here.",
-  "6961f4c5ef60c44df4af5fb7": "Complete the first trial"
+  "6961f4c5ef60c44df4af5fb7": "Complete a trial"
 }

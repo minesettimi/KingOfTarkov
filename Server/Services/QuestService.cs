@@ -6,6 +6,7 @@ using SPTarkov.Server.Core.Models.Common;
 using SPTarkov.Server.Core.Models.Eft.Common.Tables;
 using SPTarkov.Server.Core.Models.Utils;
 using SPTarkov.Server.Core.Servers;
+using SPTarkov.Server.Core.Services;
 using SPTarkov.Server.Core.Utils;
 using Path = System.IO.Path;
 
@@ -15,6 +16,7 @@ namespace KingOfTarkov.Services;
 public class QuestService(ModHelper helper,
     JsonUtil jsonUtil,
     DatabaseServer databaseServer,
+    DatabaseService databaseService,
     KingQuestHelper kotQuestHelper,
     ConfigService config,
     ISptLogger<QuestService> logger)
@@ -25,7 +27,10 @@ public class QuestService(ModHelper helper,
     
     public async Task Load()
     {
-        string questPath = Path.Join(config.ModPath, "Assets", "Database", "Quests");
+        //do it before so only custom quests can start
+        DisableQuests();
+        
+        string questPath = Path.Join(config.ModPath, "Assets", "Database");
 
         string staticPath = Path.Join(questPath, "quests_static.json");
         string dynamicPath = Path.Join(questPath, "quests_dynamic.json");
@@ -47,6 +52,29 @@ public class QuestService(ModHelper helper,
         if (_replaceableQuests.Count == 0)
         {
             logger.Warning("[KoT] There are no dynamic quests available.");
+        }
+    }
+
+    //disable vanilla default quests
+    private void DisableQuests()
+    {
+        //get all quests with no conditions
+        List<Quest> quests = databaseService.GetQuests().Values
+            .Where(quest => quest.Conditions.AvailableForStart?.Count == 0).ToList();
+        
+        foreach (Quest quest in quests)
+        {
+            quest.Conditions.AvailableForStart ??= [];
+            
+            //create an unobtainable condition
+            quest.Conditions.AvailableForStart.Add(new QuestCondition
+            {
+                Id = new MongoId(),
+                DynamicLocale = false,
+                ConditionType = "Level",
+                CompareMethod = ">=",
+                Value = 999
+            });
         }
     }
 }
