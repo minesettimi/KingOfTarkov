@@ -13,17 +13,11 @@ public class KingConfig
     [JsonPropertyName("levelPerRaid")]
     public int LevelPerRaid { get; set; } = 1;
     
-    [JsonPropertyName("staticLootAdd")]
-    public double StaticLootAdd { get; set; } = 2.0;
+    [JsonPropertyName("generators")]
+    public GeneratorConfig Generators { get; set; } = new();
     
-    [JsonPropertyName("looseLootAdd")]
-    public double LooseLootAdd { get; set; } = 2.0;
-    
-    [JsonPropertyName("disableRepeatable")]
-    public bool DisableRepeatable { get; set; } = true;
-    
-    [JsonPropertyName("rewardChoices")]
-    public int RewardChoices { get; set; } = 3;
+    [JsonPropertyName("configEdits")]
+    public EditConfig ConfigEdits { get; set; } = new();
     
     [JsonPropertyName("developer")]
     public bool Developer { get; set; } = false;

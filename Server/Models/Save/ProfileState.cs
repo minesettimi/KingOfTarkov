@@ -8,7 +8,8 @@ public class ProfileState
     [JsonPropertyName("locked")]
     public bool Locked { get; set; } = true;
 
-    [JsonPropertyName("profiles")] public Dictionary<MongoId, ProfileInfoState> Profiles { get; set; } = new();
+    [JsonPropertyName("profiles")] 
+    public Dictionary<MongoId, ProfileInfoState> Profiles { get; set; } = new();
 }
 
 public class ProfileInfoState

@@ -7,7 +7,7 @@ using SPT.Reflection.Patching;
 namespace KoTClient.Patches
 {
     
-    public class MatchMakerSelectionPatch : ModulePatch
+    public class LocationSelectionPatch : ModulePatch
     {
         protected override MethodBase GetTargetMethod()
         {

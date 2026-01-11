@@ -20,7 +20,7 @@ public class CanProfileAccessRepeatableOverride : AbstractPatch
     [PatchPrefix]
     public static bool Prefix(ref bool __result)
     {
-        if (!_configService.KingConfig.DisableRepeatable)
+        if (!_configService.KingConfig.ConfigEdits.DisableRepeatable)
             return true;
 
         __result = false;

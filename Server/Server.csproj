@@ -23,10 +23,10 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="SPTarkov.Common" Version="4.0.0" />
-        <PackageReference Include="SPTarkov.DI" Version="4.0.0" />
-        <PackageReference Include="SPTarkov.Reflection" Version="4.0.0" />
-        <PackageReference Include="SPTarkov.Server.Core" Version="4.0.0" />
+        <PackageReference Include="SPTarkov.Common" Version="4.0.4" />
+        <PackageReference Include="SPTarkov.DI" Version="4.0.4" />
+        <PackageReference Include="SPTarkov.Reflection" Version="4.0.4" />
+        <PackageReference Include="SPTarkov.Server.Core" Version="4.0.4" />
     </ItemGroup>
 
     <ItemGroup>
@@ -36,10 +36,6 @@
         <None Update="Assets\Database\Locales\en.jsonc">
           <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Models\Database\" />
     </ItemGroup>
 
     <Target  Name="PostBuild" AfterTargets="PostBuildEvent">

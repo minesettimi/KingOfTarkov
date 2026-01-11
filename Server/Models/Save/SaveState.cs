@@ -6,14 +6,14 @@ namespace KingOfTarkov.Models.Save;
 public class SaveState
 {
     [JsonPropertyName("id")]
-    public MongoId Id = new();
+    public MongoId Id { get; set; } = new();
     
     [JsonPropertyName("trial")]
-    public TrialState Trial = new();
+    public TrialState Trial { get; set; } = new();
     
     [JsonPropertyName("location")]
-    public LocationState Location = new();
+    public LocationState Location { get; set; } = new();
     
     [JsonPropertyName("profile")]
-    public ProfileState Profile = new();
+    public ProfileState Profile { get; set; } = new();
 }

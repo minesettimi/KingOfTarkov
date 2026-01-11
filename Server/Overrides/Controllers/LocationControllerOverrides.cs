@@ -1,6 +1,8 @@
 using System.Reflection;
+using KingOfTarkov.Helpers;
 using SPTarkov.Reflection.Patching;
 using SPTarkov.Server.Core.Controllers;
+using SPTarkov.Server.Core.DI;
 using SPTarkov.Server.Core.Models.Common;
 using SPTarkov.Server.Core.Models.Eft.Common;
 using SPTarkov.Server.Core.Models.Eft.Common.Tables;
@@ -9,20 +11,25 @@ namespace KingOfTarkov.Overrides.Controllers;
 
 public class GenerateAllOverride : AbstractPatch
 {
-    private static int test = 0;
+    private static TrialHelper _trialHelper;
     
     protected override MethodBase? GetTargetMethod()
     {
+        _trialHelper = ServiceLocator.ServiceProvider.GetService<TrialHelper>()!;
         return typeof(LocationController).GetMethod(nameof(LocationController.GenerateAll));
     }
 
     [PatchPostfix]
     public static LocationsGenerateAllResponse GenerateAll(LocationsGenerateAllResponse __result)
     {
-        test++;
+        List<MongoId> activeMaps = _trialHelper.GetActiveMaps();
+
         foreach ((MongoId id, LocationBase location) in __result.Locations)
         {
-            location.Enabled = test % 2 == 0;
+            if (activeMaps.Contains(id))
+                location.IsSecret = true;
+            else
+                location.Locked = true;
         }
         
         return __result;

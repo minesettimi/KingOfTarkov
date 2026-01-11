@@ -1,10 +1,16 @@
+using KingOfTarkov.Generators;
 using KingOfTarkov.Models.Save;
+using SPTarkov.DI.Annotations;
+using SPTarkov.Server.Core.Models.Utils;
 using SPTarkov.Server.Core.Utils;
 
 namespace KingOfTarkov.Services;
 
+[Injectable(InjectionType.Singleton)]
 public class SaveService(ConfigService config,
-    JsonUtil jsonUtil)
+    TrialGenerator trialGenerator,
+    JsonUtil jsonUtil,
+    ISptLogger<SaveService> logger)
 {
     public SaveState CurrentSave;
     
@@ -13,20 +19,21 @@ public class SaveService(ConfigService config,
     public async Task Load()
     {
         SaveState? tempSave = await jsonUtil.DeserializeFromFileAsync<SaveState>(_savePath);
-        tempSave ??= NewSave();
-        
-        CurrentSave = tempSave;
-        
+
+        if (tempSave == null)
+        {
+            logger.Info("[KoT] Starting new save");
+            CurrentSave = new SaveState();
+            trialGenerator.GenerateTrial(CurrentSave);
+        }
+        else
+        {
+            CurrentSave = tempSave;
+            logger.Info($"[KoT] Loaded save on trial {tempSave.Trial.TrialNum}.");
+        }
+
         SaveCurrentState();
     }
-
-    private SaveState NewSave()
-    {
-        SaveState newSave = new();
-        
-        return newSave;
-    }
-    
     public void SaveCurrentState()
     {
         File.WriteAllTextAsync(_savePath, jsonUtil.Serialize(CurrentSave));

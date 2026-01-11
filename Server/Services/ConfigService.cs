@@ -17,6 +17,7 @@ public class ConfigService(ModHelper modHelper,
     JsonUtil jsonUtil)
 {
     public readonly string ModPath = modHelper.GetAbsolutePathToModFolder(Assembly.GetExecutingAssembly());
+    
     public KingConfig KingConfig;
 
     public async Task Load()
@@ -72,12 +73,12 @@ public class ConfigService(ModHelper modHelper,
         //increase loot multipliers
         foreach ((string key, double value) in locationConfig.LooseLootMultiplier)
         {
-            locationConfig.LooseLootMultiplier[key] = value + KingConfig.LooseLootAdd;
+            locationConfig.LooseLootMultiplier[key] = value + KingConfig.ConfigEdits.LooseLootAdd;
         }
 
         foreach ((string key, double value) in locationConfig.StaticLootMultiplier)
         {
-            locationConfig.StaticLootMultiplier[key] = value + KingConfig.StaticLootAdd;
+            locationConfig.StaticLootMultiplier[key] = value + KingConfig.ConfigEdits.StaticLootAdd;
         }
         
         TraderConfig traderConfig = configServer.GetConfig<TraderConfig>();
@@ -89,8 +90,6 @@ public class ConfigService(ModHelper modHelper,
         LostOnDeathConfig lostOnDeathConfig = configServer.GetConfig<LostOnDeathConfig>();
 
         lostOnDeathConfig.WipeOnRaidStart = true;
-        
-        
         
         //database settings
         

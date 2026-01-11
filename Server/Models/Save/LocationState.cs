@@ -5,6 +5,15 @@ namespace KingOfTarkov.Models.Save;
 
 public class LocationState
 {
+    [JsonPropertyName("active")]
+    public Dictionary<MongoId, LocationDataState> Active { get; set; } = new();
+    
+    [JsonPropertyName("previous")]
+    public List<MongoId> Previous { get; set; } = new();
+}
+
+public class LocationDataState
+{
     [JsonPropertyName("completed")] 
     public bool Completed { get; set; } = false;
 

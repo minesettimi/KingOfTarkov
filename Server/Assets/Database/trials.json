@@ -1,2 +1,200 @@
 {
+  "trials":
+  {
+    "1":
+    {
+      "locationCount": 2,
+      "globalModCount": 0,
+      "locationModCount": 0,
+      "typeWhitelist": []
+    },
+    "2":
+    {
+      "locationCount": 3,
+      "globalModCount": 0,
+      "locationModCount": 1,
+      "typeWhitelist": []
+    },
+    "3":
+    {
+      "locationCount": 3,
+      "globalModCount": 1,
+      "locationModCount": 1,
+      "typeWhitelist": []
+    },
+    "4":
+    {
+      "locationCount": 4,
+      "globalModCount": 1,
+      "locationModCount": 2,
+      "typeWhitelist": []
+    },
+    "5":
+    {
+      "locationCount": 4,
+      "globalModCount": 1,
+      "locationModCount": 3,
+      "typeWhitelist": []
+    },
+    "6":
+    {
+      "locationCount": 5,
+      "globalModCount": 2,
+      "locationModCount": 1,
+      "typeWhitelist": []
+    },
+    "7":
+    {
+      "locationCount": 5,
+      "globalModCount": 2,
+      "locationModCount": 2,
+      "typeWhitelist": []
+    },
+    "8":
+    {
+      "locationCount": 5,
+      "globalModCount": 2,
+      "locationModCount": 3,
+      "typeWhitelist": []
+    },
+    "9":
+    {
+      "locationCount": 3,
+      "globalModCount": 3,
+      "locationModCount": 0,
+      "typeWhitelist": []
+    },
+    "10":
+    {
+      "locationCount": 2,
+      "globalModCount": 0,
+      "locationModCount": 2,
+      "typeWhitelist": ["6963ed4908d8d15b601c3282"]
+    }
+  },
+  "locations":
+  {
+    "56f40101d2720b2a4d8b45d6":
+    {
+      "min": 1,
+      "max": 8,
+      "minWeight": 2.0,
+      "maxWeight": 0.5
+    },
+    "55f2d3fd4bdc2d5f408b4567":
+    {
+      "min": 1,
+      "max": 6,
+      "minWeight": 6.0,
+      "maxWeight": 2.0
+    },
+    "59fc81d786f774390775787e":
+    {
+      "min": 1,
+      "max": 6,
+      "minWeight": 4.0,
+      "maxWeight": 0.2
+    },
+    "5714dbc024597771384a510d":
+    {
+      "min": 3,
+      "max": 8,
+      "minWeight": 2.0,
+      "maxWeight": 0.5
+    },
+    "5b0fc42d86f7744a585f9105":
+    {
+      "min": 6,
+      "max": 10,
+      "minWeight": 2.0,
+      "maxWeight": 50.0
+    },
+    "5704e5fad2720bc05b8b4567":
+    {
+      "min": 4,
+      "max": 9,
+      "minWeight": 2.0,
+      "maxWeight": 15.0
+    },
+    "5704e554d2720bac5b8b456e":
+    {
+      "min": 2,
+      "max": 6,
+      "minWeight": 2.0,
+      "maxWeight": 5.0
+    },
+    "5704e3c2d2720bac5b8b4567":
+    {
+      "min": 1,
+      "max": 5,
+      "minWeight": 3.0,
+      "maxWeight": 6.0
+    },
+    "5704e4dad2720bb55b8b4567":
+    {
+      "min": 6,
+      "max": 10,
+      "minWeight": 1.0,
+      "maxWeight": 9.0
+    },
+    "5714dc692459777137212e12":
+    {
+      "min": 3,
+      "max": 7,
+      "minWeight": 0.75,
+      "maxWeight": 6.0
+    },
+    "653e6760052c01c1c805532f":
+    {
+      "min": 1,
+      "max": 5,
+      "minWeight": 4.0,
+      "maxWeight": 4.0
+    },
+    "65b8d6f5cdde2479cb2a3125":
+    {
+      "min": 6,
+      "max": 9,
+      "minWeight": 4.0,
+      "maxWeight": 7.0
+    },
+    "6733700029c367a3d40b02af":
+    {
+      "min": 8,
+      "max": 10,
+      "minWeight": 2.0,
+      "maxWeight": 50.0
+    }
+  },
+  "types":
+  {
+    "69634713f3ed3f71243d25ce":
+    {
+      "name": "Fire",
+      "min": 1,
+      "modPool":
+      [
+        "6963486f386980e1fa3d25d0"
+      ]
+    },
+    "696348b8da2f8535603d25d1":
+    {
+      "name": "Poison",
+      "min": 5,
+      "modPool":
+      [
+        "696348bd34e66ea99f3d25d3",
+        "696348c38377d2f1c53d25d4"
+      ]
+    },
+    "6963ed4908d8d15b601c3282":
+    {
+      "name": "Heaven",
+      "min": 10,
+      "modPool":
+      [
+        
+      ]
+    }
+  }
 }

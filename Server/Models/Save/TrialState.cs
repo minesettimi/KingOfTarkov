@@ -6,13 +6,11 @@ namespace KingOfTarkov.Models.Save;
 public class TrialState
 {
     [JsonPropertyName("trialNum")] 
-    public int TrialNum { get; set; } = 1;
+    public int TrialNum { get; set; } = 0;
     
-    //TODO: Trial types
-    //[JsonConverter(JsonStringEnumConverter)]
     [JsonPropertyName("trialType")]
-    public int TrialType { get; set; } = 1;
+    public MongoId TrialType { get; set; } = new MongoId("69634713f3ed3f71243d25ce");
     
     [JsonPropertyName("mods")]
-    public List<MongoId> mods = [];
+    public List<MongoId> mods { get; set; }  = [];
 }

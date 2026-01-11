@@ -2,10 +2,14 @@
   //profiles
   "launcher-profile_kot": "The standard profile for King Of Tarkov. This profile is recommended for the full experience. Based on the Standard profile.",
   
+  //trials
+  
+  //modifiers
+  
   //quests
   //trial quests
   "6961dd8211328d671eaf5faf name": "Stepping Stones",
-  "6961dd8211328d671eaf5faf description": "Welcome to the King of Tarkov challenge. I will give some assistance throughout your fight but for the most part you are on your own, brother.\n\nLets start easy, complete the first trial and I will give you a little something to help you out for the future. Good luck.",
+  "6961dd8211328d671eaf5faf description": "Welcome to the King of Tarkov challenge. I will give some assistance throughout your fight but for the most part you are on your own, brother.\n\nLets start easy, complete the first trial and I will give you a little something to help you out for the future.\n\nOh and be careful, the last raid of the trial will require you to beat a powerful contender.\n\nGood luck.",
   "6961dd8211328d671eaf5faf successMessageText": "I knew you had it in you, champion. I see a promising upstart in front of me. Rest up and get ready, for it only gets harder from here.",
   "6961f4c5ef60c44df4af5fb7": "Complete a trial",
   
