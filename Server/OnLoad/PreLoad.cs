@@ -11,7 +11,8 @@ public class PreLoad(ConfigService config) : IOnLoad
 {
     private readonly List<AbstractPatch> _patches =
     [
-        new GenerateAllOverride()
+        new GenerateAllOverride(),
+        new CanProfileAccessRepeatableOverride()
     ];
     
     public async Task OnLoad()

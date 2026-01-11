@@ -7,7 +7,7 @@ using Path = System.IO.Path;
 namespace KingOfTarkov.Services;
 
 [Injectable(InjectionType.Singleton)]
-public class CustomProfileService(ConfigService config,
+public class ProfileService(ConfigService config,
     JsonUtil jsonUtil,
     DatabaseService databaseService)
 {

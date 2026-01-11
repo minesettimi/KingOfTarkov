@@ -9,7 +9,7 @@ namespace KingOfTarkov.OnLoad;
 public class PostDB(QuestService questService,
     LocaleService localeService, 
     ConfigService configService,
-    CustomProfileService profileService): IOnLoad
+    ProfileService profileService): IOnLoad
 {
     public async Task OnLoad()
     {
