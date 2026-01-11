@@ -1,4 +1,138 @@
 {
+  "696319c33a65c367b83d25c1":
+  {
+    "QuestName": "King Of Tarkov",
+    "_id": "696319c33a65c367b83d25c1",
+    "acceptPlayerMessage": "696319c33a65c367b83d25c1 acceptPlayerMessage",
+    "acceptanceAndFinishingSource": "eft",
+    "arenaLocations": [],
+    "canShowNotificationsInGame": true,
+    "changeQuestMessageText": "696319c33a65c367b83d25c1 changeQuestMessageText",
+    "completePlayerMessage": "696319c33a65c367b83d25c1 completePlayerMessage",
+    "conditions": {
+      "AvailableForFinish": [
+        {
+          "conditionType": "TrialCompletion",
+          "dynamicLocale": false,
+          "globalQuestCounterId": "",
+          "id": "69631a0bc6c5f245d93d25c2",
+          "index": 0,
+          "oneSessionOnly": false,
+          "isEncoded": false,
+          "parentId": "",
+          "type": "Levelling",
+          "value": 1,
+          "visibilityConditions": []
+        }
+      ],
+      "AvailableForStart": [],
+      "Fail": []
+    },
+    "declinePlayerMessage": "696319c33a65c367b83d25c1 declinePlayerMessage",
+    "description": "696319c33a65c367b83d25c1 description",
+    "failMessageText": "696319c33a65c367b83d25c1 failMessageText",
+    "gameModes": [],
+    "image": "/files/quest/icon/66eaf150daf127599c0c1a2f.png",
+    "instantComplete": false,
+    "isKey": false,
+    "location": "any",
+    "name": "696319c33a65c367b83d25c1 name",
+    "note": "696319c33a65c367b83d25c1 note",
+    "progressSource": "eft",
+    "rankingModes": [],
+    "restartable": false,
+    "rewards": {
+      "Fail": [],
+      "Started": [],
+      "Success": [
+        {
+          "availableInGameEditions": [],
+          "findInRaid": false,
+          "gameMode": [
+            "regular",
+            "pve"
+          ],
+          "id": "69631dafab7710a21b3d25c3",
+          "isEncoded": false,
+          "isHidden": false,
+          "items": [
+            {
+              "_id": "69631db3b25d5707953d25c4",
+              "_tpl": "5449016a4bdc2d6f028b456f",
+              "upd": {
+                "StackObjectsCount": 100000000
+              }
+            }
+          ],
+          "target": "69631db3b25d5707953d25c4",
+          "type": "Item",
+          "unknown": false,
+          "value": 1000000000
+        },
+        {
+          "availableInGameEditions": [],
+          "findInRaid": false,
+          "gameMode": [
+            "regular",
+            "pve"
+          ],
+          "id": "69631e767fc19637433d25c6",
+          "isEncoded": false,
+          "isHidden": false,
+          "items": [
+            {
+              "_id": "69631e7da69faee9b93d25c7",
+              "_tpl": "676008db84e242067d0dc4c9",
+              "upd": {
+                "StackObjectsCount": 1
+              }
+            }
+          ],
+          "target": "69631e7da69faee9b93d25c7",
+          "type": "Item",
+          "unknown": false,
+          "value": 1
+        },
+        {
+          "availableInGameEditions": [],
+          "gameMode": [
+            "regular",
+            "pve"
+          ],
+          "id": "6764977cd6c9dfff4d9d185d",
+          "isHidden": false,
+          "target": "5cdea42e7d6c8b0474535dad",
+          "type": "CustomizationDirect",
+          "unknown": true
+        },
+        {
+          "availableInGameEditions": [
+            "left_behind",
+            "prepare_for_escape",
+            "press_edition",
+            "standard",
+            "edge_of_darkness"
+          ],
+          "gameMode": [
+            "regular",
+            "pve"
+          ],
+          "id": "69631f1f4ee5651d6a3d25c8",
+          "isHidden": true,
+          "target": "65e080be269cbd5c5005e529",
+          "type": "Pockets",
+          "unknown": true
+        }
+      ]
+    },
+    "secretQuest": false,
+    "side": "Pmc",
+    "startedMessageText": "6961dd8211328d671eaf5faf startedMessageText",
+    "status": 0,
+    "successMessageText": "6961dd8211328d671eaf5faf successMessageText",
+    "traderId": "6617beeaa9cfa777ca915b7c",
+    "type": "Elimination"
+  },
   "6961dd8211328d671eaf5faf":
   {
     "QuestName": "Stepping Stones",
@@ -25,7 +159,24 @@
           "visibilityConditions": []
         }
       ],
-      "AvailableForStart": [],
+      "AvailableForStart": 
+      [
+        {
+          "availableAfter": 0,
+          "conditionType": "Quest",
+          "dispersion": 0,
+          "dynamicLocale": false,
+          "globalQuestCounterId": "",
+          "id": "696321fd9685a8317d3d25cb",
+          "index": 0,
+          "parentId": "",
+          "status": [
+            2
+          ],
+          "target": "696319c33a65c367b83d25c1",
+          "visibilityConditions": []
+        }
+      ],
       "Fail": []
     },
     "declinePlayerMessage": "6961dd8211328d671eaf5faf declinePlayerMessage",
@@ -71,7 +222,7 @@
         },
         {
           "availableInGameEditions": [],
-          "findInRaid": true,
+          "findInRaid": false,
           "gameMode": [
             "regular",
             "pve"
