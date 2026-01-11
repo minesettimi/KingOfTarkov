@@ -1,6 +1,7 @@
 using KingOfTarkov.Models.Database;
 using KingOfTarkov.Models.Save;
 using KingOfTarkov.Services;
+using KingOfTarkov.Utils;
 using SPTarkov.DI.Annotations;
 using SPTarkov.Server.Core.Models.Common;
 using SPTarkov.Server.Core.Models.Utils;
@@ -11,6 +12,7 @@ namespace KingOfTarkov.Generators;
 [Injectable(InjectionType.Singleton)]
 public class TrialGenerator(TrialService trialService,
     RandomUtil randomUtil,
+    KingMathUtil kingMathUtil,
     ISptLogger<TrialGenerator> logger)
 {
     public void GenerateTrial(SaveState currentSave)
@@ -48,7 +50,7 @@ public class TrialGenerator(TrialService trialService,
         
         locationState.Active.Clear();
 
-        List<MongoId> locations = GenerateLocations(currentTrial.LocationCount, currentSave);
+        List<MongoId> locations = GenerateLocations(trialNum, currentTrial.LocationCount, currentSave);
         foreach (MongoId id in locations)
         {
             locationState.Active.Add(id, new LocationDataState
@@ -73,7 +75,7 @@ public class TrialGenerator(TrialService trialService,
         return randomUtil.DrawRandomFromList(modPool, number, false);
     }
 
-    private List<MongoId> GenerateLocations(int trialNum, SaveState currentSave)
+    private List<MongoId> GenerateLocations(int trialNum, int locationCount, SaveState currentSave)
     {
         List<MongoId> originalPool = [];
 
@@ -92,7 +94,48 @@ public class TrialGenerator(TrialService trialService,
             logger.Debug("[KoT] Not enough locations for an unique selection.");
             finalPool = originalPool;
         }
+
+        double totalWeight = 0.0;
+        Dictionary<MongoId, double> weights = new();
+        foreach (MongoId id in finalPool)
+        {
+            LocationData data = trialService.TrialConfig.Locations[id];
+            
+            double weight = kingMathUtil.MapToRangeInv(trialNum, 0, 10, data.MinWeight, data.MaxWeight);
+            totalWeight += weight;
+            
+            weights.Add(id, weight);
+        }
+
+        List<MongoId> results = [];
         
-        return randomUtil.DrawRandomFromList(finalPool, trialNum, false);
+        //weighted generation
+        for (int i = 0; i < locationCount; i++)
+        {
+            double randomWeight = randomUtil.GetDouble(0.0, totalWeight);
+
+            bool generated = false;
+            foreach (MongoId id in finalPool)
+            {
+                double weight = weights[id];
+                randomWeight -= weight;
+
+                if (randomWeight > 0.0) continue;
+                
+                results.Add(id);
+                finalPool.Remove(id);
+                totalWeight -= weight;
+
+                generated = true;
+                break;
+            }
+
+            if (!generated)
+            {
+                logger.Error("[KoT] Couldn't randomly pick weighted location!");
+            }
+        }
+        
+        return results;
     }
 }
