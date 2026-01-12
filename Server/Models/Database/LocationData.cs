@@ -4,6 +4,9 @@ namespace KingOfTarkov.Models.Database;
 
 public class LocationData
 {
+    [JsonPropertyName("name")]
+    public string Name { get; set; } = "";
+    
     [JsonPropertyName("min")]
     public int Min { get; set; } = 1;
     

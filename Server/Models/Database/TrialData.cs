@@ -9,7 +9,7 @@ public class TrialData
     public Dictionary<int, TrialNumData> Trials { get; set; } = new();
     
     [JsonPropertyName("locations")]
-    public Dictionary<MongoId, LocationData> Locations { get; set; } = new();
+    public Dictionary<string, LocationData> Locations { get; set; } = new();
     
     [JsonPropertyName("types")]
     public Dictionary<MongoId, TrialTypeData> Types { get; set; } = new();

@@ -20,7 +20,6 @@ namespace KoTClient.Patches
         {
             session.GetLevelSettings();
             //MessageBoxHelper.Show($"Test Message", "KOTTEST", MessageBoxHelper.MessageBoxType.OK);
-            NotificationManagerClass.DisplayMessageNotification("Test Message");
             
             return true;
         }

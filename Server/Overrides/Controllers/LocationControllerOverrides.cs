@@ -11,18 +11,18 @@ namespace KingOfTarkov.Overrides.Controllers;
 
 public class GenerateAllOverride : AbstractPatch
 {
-    private static TrialHelper _trialHelper;
+    private static LocationHelper _locationHelper;
     
     protected override MethodBase? GetTargetMethod()
     {
-        _trialHelper = ServiceLocator.ServiceProvider.GetService<TrialHelper>()!;
+        _locationHelper = ServiceLocator.ServiceProvider.GetService<LocationHelper>()!;
         return typeof(LocationController).GetMethod(nameof(LocationController.GenerateAll));
     }
 
     [PatchPostfix]
     public static LocationsGenerateAllResponse GenerateAll(LocationsGenerateAllResponse __result)
     {
-        List<MongoId> activeMaps = _trialHelper.GetActiveMaps();
+        List<MongoId> activeMaps = _locationHelper.GetActiveMaps();
 
         foreach ((MongoId id, LocationBase location) in __result.Locations)
         {
