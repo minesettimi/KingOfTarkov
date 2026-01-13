@@ -11,12 +11,21 @@
         <RootNamespace>KoTClient</RootNamespace>
         
         <AssemblyName>KingOfTarkov</AssemblyName>
+        <OutputPath>bin\$(Configuration)\$(SolutionName)\$(AssemblyName)\</OutputPath>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     </PropertyGroup>
 
     <Target Name="PostBuild" AfterTargets="PostBuildEvent">
         <Exec Command="cp -a $(TargetPath) $(SolutionDir)../../../SPTDevelopment/BepInEx/plugins/$(SolutionName)/" />
+        <Exec Command="cp -a $(TargetDir)/Bundles $(SolutionDir)../../../SPTDevelopment/BepInEx/plugins/$(SolutionName)" />
     </Target>
 
+    <ItemGroup>
+        <None Update="Bundles/kotbundle.bundle">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+    
     <ItemGroup>
         <Reference Include="PhysicsModule" HintPath="..\..\..\EscapeFromTarkov_Data\Managed\UnityEngine.PhysicsModule.dll" />
         <Reference Include="0Harmony" HintPath="..\..\..\BepInEx\core\0Harmony.dll" />
@@ -44,6 +53,10 @@
         <Reference Include="UnityEngine.InputLegacyModule" HintPath="..\..\..\EscapeFromTarkov_Data\Managed\UnityEngine.InputLegacyModule.dll" />
         <Reference Include="UnityEngine.TextRenderingModule" HintPath="..\..\..\EscapeFromTarkov_Data\Managed\UnityEngine.TextRenderingModule.dll" />
         <Reference Include="UnityEngine.UI" HintPath="..\..\..\EscapeFromTarkov_Data\Managed\UnityEngine.UI.dll" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <Folder Include="UI\" />
     </ItemGroup>
 
 </Project>

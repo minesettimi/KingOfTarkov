@@ -154,10 +154,31 @@
   },
   "types":
   {
+    "69667f0967be0d67b08995b5":
+    {
+      "name": "The Beginning",
+      "color": "#ebebeb",
+      "min": 1,
+      "modPool":
+      [
+        "6963486f386980e1fa3d25d0"
+      ]
+    },
     "69634713f3ed3f71243d25ce":
     {
       "name": "Fire",
-      "min": 1,
+      "color": "#8c0000",
+      "min": 2,
+      "modPool":
+      [
+        "6963486f386980e1fa3d25d0"
+      ]
+    },
+    "69667e5cfb9284cdfe8995b4":
+    {
+      "name": "Rock",
+      "color": "#666666",
+      "min": 2,
       "modPool":
       [
         "6963486f386980e1fa3d25d0"
@@ -166,6 +187,18 @@
     "696348b8da2f8535603d25d1":
     {
       "name": "Poison",
+      "color": "#00cf0a",
+      "min": 5,
+      "modPool":
+      [
+        "696348bd34e66ea99f3d25d3",
+        "696348c38377d2f1c53d25d4"
+      ]
+    },
+    "69667f2169c162c0838995b6":
+    {
+      "name": "Void",
+      "color": "#09001f",
       "min": 5,
       "modPool":
       [
@@ -175,7 +208,8 @@
     },
     "6963ed4908d8d15b601c3282":
     {
-      "name": "Heaven",
+      "name": "The End",
+      "color": "#000000",
       "min": 10,
       "modPool":
       [
