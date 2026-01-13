@@ -11,7 +11,7 @@ namespace KoTClient.Services;
 public class StateService
 {
     public StateData? stateData { get; private set; }
-    public event Action<int> TrialNumberChanged;
+    public event Action TrialUpdate;
 
     public bool IsStateOutdated()
     {
@@ -46,7 +46,7 @@ public class StateService
             if (data != null)
             {
                 stateData = JsonConvert.DeserializeObject<StateData>(data)!;
-                TrialNumberChanged?.Invoke(stateData.trial.trialNum);
+                TrialUpdate.Invoke();
                 
                 return true;
             }

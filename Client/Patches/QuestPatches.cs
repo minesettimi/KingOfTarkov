@@ -88,7 +88,7 @@ public class InvokeConditionsPatch : ModulePatch
 
             ConditionProgressChecker conditionProgressChecker = handler.conditional.ProgressCheckers[handler.condition];
             conditionProgressChecker.SetCurrentValueGetter(handler.GetCurrentValue);
-            Plugin.StateService.TrialNumberChanged += handler.OnValueChanged;
+            Plugin.StateService.TrialUpdate += handler.OnValueChanged;
             conditionProgressChecker.OnDisconnect += handler.OnDisconnect;
             conditionProgressChecker.OnReset += handler.OnReset;
             

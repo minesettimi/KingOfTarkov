@@ -19,7 +19,7 @@ public class TrialNumberHandler<T> where T : IConditional
         return Plugin.StateService.stateData?.trial.trialNum - 1 ?? 0;
     }
 
-    public void OnValueChanged(int trialNum)
+    public void OnValueChanged()
     {
         Action<T, EQuestStatus, Condition, bool> onConditionValueChanged = controller.OnConditionValueChanged;
 
@@ -28,7 +28,7 @@ public class TrialNumberHandler<T> where T : IConditional
     
     public void OnDisconnect(ConditionProgressChecker _)
     {
-        Plugin.StateService.TrialNumberChanged -= OnValueChanged;
+        Plugin.StateService.TrialUpdate -= OnValueChanged;
     }
 
     public void OnReset(ConditionProgressChecker _)
