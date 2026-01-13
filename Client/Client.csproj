@@ -17,7 +17,6 @@
 
     <Target Name="PostBuild" AfterTargets="PostBuildEvent">
         <Exec Command="cp -a $(TargetPath) $(SolutionDir)../../../SPTDevelopment/BepInEx/plugins/$(SolutionName)/" />
-        <Exec Command="cp -a $(TargetDir)/Bundles $(SolutionDir)../../../SPTDevelopment/BepInEx/plugins/$(SolutionName)" />
     </Target>
 
     <ItemGroup>
