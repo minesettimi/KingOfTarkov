@@ -8,13 +8,11 @@ namespace KoTClient.Bundles;
 //thanks to Lacyway
 public class BundleLoader
 {
-    public static BundleLoader Instance { get; set; }
     public AssetBundle Bundle;
     
     public BundleLoader()
     {
         Task.Run(LoadBundle);
-        Instance = this;
     }
     
     public async Task LoadBundle()

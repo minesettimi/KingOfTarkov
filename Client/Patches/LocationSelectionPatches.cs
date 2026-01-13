@@ -1,8 +1,12 @@
 using System.Reflection;
+using System.Threading.Tasks;
 using EFT;
+using EFT.Communications;
 using EFT.UI.Matchmaker;
 using HarmonyLib;
 using KoTClient.Bundles;
+using KoTClient.Models;
+using KoTClient.Services;
 using SPT.Reflection.Patching;
 using UnityEngine;
 
@@ -19,7 +23,7 @@ namespace KoTClient.Patches
         [PatchPostfix]
         public static void Postfix(MatchMakerSelectionLocationScreen __instance)
         {
-            GameObject? testAsset = BundleLoader.Instance.Bundle.LoadAsset<GameObject>("TrialInfo.prefab");
+            GameObject? testAsset = Plugin.BundleLoader.Bundle.LoadAsset<GameObject>("TrialInfo.prefab");
         
             if (testAsset == null)
                 NotificationManagerClass.DisplayMessageNotification("Error loading bundle.");
@@ -38,15 +42,20 @@ namespace KoTClient.Patches
         }
 
         [PatchPrefix]
-        public static bool Prefix(ISession session,
+        public static async void Prefix(ISession session,
             RaidSettings raidSettings,
             MatchmakerPlayerControllerClass matchmaker,
             MatchMakerSelectionLocationScreen __instance)
         {
-            session.GetLevelSettings();
-            //MessageBoxHelper.Show($"Test Message", "KOTTEST", MessageBoxHelper.MessageBoxType.OK);
+            StateService stateService = Plugin.StateService;
+
+            if (stateService.IsStateOutdated())
+            {
+                session.GetLevelSettings();
+                await stateService.RequestState();
+            }
             
-            return true;
+            //MessageBoxHelper.Show($"Test Message", "KOTTEST", MessageBoxHelper.MessageBoxType.OK);
         }
 
         [PatchPostfix]
@@ -58,17 +67,34 @@ namespace KoTClient.Patches
             locationTransform.Find("CaptionsHolder").gameObject.SetActive(false);
 
             GameObject trialInfo = locationTransform.Find("TrialInfo").gameObject;
+            
             if (trialInfo == null)
+            {
                 NotificationManagerClass.DisplayMessageNotification("trialInfo not found.");
+                return;
+            }
             
-            TrialUI test = trialInfo.GetComponent<TrialUI>();
+            TrialUI trialUI = trialInfo.GetComponent<TrialUI>();
+            StateData? trialData = Plugin.StateService.stateData;
+
+            if (trialData == null)
+            {
+                NotificationManagerClass.DisplayMessageNotification("Trial Data not present in postfix!");
+                return;
+            }
             
-            if (test == null)
-                NotificationManagerClass.DisplayMessageNotification("TrialUI not present.");
+            trialUI.PrefixLabel.SetText("TrialPrefix".Localized());
             
-            test.NumLabel.SetText("Trial 1:");
-            test.NameLabel.SetText("Poison");
-            test.NameLabel.color = Color.green;
+            trialUI.NumLabel.SetText(string.Format("TrialTitleNumber".Localized(), trialData.trial.trialNum));
+            trialUI.NameLabel.SetText($"{trialData.trial.trialType} name".Localized());
+
+            if (!ColorUtility.TryParseHtmlString(trialData.color, out Color color))
+            {
+                NotificationManagerClass.DisplayMessageNotification($"Failed to parse color {trialData.color}!");
+                return;
+            }
+            
+            trialUI.NameLabel.color = color;
         }
     }
 }

@@ -34,6 +34,8 @@ public class TrialGenerator(TrialService trialService,
                 .Select(p => p.Key).ToList();
         }
 
+        trialSave.trialId = new MongoId();
+
         MongoId typeId = randomUtil.DrawRandomFromList(typePool)[0];
         trialSave.TrialType = typeId;
         
@@ -59,7 +61,7 @@ public class TrialGenerator(TrialService trialService,
             });
         }
         
-        logger.Info($"[KoT] Generated new trial {trialNum}");
+        logger.Info($"[KoT] Generated new Trial {trialNum}");
     }
 
     private List<MongoId> GenerateMods(TrialTypeData trialType, int number, List<MongoId> blacklist)
@@ -68,7 +70,7 @@ public class TrialGenerator(TrialService trialService,
         
         if (modPool.Count < number)
         {
-            logger.Warning($"[KoT] Not enough modifiers available for trial {trialType.Name}, clamping.");
+            logger.Warning($"[KoT] Not enough modifiers available for Trial {trialType.Name}, clamping.");
             number = modPool.Count;
         }
         
@@ -132,7 +134,7 @@ public class TrialGenerator(TrialService trialService,
 
             if (!generated)
             {
-                logger.Error("[KoT] Couldn't randomly pick weighted location!");
+                logger.Error("[KoT] Couldn't randomly pick weighted Location!");
             }
         }
         

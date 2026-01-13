@@ -5,6 +5,9 @@ namespace KingOfTarkov.Models.Save;
 
 public class TrialState
 {
+    [JsonPropertyName("trialId")]
+    public MongoId trialId { get; set; }
+    
     [JsonPropertyName("trialNum")] 
     public int TrialNum { get; set; } = 0;
     

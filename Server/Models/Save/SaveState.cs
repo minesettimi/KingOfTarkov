@@ -8,10 +8,10 @@ public class SaveState
     [JsonPropertyName("id")]
     public MongoId Id { get; set; } = new();
     
-    [JsonPropertyName("trial")]
+    [JsonPropertyName("Trial")]
     public TrialState Trial { get; set; } = new();
     
-    [JsonPropertyName("location")]
+    [JsonPropertyName("Location")]
     public LocationState Location { get; set; } = new();
     
     [JsonPropertyName("profile")]

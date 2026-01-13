@@ -29,7 +29,7 @@ public class SaveService(ConfigService config,
         else
         {
             CurrentSave = tempSave;
-            logger.Info($"[KoT] Loaded save on trial {tempSave.Trial.TrialNum}.");
+            logger.Info($"[KoT] Loaded save on Trial {tempSave.Trial.TrialNum}.");
         }
 
         SaveCurrentState();
@@ -39,5 +39,7 @@ public class SaveService(ConfigService config,
         File.WriteAllTextAsync(_savePath, jsonUtil.Serialize(CurrentSave));
     }
     
-    //TODO: Save historical data for some kind of use
+    
+    
+    //TODO: Save historical data for some kind of stats system
 }

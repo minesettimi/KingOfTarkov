@@ -3,6 +3,13 @@
   "launcher-profile_kot": "The standard profile for King Of Tarkov. This profile is recommended for the full experience. Based on the Standard profile.",
   
   //trials
+  //types
+  "69667f0967be0d67b08995b5 name": "The Beginning",
+  "69634713f3ed3f71243d25ce name": "Fire",
+  "69667e5cfb9284cdfe8995b4 name": "Rock",
+  "696348b8da2f8535603d25d1 name": "Poison",
+  "69667f2169c162c0838995b6 name": "Void",
+  "6963ed4908d8d15b601c3282 name": "The End",
   
   //modifiers
   
@@ -16,5 +23,9 @@
   "696319c33a65c367b83d25c1 name": "King Of Tarkov",
   "696319c33a65c367b83d25c1 description": "Welcome, champion! I hear you are looking to take on the King of Tarkov challenge. You must have a death wish, but who am I to say no?\n\nIt will be a long fight but if you can beat all 10 trials you will be crowned the king. Each trial consists of several locations you need to escape alive. Complete all of them to win the trial.\n\nGive me the word and the bloodbath will begin.",
   "696319c33a65c367b83d25c1 successMessageText": "I never thought I would see the day that someone would beat the challenge. We are truly in the presence of a king.",
-  "69631a0bc6c5f245d93d25c2": "Complete 10 trials"
+  "69631a0bc6c5f245d93d25c2": "Complete 10 trials",
+  
+  //other
+  "TrialTitleNumber": "Trial {0}:",
+  "TrialPrefix": "Trial Of"
 }
