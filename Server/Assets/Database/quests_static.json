@@ -12,7 +12,7 @@
     "conditions": {
       "AvailableForFinish": [
         {
-          "conditionType": "TrialCompletion",
+          "conditionType": "TrialNumber",
           "dynamicLocale": false,
           "globalQuestCounterId": "",
           "id": "69631a0bc6c5f245d93d25c2",
@@ -146,7 +146,7 @@
     "conditions": {
       "AvailableForFinish": [
         {
-          "conditionType": "TrialCompletion",
+          "conditionType": "TrialNumber",
           "dynamicLocale": false,
           "globalQuestCounterId": "",
           "id": "6961f4c5ef60c44df4af5fb7",

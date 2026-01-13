@@ -1,0 +1,38 @@
+using System;
+using EFT.Quests;
+
+namespace KoTClient.Quests;
+
+public class ConditionTrialNumber : Condition
+{
+}
+
+public class TrialNumberHandler<T> where T : IConditional
+{
+    public ConditionTrialNumber condition;
+    public EQuestStatus status;
+    public T conditional;
+    public QuestControllerAbstractClass<T> controller;
+
+    public double GetCurrentValue(ConditionProgressChecker _)
+    {
+        return Plugin.StateService.stateData?.trial.trialNum - 1 ?? 0;
+    }
+
+    public void OnValueChanged(int trialNum)
+    {
+        Action<T, EQuestStatus, Condition, bool> onConditionValueChanged = controller.OnConditionValueChanged;
+
+        onConditionValueChanged?.Invoke(conditional, status, condition, true);
+    }
+    
+    public void OnDisconnect(ConditionProgressChecker _)
+    {
+        Plugin.StateService.TrialNumberChanged -= OnValueChanged;
+    }
+
+    public void OnReset(ConditionProgressChecker _)
+    {
+        controller.method_20(conditional, status, condition);
+    }
+}

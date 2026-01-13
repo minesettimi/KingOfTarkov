@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using System.Reflection;
 using EFT.Quests;
 using EFT.UI;
@@ -19,7 +21,7 @@ public class ConditionIsCounterPatch : ModulePatch
     [PatchPrefix]
     public static bool Prefix(Condition condition, ref bool __result)
     {
-        if (condition is ConditionTrialCompletion)
+        if (condition is ConditionTrialNumber)
         {
             __result = true;
             return false;
@@ -39,7 +41,7 @@ public class GetQuestIconPatch : ModulePatch
     [PatchPrefix]
     public static bool Prefix(Condition condition, StaticIcons __instance, ref Sprite __result)
     {
-        if (condition is ConditionTrialCompletion)
+        if (condition is ConditionTrialNumber)
         {
             __result = __instance.QuestTypeSprites[RawQuestClass.EQuestType.Levelling];
             return false;
@@ -59,14 +61,40 @@ public class ConditionTypePatch : ModulePatch
     [PatchPostfix]
     public static void Prefix(GClass1871 __instance)
     {
-        __instance.List_0.Add(typeof(ConditionTrialCompletion));
+        __instance.List_0.Add(typeof(ConditionTrialNumber));
     }
 }
 
-// public class InvokeConditionsPatch : ModulePatch
-// {
-//     protected override MethodBase GetTargetMethod()
-//     {
-//         return AccessTools.Method(typeof(AbstractQuestClass<QuestClass>), "InvokeConditionsConnector");
-//     }
-// }
+public class InvokeConditionsPatch : ModulePatch
+{
+    protected override MethodBase GetTargetMethod()
+    {
+        return AccessTools.Method(typeof(QuestControllerAbstractClass<IConditional>), "InvokeConditionsConnector");
+    }
+
+    [PatchPrefix]
+    public static bool Prefix(QuestClass conditional, EQuestStatus status, 
+        Condition condition, QuestControllerAbstractClass<IConditional> __instance)
+    {
+        if (condition is ConditionTrialNumber conditionTrialNum)
+        {
+            TrialNumberHandler<IConditional> handler = new()
+            {
+                controller = __instance,
+                condition = conditionTrialNum,
+                conditional = conditional,
+                status = status
+            };
+
+            ConditionProgressChecker conditionProgressChecker = handler.conditional.ProgressCheckers[handler.condition];
+            conditionProgressChecker.SetCurrentValueGetter(handler.GetCurrentValue);
+            Plugin.StateService.TrialNumberChanged += handler.OnValueChanged;
+            conditionProgressChecker.OnDisconnect += handler.OnDisconnect;
+            conditionProgressChecker.OnReset += handler.OnReset;
+            
+            return false;
+        }
+
+        return true;
+    }
+}
