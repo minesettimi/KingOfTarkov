@@ -27,9 +27,6 @@ namespace KoTClient
             _patchManager = new PatchManager(this, true);
             _patchManager.EnablePatches();
             
-            string modPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!;
-            Logger.LogWarning(modPath);
-            
             BundleLoader = new BundleLoader();
             StateService = new StateService();
         }

@@ -27,5 +27,7 @@
   
   //other
   "TrialTitleNumber": "Trial {0}:",
-  "TrialPrefix": "Trial Of"
+  "TrialPrefix": "Trial Of",
+  
+  "TrialReward": "Good work out there. Here's something to help you out."
 }

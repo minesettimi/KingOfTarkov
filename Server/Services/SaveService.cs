@@ -1,6 +1,7 @@
 using KingOfTarkov.Generators;
 using KingOfTarkov.Models.Save;
 using SPTarkov.DI.Annotations;
+using SPTarkov.Server.Core.Models.Common;
 using SPTarkov.Server.Core.Models.Utils;
 using SPTarkov.Server.Core.Utils;
 
@@ -13,6 +14,7 @@ public class SaveService(ConfigService config,
     ISptLogger<SaveService> logger)
 {
     public SaveState CurrentSave;
+    public int RemainingRaids = 0;
     
     private readonly string _savePath = Path.Join(config.ModPath, "save.json");
     
@@ -29,6 +31,9 @@ public class SaveService(ConfigService config,
         else
         {
             CurrentSave = tempSave;
+
+            RemainingRaids = CurrentSave.Location.Active.Count(i => !i.Value.Completed);
+            
             logger.Info($"[KoT] Loaded save on Trial {tempSave.Trial.TrialNum}.");
         }
 
@@ -47,9 +52,11 @@ public class SaveService(ConfigService config,
 
         LocationState locationState = CurrentSave.Location;
         
+        LocationState newState = trialGenerator.GenerateLocationState(newTrialNum, CurrentSave.Trial, locationState.Previous);
+        newState.Previous.AddRange(locationState.Active.Keys);
+        RemainingRaids = newState.Active.Count;
         
-        CurrentSave.Location = trialGenerator.GenerateLocationState(newTrialNum, CurrentSave.Trial, locationState.Previous);
-        CurrentSave.Location.Previous.AddRange(locationState.Active.Keys);
+        CurrentSave.Location = newState;
         
         logger.Info($"[KoT] Generated new Trial {newTrialNum}");
     }

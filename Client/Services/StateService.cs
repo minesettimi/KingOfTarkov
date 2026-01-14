@@ -11,7 +11,7 @@ namespace KoTClient.Services;
 public class StateService
 {
     public StateData? stateData { get; private set; }
-    public event Action TrialUpdate;
+    public event Action? TrialUpdate;
 
     public bool IsStateOutdated()
     {
@@ -24,17 +24,8 @@ public class StateService
 
         if (data == null)
             return false;
-        
-        MongoID id =  new(data);
 
-        if (id == null)
-        {
-            Plugin.PluginLogger.LogError($"Requested KoT state but received {data} instead of id!");
-            MessageBoxHelper.Show("Failed to get state id!", "KOT_ERROR", MessageBoxHelper.MessageBoxType.OK);
-            return false;
-        }
-
-        return id != stateData.trial.id;
+        return data != stateData.id;
     }
 
     public async Task<bool> RequestState()
@@ -46,7 +37,7 @@ public class StateService
             if (data != null)
             {
                 stateData = JsonConvert.DeserializeObject<StateData>(data)!;
-                TrialUpdate.Invoke();
+                TrialUpdate?.Invoke();
                 
                 return true;
             }

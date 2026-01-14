@@ -1,14 +1,16 @@
 using KingOfTarkov.Models.Database;
-using KingOfTarkov.Models.Save;
 using SPTarkov.DI.Annotations;
 using SPTarkov.Server.Core.Models.Common;
+using SPTarkov.Server.Core.Models.Utils;
 using SPTarkov.Server.Core.Utils;
+using Path = System.IO.Path;
 
 namespace KingOfTarkov.Services;
 
 [Injectable(InjectionType.Singleton)]
 public class TrialService(ConfigService config,
-    JsonUtil jsonUtil)
+    JsonUtil jsonUtil,
+    ISptLogger<TrialService> logger)
 {
     public TrialData TrialConfig;
     public Dictionary<MongoId, ModifierData> Mods;
@@ -29,6 +31,4 @@ public class TrialService(ConfigService config,
         
         Mods = modData ?? throw new Exception("[KoT] Mod data not found.");
     }
-
-    
 }

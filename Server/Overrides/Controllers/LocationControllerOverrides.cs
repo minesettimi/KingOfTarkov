@@ -26,13 +26,17 @@ public class GenerateAllOverride : AbstractPatch
 
         foreach ((MongoId id, LocationBase location) in __result.Locations)
         {
-            if (activeMaps.Contains(id))
+            MongoId checkId = _locationHelper.GetMapOther(id) ?? id; 
+            if (activeMaps.Contains(checkId))
             {
                 location.IsSecret = true;
                 location.Locked = false;
             }
             else
+            {
+                location.IsSecret = false;
                 location.Locked = true;
+            }
         }
         
         return __result;

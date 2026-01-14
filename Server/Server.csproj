@@ -27,6 +27,8 @@
         <PackageReference Include="SPTarkov.DI" Version="4.0.4" />
         <PackageReference Include="SPTarkov.Reflection" Version="4.0.4" />
         <PackageReference Include="SPTarkov.Server.Core" Version="4.0.4" />
+        
+<!--        <Reference Include="FikaServer" HintPath="../../FikaServer.dll" /> -->
     </ItemGroup>
 
     <ItemGroup>
@@ -40,7 +42,7 @@
 
     <Target  Name="PostBuild" AfterTargets="PostBuildEvent">
         <ItemGroup>
-            <CompileFiles Include="$(TargetDir)*.deps.json;$(TargetDir)*.endpoints.json" />
+            <CompileFiles Include="$(TargetDir)*.deps.json;$(TargetDir)*.endpoints.json;$(TargetDir)FikaServer.dll;$(TargetDir)FikaShared.dll" />
         </ItemGroup>
         <Delete Files="@(CompileFiles)" />
         <Exec Command="cp -a $(TargetDir) $(SolutionDir)../../../SPTDevelopment/SPT/user/mods/" />

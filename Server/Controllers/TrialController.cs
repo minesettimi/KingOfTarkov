@@ -22,6 +22,7 @@ public class TrialController(SaveService saveService, TrialService trialService)
 
         return new TrialDataResponse
         {
+            Id = saveService.CurrentSave.Id,
             Trial = currentState,
             Color = trialService.TrialConfig.Types[currentState.TrialType].Color, //messy but whatever
             Location = editedData

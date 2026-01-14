@@ -39,7 +39,6 @@ public class TrialGenerator(TrialService trialService,
         
         return new TrialState
         {
-            TrialId = new MongoId(),
             TrialType = typeId,
             TrialNum = trialNum,
             Mods = GenerateMods(selectedType, newTrialConfig.GlobalModCount, [])

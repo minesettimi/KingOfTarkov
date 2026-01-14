@@ -6,6 +6,9 @@ namespace KingOfTarkov.Models.Response;
 
 public record TrialDataResponse
 {
+    [JsonPropertyName("id")]
+    public MongoId Id { get; set; }
+    
     [JsonPropertyName("trial")]
     public TrialState Trial { get; set; }
     
