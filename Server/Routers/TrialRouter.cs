@@ -38,7 +38,7 @@ public class TrialCallbacks(HttpResponseUtil httpResponseUtil,
 {
     public ValueTask<string> HandleGetId()
     {
-        MongoId trialId = saveService.CurrentSave.Trial.trialId;
+        MongoId trialId = saveService.CurrentSave.Trial.TrialId;
         return new ValueTask<string>(httpResponseUtil.GetBody(trialId));
     }
 

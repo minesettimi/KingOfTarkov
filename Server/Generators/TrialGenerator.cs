@@ -15,18 +15,16 @@ public class TrialGenerator(TrialService trialService,
     KingMathUtil kingMathUtil,
     ISptLogger<TrialGenerator> logger)
 {
-    public void GenerateTrial(SaveState currentSave)
+    public TrialState GenerateTrial(int trialNum)
     {
-        TrialState trialSave = currentSave.Trial;
         TrialData trialConfig = trialService.TrialConfig;
-        int trialNum = ++trialSave.TrialNum;
 
         List<MongoId> typePool;
-        TrialNumData currentTrial = trialConfig.Trials[trialNum];
+        TrialNumData newTrialConfig = trialConfig.Trials[trialNum];
 
-        if ((currentTrial.TypeWhitelist?.Count ?? 0) > 0)
+        if ((newTrialConfig.TypeWhitelist?.Count ?? 0) > 0)
         {
-            typePool = currentTrial.TypeWhitelist!;
+            typePool = newTrialConfig.TypeWhitelist!;
         }
         else
         {
@@ -34,34 +32,37 @@ public class TrialGenerator(TrialService trialService,
                 .Select(p => p.Key).ToList();
         }
 
-        trialSave.trialId = new MongoId();
 
         MongoId typeId = randomUtil.DrawRandomFromList(typePool)[0];
-        trialSave.TrialType = typeId;
         
         TrialTypeData selectedType = trialService.TrialConfig.Types[typeId];
-
-        trialSave.mods = GenerateMods(selectedType, currentTrial.GlobalModCount, []);
-
-        LocationState locationState = currentSave.Location;
         
-        locationState.Previous.Clear();
-        
-        //backup mods
-        locationState.Previous.AddRange(locationState.Active.Keys);
-        
-        locationState.Active.Clear();
+        return new TrialState
+        {
+            TrialId = new MongoId(),
+            TrialType = typeId,
+            TrialNum = trialNum,
+            Mods = GenerateMods(selectedType, newTrialConfig.GlobalModCount, [])
+        };
+    }
 
-        List<MongoId> locations = GenerateLocations(trialNum, currentTrial.LocationCount, currentSave);
+    public LocationState GenerateLocationState(int trialNum, TrialState trialSave, List<MongoId> previous)
+    {
+        LocationState locationState = new();
+
+        TrialTypeData currentType = trialService.TrialConfig.Types[trialSave.TrialType];
+        TrialNumData newData = trialService.TrialConfig.Trials[trialNum];
+
+        List<MongoId> locations = GenerateLocations(trialNum, newData.LocationCount, previous);
         foreach (MongoId id in locations)
         {
             locationState.Active.Add(id, new LocationDataState
             {
-                Mods = GenerateMods(selectedType, currentTrial.LocationModCount, trialSave.mods)
+                Mods = GenerateMods(currentType, newData.LocationModCount, trialSave.Mods)
             });
         }
-        
-        logger.Info($"[KoT] Generated new Trial {trialNum}");
+
+        return locationState;
     }
 
     private List<MongoId> GenerateMods(TrialTypeData trialType, int number, List<MongoId> blacklist)
@@ -77,7 +78,7 @@ public class TrialGenerator(TrialService trialService,
         return randomUtil.DrawRandomFromList(modPool, number, false);
     }
 
-    private List<MongoId> GenerateLocations(int trialNum, int locationCount, SaveState currentSave)
+    private List<MongoId> GenerateLocations(int trialNum, int locationCount, List<MongoId> previousLocs)
     {
         List<MongoId> originalPool = [];
 
@@ -89,7 +90,7 @@ public class TrialGenerator(TrialService trialService,
             originalPool.Add(id);
         }
 
-        List<MongoId> finalPool = originalPool.Except(currentSave.Location.Previous).ToList();
+        List<MongoId> finalPool = originalPool.Except(previousLocs).ToList();
 
         if (finalPool.Count < trialNum)
         {

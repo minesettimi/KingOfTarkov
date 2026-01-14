@@ -24,7 +24,7 @@ public class SaveService(ConfigService config,
         {
             logger.Info("[KoT] Starting new save");
             CurrentSave = new SaveState();
-            trialGenerator.GenerateTrial(CurrentSave);
+            IncrementTrial();
         }
         else
         {
@@ -38,8 +38,21 @@ public class SaveService(ConfigService config,
     {
         File.WriteAllTextAsync(_savePath, jsonUtil.Serialize(CurrentSave));
     }
-    
-    
+
+    public void IncrementTrial()
+    {
+        int newTrialNum = CurrentSave.Trial.TrialNum + 1;
+        
+        CurrentSave.Trial = trialGenerator.GenerateTrial(newTrialNum);
+
+        LocationState locationState = CurrentSave.Location;
+        
+        
+        CurrentSave.Location = trialGenerator.GenerateLocationState(newTrialNum, CurrentSave.Trial, locationState.Previous);
+        CurrentSave.Location.Previous.AddRange(locationState.Active.Keys);
+        
+        logger.Info($"[KoT] Generated new Trial {newTrialNum}");
+    }
     
     //TODO: Save historical data for some kind of stats system
 }
