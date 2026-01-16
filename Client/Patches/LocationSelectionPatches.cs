@@ -49,9 +49,9 @@ namespace KoTClient.Patches
         {
             StateService stateService = Plugin.StateService;
 
-            session.GetLevelSettings();
             if (stateService.IsStateOutdated())
             {
+                session.GetLevelSettings();
                 await stateService.RequestState();
             }
             

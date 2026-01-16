@@ -16,4 +16,7 @@ public class SaveState
     
     [JsonPropertyName("profile")]
     public ProfileState Profile { get; set; } = new();
+    
+    [JsonPropertyName("quests")]
+    public QuestState Quests { get; set; } = new();
 }

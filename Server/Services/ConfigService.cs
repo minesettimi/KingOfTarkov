@@ -91,8 +91,9 @@ public class ConfigService(ModHelper modHelper,
 
         lostOnDeathConfig.WipeOnRaidStart = true;
         
-        //database settings
         
+        
+        //database settings
         Globals globals = databaseServer.GetTables().Globals;
         
         //disable transits

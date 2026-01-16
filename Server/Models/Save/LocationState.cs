@@ -17,6 +17,9 @@ public class LocationDataState
     [JsonPropertyName("completed")] 
     public bool Completed { get; set; } = false;
 
+    [JsonPropertyName("exfilRequirements")]
+    public List<MongoId> ExfilRequirements { get; set; } = [];
+
     [JsonPropertyName("mods")] 
     public List<MongoId> Mods { get; set; } = [];
 }

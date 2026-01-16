@@ -1,7 +1,7 @@
 using KingOfTarkov.Generators;
+using KingOfTarkov.Helpers;
 using KingOfTarkov.Models.Save;
 using SPTarkov.DI.Annotations;
-using SPTarkov.Server.Core.Models.Common;
 using SPTarkov.Server.Core.Models.Utils;
 using SPTarkov.Server.Core.Utils;
 
@@ -9,12 +9,12 @@ namespace KingOfTarkov.Services;
 
 [Injectable(InjectionType.Singleton)]
 public class SaveService(ConfigService config,
-    TrialGenerator trialGenerator,
     JsonUtil jsonUtil,
     ISptLogger<SaveService> logger)
 {
     public SaveState CurrentSave;
     public int RemainingRaids = 0;
+    public bool NewTrial = false;
     
     private readonly string _savePath = Path.Join(config.ModPath, "save.json");
     
@@ -26,14 +26,12 @@ public class SaveService(ConfigService config,
         {
             logger.Info("[KoT] Starting new save");
             CurrentSave = new SaveState();
-            IncrementTrial();
+            NewTrial = true;
         }
         else
         {
             CurrentSave = tempSave;
-
             RemainingRaids = CurrentSave.Location.Active.Count(i => !i.Value.Completed);
-            
             logger.Info($"[KoT] Loaded save on Trial {tempSave.Trial.TrialNum}.");
         }
 
@@ -42,23 +40,6 @@ public class SaveService(ConfigService config,
     public void SaveCurrentState()
     {
         File.WriteAllTextAsync(_savePath, jsonUtil.Serialize(CurrentSave));
-    }
-
-    public void IncrementTrial()
-    {
-        int newTrialNum = CurrentSave.Trial.TrialNum + 1;
-        
-        CurrentSave.Trial = trialGenerator.GenerateTrial(newTrialNum);
-
-        LocationState locationState = CurrentSave.Location;
-        
-        LocationState newState = trialGenerator.GenerateLocationState(newTrialNum, CurrentSave.Trial, locationState.Previous);
-        newState.Previous.AddRange(locationState.Active.Keys);
-        RemainingRaids = newState.Active.Count;
-        
-        CurrentSave.Location = newState;
-        
-        logger.Info($"[KoT] Generated new Trial {newTrialNum}");
     }
     
     //TODO: Save historical data for some kind of stats system

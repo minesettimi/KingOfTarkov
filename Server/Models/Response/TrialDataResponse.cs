@@ -16,5 +16,5 @@ public record TrialDataResponse
     public string Color { get; set; }
     
     [JsonPropertyName("Location")]
-    public Dictionary<MongoId, List<MongoId>> Location { get; set; }
+    public Dictionary<MongoId, LocationDataState> Location { get; set; }
 }

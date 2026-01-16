@@ -25,6 +25,22 @@
   "696319c33a65c367b83d25c1 successMessageText": "I never thought I would see the day that someone would beat the challenge. We are truly in the presence of a king.",
   "69631a0bc6c5f245d93d25c2": "Complete 10 trials",
   
+  //escape quests
+  "ExfilDescription": "Completing a raid won't be so easy. I need you to complete these tasks before you can leave.",
+  
+  //per location
+  "ExfilName 56f40101d2720b2a4d8b45d6": "Exfil: Customs",
+  "ExfilName 55f2d3fd4bdc2d5f408b4567": "Exfil: Factory",
+  "ExfilName 5714dbc024597771384a510d": "Exfil: Interchange",
+  "ExfilName 5b0fc42d86f7744a585f9105": "Exfil: Labs",
+  "ExfilName 5704e5fad2720bc05b8b4567": "Exfil: Reserve",
+  "ExfilName 5704e554d2720bac5b8b456e": "Exfil: Shoreline",
+  "ExfilName 5704e3c2d2720bac5b8b4567": "Exfil: Woods",
+  "ExfilName 5704e4dad2720bb55b8b4567": "Exfil: Lighthouse",
+  "ExfilName 5714dc692459777137212e12": "Exfil: Streets",
+  "ExfilName 653e6760052c01c1c805532f": "Exfil: Ground Zero",
+  "ExfilName 6733700029c367a3d40b02af": "Exfil: Labyrinth",
+  
   //other
   "TrialTitleNumber": "Trial {0}:",
   "TrialPrefix": "Trial Of",

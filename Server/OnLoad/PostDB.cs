@@ -10,19 +10,21 @@ namespace KingOfTarkov.OnLoad;
 public class PostDB(QuestService questService,
     LocaleService localeService, 
     ConfigService configService,
-    ProfileService profileService,
-    TrialService trialService,
+    DataService dataService,
     SaveService saveService,
+    TrialService trialService,
+    LocationCacheService locationCacheService,
     ISptLogger<PostDB> logger): IOnLoad
 {
     public async Task OnLoad()
     {
-        await trialService.Load();
+        await dataService.Load();
+        await locationCacheService.Load();
         await saveService.Load();
+        await configService.PostDBLoad();
         await questService.Load();
         await localeService.Load();
-        await configService.PostDBLoad();
-        await profileService.Load();
+        await trialService.Load();
         
         logger.Success("[KoT] Finished initial loading.");
     }

@@ -14,8 +14,8 @@ public class ProfileState
 
 public class ProfileInfoState
 {
-    [JsonPropertyName("died")]
-    public bool Died { get; set; } = false;
+    [JsonPropertyName("lives")]
+    public int Lives { get; set; }
     
     [JsonPropertyName("quests")]
     public List<MongoId> Quests { get; set; } = [];

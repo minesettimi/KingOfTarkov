@@ -1,4 +1,5 @@
 using KingOfTarkov.Overrides.Controllers;
+using KingOfTarkov.Overrides.Helpers;
 using KingOfTarkov.Overrides.Services;
 using KingOfTarkov.Services;
 using SPTarkov.DI.Annotations;
@@ -13,8 +14,8 @@ public class PreLoad(ConfigService config) : IOnLoad
     private readonly List<AbstractPatch> _patches =
     [
         new GenerateAllOverride(),
-        new CanProfileAccessRepeatableOverride(),
-        new HandlePostRaidOverride()
+        new HandlePostRaidOverride(),
+        new GetClientQuestsOverride()
     ];
     
     public async Task OnLoad()

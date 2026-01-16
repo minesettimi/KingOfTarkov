@@ -13,11 +13,11 @@ namespace KingOfTarkov.Overrides.Services;
 
 public class HandlePostRaidOverride : AbstractPatch
 {
-    private static LocationHelper _locationHelper;
+    private static LocationController _locationController;
     
     protected override MethodBase? GetTargetMethod()
     {
-        _locationHelper = ServiceLocator.ServiceProvider.GetService<LocationHelper>();
+        _locationController = ServiceLocator.ServiceProvider.GetService<LocationController>();
         return typeof(LocationLifecycleService).GetMethod("HandlePostRaidPmc",
             BindingFlags.Instance | BindingFlags.NonPublic);
     }
@@ -32,6 +32,6 @@ public class HandlePostRaidOverride : AbstractPatch
         EndLocalRaidRequestData request,
         string locationName)
     {
-        _locationHelper.HandlePostRaid(sessionId, fullServerProfile, isDead, isSurvived, locationName);
+        _locationController.HandlePostRaid(sessionId, fullServerProfile, isDead, isSurvived, locationName);
     }
 }

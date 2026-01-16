@@ -72,6 +72,14 @@
       "typeWhitelist": ["6963ed4908d8d15b601c3282"]
     }
   },
+  "quests":
+  {
+    "exfil":
+    {
+      "elimination": "69693d9cffb48a8137fda9c8",
+      "boss": "69693feabfc77076a7fda9c9"
+    }
+  },
   "locations":
   {
     "56f40101d2720b2a4d8b45d6":

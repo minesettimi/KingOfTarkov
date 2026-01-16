@@ -8,6 +8,9 @@ public class TrialData
     [JsonPropertyName("trials")]
     public Dictionary<int, TrialNumData> Trials { get; set; } = new();
     
+    [JsonPropertyName("quests")]
+    public QuestData Quests { get; set; } = new();
+    
     [JsonPropertyName("locations")]
     public Dictionary<string, LocationData> Locations { get; set; } = new();
     

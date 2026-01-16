@@ -10,14 +10,14 @@ using SPTarkov.Server.Core.Utils;
 namespace KingOfTarkov.Generators;
 
 [Injectable(InjectionType.Singleton)]
-public class TrialGenerator(TrialService trialService,
+public class TrialGenerator(DataService dataService,
     RandomUtil randomUtil,
     KingMathUtil kingMathUtil,
     ISptLogger<TrialGenerator> logger)
 {
     public TrialState GenerateTrial(int trialNum)
     {
-        TrialData trialConfig = trialService.TrialConfig;
+        TrialData trialConfig = dataService.TrialConfig;
 
         List<MongoId> typePool;
         TrialNumData newTrialConfig = trialConfig.Trials[trialNum];
@@ -35,7 +35,7 @@ public class TrialGenerator(TrialService trialService,
 
         MongoId typeId = randomUtil.DrawRandomFromList(typePool)[0];
         
-        TrialTypeData selectedType = trialService.TrialConfig.Types[typeId];
+        TrialTypeData selectedType = dataService.TrialConfig.Types[typeId];
         
         return new TrialState
         {
@@ -49,8 +49,8 @@ public class TrialGenerator(TrialService trialService,
     {
         LocationState locationState = new();
 
-        TrialTypeData currentType = trialService.TrialConfig.Types[trialSave.TrialType];
-        TrialNumData newData = trialService.TrialConfig.Trials[trialNum];
+        TrialTypeData currentType = dataService.TrialConfig.Types[trialSave.TrialType];
+        TrialNumData newData = dataService.TrialConfig.Trials[trialNum];
 
         List<MongoId> locations = GenerateLocations(trialNum, newData.LocationCount, previous);
         foreach (MongoId id in locations)
@@ -81,7 +81,7 @@ public class TrialGenerator(TrialService trialService,
     {
         List<MongoId> originalPool = [];
 
-        foreach ((MongoId id, LocationData data) in trialService.TrialConfig.Locations)
+        foreach ((MongoId id, LocationData data) in dataService.TrialConfig.Locations)
         {
             if (data.Max < trialNum || data.Min > trialNum)
                 continue;
@@ -101,7 +101,7 @@ public class TrialGenerator(TrialService trialService,
         Dictionary<MongoId, double> weights = new();
         foreach (MongoId id in finalPool)
         {
-            LocationData data = trialService.TrialConfig.Locations[id];
+            LocationData data = dataService.TrialConfig.Locations[id];
             
             double weight = kingMathUtil.MapToRangeInv(trialNum, 0, 10, data.MinWeight, data.MaxWeight);
             totalWeight += weight;
