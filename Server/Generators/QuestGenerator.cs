@@ -32,7 +32,7 @@ public class QuestGenerator(DataService dataService,
         }
 
         //TODO: More interesting elimination system
-        int eliminationCount = 5 + 2 * saveService.CurrentSave.Trial.TrialNum;
+        int eliminationCount = 4 + saveService.CurrentSave.Trial.TrialNum;
         
         QuestCondition elimCondition = baseQuest.Conditions.AvailableForFinish![0];
         elimCondition.Value = eliminationCount;

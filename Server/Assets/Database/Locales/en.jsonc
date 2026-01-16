@@ -41,6 +41,15 @@
   "ExfilName 653e6760052c01c1c805532f": "Exfil: Ground Zero",
   "ExfilName 6733700029c367a3d40b02af": "Exfil: Labyrinth",
   
+  //fix some bosses not having proper locales
+  "QuestCondition/Elimination/Kill/BotRole/bossTagillaAgro": "Shadow Of Tagilla",
+  "QuestCondition/Elimination/Kill/BotRole/bossKillaAgro": "Shadow Of Killa",
+  "QuestCondition/Elimination/Kill/BotRole/bossPartisan": "Partisan",
+  "QuestCondition/Elimination/Kill/BotRole/bossKolontay": "Kolontay",
+  "QuestCondition/Elimination/Kill/BotRole/bossKnight": "Knight",
+  "QuestCondition/Elimination/Kill/BotRole/bossBoar": "Kaban",
+  "QuestCondition/Elimination/Kill/BotRole/bossBoarSniper": "Kaban's Sniper",
+  
   //other
   "TrialTitleNumber": "Trial {0}:",
   "TrialPrefix": "Trial Of",
