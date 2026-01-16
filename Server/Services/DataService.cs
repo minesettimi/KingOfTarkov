@@ -1,6 +1,7 @@
 using KingOfTarkov.Models.Database;
 using SPTarkov.DI.Annotations;
 using SPTarkov.Server.Core.Models.Common;
+using SPTarkov.Server.Core.Models.Eft.Common;
 using SPTarkov.Server.Core.Models.Eft.Common.Tables;
 using SPTarkov.Server.Core.Models.Spt.Config;
 using SPTarkov.Server.Core.Models.Utils;
@@ -21,31 +22,26 @@ public class DataService(ConfigService config,
     public TrialData TrialConfig;
     public Dictionary<MongoId, ModifierData> Mods;
     public Dictionary<MongoId, Quest> ReplaceableQuests = new();
+    public Dictionary<string, List<BossLocationSpawn>> CustomBossSpawns = new();
     
     private CustomQuestData _customQuestData;
 
     public async Task Load()
     {
         string dataPath = Path.Join(config.ModPath, "Assets", "Database");
-
-        string trialPath = Path.Join(dataPath, "trials.json");
-        string modPath = Path.Join(dataPath, "modifiers.json");
-        string profilePath = Path.Join(dataPath, "profiles.json");
-        string questPath = Path.Join(dataPath, "questdata.json");
-        string dynamicPath = Path.Join(dataPath, "quests_dynamic.json");
         
-        TrialData? data = await jsonUtil.DeserializeFromFileAsync<TrialData>(trialPath);
+        TrialData? data = await jsonUtil.DeserializeFromFileAsync<TrialData>(Path.Join(dataPath, "trials.json"));
 
         TrialConfig = data ?? throw new Exception("[KoT] TrialConfig data not found.");
         
         Dictionary<MongoId, ModifierData>? modData = 
-            await jsonUtil.DeserializeFromFileAsync<Dictionary<MongoId, ModifierData>>(modPath);
+            await jsonUtil.DeserializeFromFileAsync<Dictionary<MongoId, ModifierData>>(Path.Join(dataPath, "modifiers.json"));
         
         Mods = modData ?? throw new Exception("[KoT] Mod data not found.");
         
         //custom profiles
         Dictionary<string, ProfileSides> customProfiles =
-            await jsonUtil.DeserializeFromFileAsync<Dictionary<string, ProfileSides>>(profilePath) ?? [];
+            await jsonUtil.DeserializeFromFileAsync<Dictionary<string, ProfileSides>>(Path.Join(dataPath, "profiles.json")) ?? [];
         
         foreach ((string name, ProfileSides profile) in customProfiles)    
         {
@@ -53,16 +49,19 @@ public class DataService(ConfigService config,
         }
         
         //quest data
-        _customQuestData = await jsonUtil.DeserializeFromFileAsync<CustomQuestData>(questPath) ?? throw new Exception("[KoT] Quest data not found.");
+        _customQuestData = await jsonUtil.DeserializeFromFileAsync<CustomQuestData>(Path.Join(dataPath, "questdata.json")) 
+                           ?? throw new Exception("[KoT] Quest data not found.");
         
         SetupCustomRepeatables();
         
-        ReplaceableQuests = await jsonUtil.DeserializeFromFileAsync<Dictionary<MongoId, Quest>>(dynamicPath) ?? [];
+        ReplaceableQuests = await jsonUtil.DeserializeFromFileAsync<Dictionary<MongoId, Quest>>(Path.Join(dataPath, "quests_dynamic.json")) ?? [];
 
         if (ReplaceableQuests.Count == 0)
         {
             logger.Warning("[KoT] There are no dynamic quests available.");
         }
+        
+        CustomBossSpawns = await jsonUtil.DeserializeFromFileAsync<Dictionary<string, List<BossLocationSpawn>>>(Path.Join(dataPath, "location_bosses.json")) ?? throw new Exception("[KoT] CustomBossSpawns data not found.");
     }
     
     private void SetupCustomRepeatables()

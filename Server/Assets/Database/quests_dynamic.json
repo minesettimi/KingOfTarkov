@@ -10,17 +10,17 @@
     "conditions": {
       "AvailableForFinish": [
         {
-          "doNotResetIfCounterCompleted": false,
+          "doNotResetIfCounterCompleted": true,
           "dynamicLocale": true,
           "globalQuestCounterId": "",
           "id": "696940e245aced2dfefda9ca",
           "index": 0,
           "isNecessary": false,
           "isResetOnConditionFailed": false,
-          "oneSessionOnly": true,
+          "oneSessionOnly": false,
           "parentId": "",
           "type": "Elimination",
-          "value": 5,
+          "value": 1,
           "visibilityConditions": [],
           "completeInSeconds": 0,
           "conditionType": "CounterCreator",
@@ -43,19 +43,14 @@
                 "enemyEquipmentInclusive": [],
                 "enemyHealthEffects": [],
                 "id": "6969412a1495d6f215fda9cc",
-                "resetOnSessionEnd": false,
+                "resetOnSessionEnd": true,
                 "savageRole": [],
                 "target": "Any",
-                "value": 5,
+                "value": 1,
                 "weapon": [],
                 "weaponCaliber": [],
                 "weaponModsExclusive": [],
                 "weaponModsInclusive": []
-              },
-              {
-                "conditionType": "Location",
-                "dynamicLocale": false,
-                "id": "69697c2f61bc7c7bccfda9d0"
               }
             ],
             "id": "696940f4f6fde1aef3fda9cb"
@@ -68,7 +63,7 @@
     "description": "ExfilDescription",
     "gameModes": [],
     "image": "/files/quest/icon/66562aaaa636bd24a654f416.png",
-    "instantComplete": false,
+    "instantComplete": true,
     "isKey": false,
     "location": "{locationId}",
     "name": "ExfilName {locationId}",
@@ -85,7 +80,8 @@
     "side": "Pmc",
     "status": 2,
     "traderId": "6617beeaa9cfa777ca915b7c",
-    "type": "Exploration"
+    "type": "Exploration",
+    "sptState": "Started"
   },
   "69693feabfc77076a7fda9c9":
   {
@@ -151,7 +147,7 @@
     "description": "ExfilDescription",
     "gameModes": [],
     "image": "/files/quest/icon/6682a79f3d914aa3b20e13cb.png",
-    "instantComplete": false,
+    "instantComplete": true,
     "isKey": false,
     "location": "ExfilName {locationId}",
     "name": "ExfilName",
@@ -168,6 +164,7 @@
     "side": "Pmc",
     "status": 2,
     "traderId": "6617beeaa9cfa777ca915b7c",
-    "type": "Exploration"
+    "type": "Exploration",
+    "sptState": "Started"
   }
 }

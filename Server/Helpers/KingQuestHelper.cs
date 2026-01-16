@@ -5,7 +5,9 @@ using SPTarkov.Server.Core.Helpers;
 using SPTarkov.Server.Core.Models.Common;
 using SPTarkov.Server.Core.Models.Eft.Common;
 using SPTarkov.Server.Core.Models.Eft.Common.Tables;
+using SPTarkov.Server.Core.Models.Enums;
 using SPTarkov.Server.Core.Models.Utils;
+using SPTarkov.Server.Core.Utils;
 
 namespace KingOfTarkov.Helpers;
 
@@ -13,6 +15,7 @@ namespace KingOfTarkov.Helpers;
 [Injectable(InjectionType.Singleton)]
 public class KingQuestHelper(ProfileHelper profileHelper,
     SaveService saveService,
+    TimeUtil timeUtil,
     ISptLogger<KingQuestHelper> logger)
 {
     public List<Quest> RetrieveDynamicQuests(MongoId sessionId)
@@ -32,7 +35,7 @@ public class KingQuestHelper(ProfileHelper profileHelper,
         result.AddRange(currentState.Quests.Exfil.Values);
 
         ProfileInfoState? profileInfo = currentState.Profile.Profiles.GetValueOrDefault(profile.Id!.Value);
-
+        
         if (profileInfo == null)
         {
             logger.Error($"[KoT] Profile {profile.Info.Nickname} not cached by mod!");
@@ -41,8 +44,31 @@ public class KingQuestHelper(ProfileHelper profileHelper,
 
         Dictionary<MongoId, Quest> quests = currentState.Quests.Personal;
 
-        result.AddRange(profileInfo.Quests.Select(questId => quests[questId]));
+        foreach (MongoId questId in profileInfo.Quests)
+        {
+            //add quest status to profile if it isn't there already
+            //CreateQuestStatusIfAvailable(profile, questId);
+            result.Add(quests[questId]);
+        }
 
         return result;
+    }
+
+    private void CreateQuestStatusIfAvailable(PmcData pmcData, MongoId questId)
+    {
+        QuestStatus? questStatus = pmcData.Quests.FirstOrDefault(q => q.QId == questId);
+
+        if (questStatus == null)
+            return;
+
+        QuestStatus newStatus = new()
+        {
+            QId = questId,
+            StartTime = timeUtil.GetTimeStamp(),
+            Status = QuestStatusEnum.Started,
+            StatusTimers = new Dictionary<QuestStatusEnum, double>()
+        };
+        
+        pmcData.Quests.Add(newStatus);
     }
 }

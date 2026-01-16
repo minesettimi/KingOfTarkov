@@ -13,6 +13,7 @@ using SPTarkov.Server.Core.Models.Enums;
 using SPTarkov.Server.Core.Models.Utils;
 using SPTarkov.Server.Core.Services;
 using SPTarkov.Server.Core.Utils;
+using SPTarkov.Server.Core.Utils.Cloners;
 
 namespace KingOfTarkov.Helpers;
 
@@ -27,6 +28,7 @@ public class LocationController(SaveService save,
     LocationUtil locationUtil,
     TrialService trialService,
     LocationHelper locationHelper,
+    ICloner cloner,
     ISptLogger<LocationController> logger)
 {
 
@@ -34,8 +36,10 @@ public class LocationController(SaveService save,
     {
         List<MongoId> activeMaps = GetActiveMaps();
         
-        foreach ((MongoId id, LocationBase location) in initial.Locations)
+        foreach ((MongoId id, LocationBase oldLoc) in initial.Locations)
         {
+            LocationBase location = cloner.Clone(oldLoc)!;
+            
             MongoId checkId = locationUtil.GetMapOther(id); 
             if (activeMaps.Contains(checkId))
             {
@@ -45,7 +49,7 @@ public class LocationController(SaveService save,
                 //last map
                 if (activeMaps.Count == 1)
                 {
-                    locationHelper.SetupBossLocation(id, location);
+                    locationHelper.SetupBossLocation(checkId, location);
                 }
             }
             else
@@ -54,7 +58,7 @@ public class LocationController(SaveService save,
                 location.Locked = true;
             }
 
-            
+            initial.Locations[id] = location;
         }
 
         return initial;
@@ -63,7 +67,7 @@ public class LocationController(SaveService save,
     public List<MongoId> GetActiveMaps()
     {
         return save.CurrentSave.Location.Active
-            .Where(l => l.Value.Completed)
+            .Where(l => !l.Value.Completed)
             .Select(l => l.Key).ToList();
     }
 
@@ -86,7 +90,7 @@ public class LocationController(SaveService save,
             return;
         }
         
-        MongoId locationId = repeatableQuestHelper.GetQuestLocationByMapId(locationName)!;
+        MongoId locationId = locationUtil.GetMapId(locationName)!;
         locationId = locationUtil.GetMapOther(locationId);
 
         trialService.CompleteLocation(locationId);

@@ -31,10 +31,18 @@ public class TrialService(SaveService saveService,
     public void CompleteLocation(MongoId locationId)
     {
         //TODO: FIKA SUPPORT
-        if (!save.CurrentSave.Location.Active[locationId].Completed)
+
+        LocationDataState currentLocation = save.CurrentSave.Location.Active[locationId];
+        if (!currentLocation.Completed)
         {
-            save.CurrentSave.Location.Active[locationId].Completed = true;
+            currentLocation.Completed = true;
             save.RemainingRaids--;
+
+            //delete exfil quests
+            foreach (MongoId questId in currentLocation.ExfilRequirements)
+            {
+                saveService.CurrentSave.Quests.Exfil.Remove(questId);
+            }
         }
 
         //mark trial as different
@@ -72,6 +80,8 @@ public class TrialService(SaveService saveService,
         
         profileHelper.ResetAllRepeatables();
         GenerateExfilQuests();
+        
+        saveService.SaveCurrentState();
         
         logger.Info($"[KoT] Started new Trial {newTrialNum}");
     }

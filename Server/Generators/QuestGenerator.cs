@@ -15,7 +15,7 @@ public class QuestGenerator(DataService dataService,
     SaveService saveService,
     ICloner cloner,
     LocationUtil locationUtil,
-    LocationCacheService locationCacheService,
+    LocationService locationService,
     RandomUtil randomUtil,
     ISptLogger<QuestGenerator> logger)
 {
@@ -34,7 +34,7 @@ public class QuestGenerator(DataService dataService,
         //TODO: More interesting elimination system
         int eliminationCount = 5 + 2 * saveService.CurrentSave.Trial.TrialNum;
         
-        QuestConditionCounterCondition elimCondition = baseQuest.Conditions.AvailableForFinish![0].Counter!.Conditions![0];
+        QuestCondition elimCondition = baseQuest.Conditions.AvailableForFinish![0];
         elimCondition.Value = eliminationCount;
         
         return baseQuest;
@@ -53,7 +53,7 @@ public class QuestGenerator(DataService dataService,
         }
         
         //get the boss we want to task
-        List<string> possibleBosses = randomUtil.DrawRandomFromList(locationCacheService.BossCache[locationId]);
+        List<string> possibleBosses = randomUtil.DrawRandomFromList(locationService.BossCache[locationId]);
         string selectedBoss = possibleBosses[0];
         
         QuestConditionCounterCondition elimCondition = baseQuest.Conditions.AvailableForFinish![0].Counter!.Conditions![0];
@@ -83,13 +83,13 @@ public class QuestGenerator(DataService dataService,
         QuestCondition finishCondition = newQuest.Conditions.AvailableForFinish![0];
         finishCondition.Id = new MongoId();
         finishCondition.Counter!.Id = new MongoId();
-        finishCondition.Counter.Conditions = [];
 
-        finishCondition.Counter.Conditions.Add(new QuestConditionCounterCondition()
+        List<string> locationNames = [locationName];
+        finishCondition.Counter.Conditions!.Add(new QuestConditionCounterCondition()
         {
             Id = new MongoId(),
             DynamicLocale = true,
-            Target = new ListOrT<string>(null, locationName),
+            Target = new ListOrT<string>(locationNames, null),
             ConditionType = "Location"
         });
         

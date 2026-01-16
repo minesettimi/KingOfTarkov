@@ -8,26 +8,44 @@ using SPTarkov.Server.Core.Services;
 namespace KingOfTarkov.Services;
 
 [Injectable(InjectionType.Singleton)]
-public class LocationCacheService(LocationUtil locationUtil,
+public class LocationService(LocationUtil locationUtil,
     DataService dataService,
     DatabaseService databaseService,
-    ISptLogger<LocationCacheService> logger)
+    ISptLogger<LocationService> logger)
 {
     public Dictionary<MongoId, List<string>> BossCache = new();
 
     public Task Load()
     {
+        AddCustomBossSpawns();
         CacheBosses();
         return Task.CompletedTask;
     }
+
+    private void AddCustomBossSpawns()
+    {
+        Dictionary<string, Location> locationDb = databaseService.GetLocations().GetDictionary();
+        foreach ((string mapName, List<BossLocationSpawn> bossSpawn) in dataService.CustomBossSpawns)
+        {
+            if (!locationDb.ContainsKey(mapName))
+            {
+                logger.Error($"[KoT] Custom boss spawn location invalid: {mapName}.");
+                continue;
+            }
+            
+            locationDb[mapName].Base.BossLocationSpawn.AddRange(bossSpawn);
+        }
+    }
     
-    public void CacheBosses()
+    private void CacheBosses()
     {
         foreach (MongoId id in dataService.TrialConfig.Locations.Keys)
         {
             List<string> bosses = GetBossesForLocation(id);
             BossCache.Add(id, bosses);
         }
+
+        logger.Info("[KoT] Finished caching bosses.");
     }
 
     public List<string> GetBossesForLocation(MongoId locationId)

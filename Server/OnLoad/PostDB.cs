@@ -13,13 +13,13 @@ public class PostDB(QuestService questService,
     DataService dataService,
     SaveService saveService,
     TrialService trialService,
-    LocationCacheService locationCacheService,
+    LocationService locationService,
     ISptLogger<PostDB> logger): IOnLoad
 {
     public async Task OnLoad()
     {
         await dataService.Load();
-        await locationCacheService.Load();
+        await locationService.Load();
         await saveService.Load();
         await configService.PostDBLoad();
         await questService.Load();

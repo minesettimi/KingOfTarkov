@@ -8,7 +8,7 @@ namespace KingOfTarkov.Helpers;
 
 [Injectable(InjectionType.Singleton)]
 public class LocationHelper(SaveService saveService,
-    LocationCacheService locationCacheService)
+    LocationService locationService)
 {
     public KeyValuePair<MongoId, LocationDataState>? GetLastLocation()
     {
@@ -20,7 +20,7 @@ public class LocationHelper(SaveService saveService,
 
     public void SetupBossLocation(MongoId key, LocationBase locationBase)
     {
-        List<string> bosses = locationCacheService.BossCache[key];
+        List<string> bosses = locationService.BossCache[key];
 
         foreach (BossLocationSpawn bossConfig in locationBase.BossLocationSpawn)
         {
