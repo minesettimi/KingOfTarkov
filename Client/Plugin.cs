@@ -17,6 +17,7 @@ namespace KoTClient
         public static BundleLoader BundleLoader;
         public static ManualLogSource PluginLogger;   
         public static StateService StateService;
+        public static RaidService RaidService;
         
         private PatchManager _patchManager;
         
@@ -29,6 +30,7 @@ namespace KoTClient
             
             BundleLoader = new BundleLoader();
             StateService = new StateService();
+            RaidService = new RaidService();
         }
     }
 }

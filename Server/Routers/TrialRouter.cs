@@ -1,4 +1,5 @@
 using KingOfTarkov.Controllers;
+using KingOfTarkov.Models.Response;
 using KingOfTarkov.Services;
 using SPTarkov.DI.Annotations;
 using SPTarkov.Server.Core.DI;
@@ -39,7 +40,7 @@ public class TrialCallbacks(HttpResponseUtil httpResponseUtil,
     public ValueTask<string> HandleGetId()
     {
         MongoId trialId = saveService.CurrentSave.Id;
-        return new ValueTask<string>(httpResponseUtil.NoBody(trialId));
+        return new ValueTask<string>(httpResponseUtil.NoBody(new TrialIdResponse(trialId)));
     }
 
     public ValueTask<string> HandleGetData()

@@ -1,6 +1,5 @@
 using System;
 using System.Threading.Tasks;
-using EFT;
 using KoTClient.Models;
 using Newtonsoft.Json;
 using SPT.Common.Http;
@@ -23,9 +22,14 @@ public class StateService
         string? data = RequestHandler.GetJson("/kot/state/id");
 
         if (data == null)
+        {
+            Plugin.PluginLogger.LogError("[KoT] Failed to get latest state id.");
             return false;
-
-        return data != stateData.id;
+        }
+        
+        IdData dataResult = JsonConvert.DeserializeObject<IdData>(data)!;
+        
+        return dataResult.Id != stateData.Id;
     }
 
     public async Task<bool> RequestState()

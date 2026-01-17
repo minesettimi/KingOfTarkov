@@ -85,6 +85,13 @@ public class QuestGenerator(DataService dataService,
         finishCondition.Counter!.Id = new MongoId();
 
         List<string> locationNames = [locationName];
+        
+        //add alt maps
+        if (locationName == "factory4_day")
+            locationNames.Add("factory4_night");
+        else if (locationName == "Sandbox_high")
+            locationNames.Add("Sandbox_high");
+        
         finishCondition.Counter.Conditions!.Add(new QuestConditionCounterCondition()
         {
             Id = new MongoId(),

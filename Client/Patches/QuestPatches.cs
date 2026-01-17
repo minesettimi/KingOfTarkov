@@ -1,6 +1,8 @@
 using System;
 using System.Linq;
 using System.Reflection;
+using Comfort.Common;
+using EFT;
 using EFT.Quests;
 using EFT.UI;
 using HarmonyLib;
@@ -96,5 +98,26 @@ public class InvokeConditionsPatch : ModulePatch
         }
 
         return true;
+    }
+}
+
+public class NotifyStatusChangedPatch : ModulePatch
+{
+    protected override MethodBase GetTargetMethod()
+    {
+        return AccessTools.Method(typeof(GClass4005), nameof(GClass4005.TryNotifyConditionalStatusChanged));
+    }
+
+    [PatchPostfix]
+    public static void Postfix(QuestClass quest)
+    {
+        //only want our exfil quests, while in raid, and when it has been completed
+        if (!Singleton<AbstractGame>.Instance.InRaid || 
+            Plugin.RaidService.CurrentLocation == null || 
+            !Plugin.RaidService.ExfilQuests.Contains(quest.Id) ||
+            quest.QuestStatus != EQuestStatus.AvailableForFinish)
+            return;
+        
+        Plugin.RaidService.ExfilQuestCompleted(quest);
     }
 }

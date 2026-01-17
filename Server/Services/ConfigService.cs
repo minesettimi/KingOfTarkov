@@ -89,11 +89,12 @@ public class ConfigService(ModHelper modHelper,
         //disable cheese
         LostOnDeathConfig lostOnDeathConfig = configServer.GetConfig<LostOnDeathConfig>();
 
-        lostOnDeathConfig.WipeOnRaidStart = true;
+        lostOnDeathConfig.WipeOnRaidStart = !KingConfig.Developer;
         
-        
-        
+        //-----------------
         //database settings
+        //-----------------
+        
         Globals globals = databaseServer.GetTables().Globals;
         
         //disable transits
