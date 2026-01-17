@@ -114,15 +114,19 @@ public class TrialService(SaveService saveService,
             return;
         }
         
-        Quest? bossQuest = questGenerator.GenerateBossExfilQuest(finalLocation.Value.Key);
+        KeyValuePair<string, Quest>? bossQuest = questGenerator.GenerateBossExfilQuest(finalLocation.Value.Key);
 
-        if (bossQuest is null)
+        if (bossQuest == null)
         {
             logger.Error($"[KoT] Failed to create boss quest for location {finalLocation.Value.Key}");
             return;
         }
         
-        saveService.CurrentSave.Quests.Exfil.Add(bossQuest.Id, bossQuest);
-        finalLocation.Value.Value.ExfilRequirements.Add(bossQuest.Id);
+        KeyValuePair<string, Quest> result = bossQuest.Value;
+        
+        finalLocation.Value.Value.Boss = result.Key;
+        
+        saveService.CurrentSave.Quests.Exfil.Add(result.Value.Id, result.Value);
+        finalLocation.Value.Value.ExfilRequirements.Add(result.Value.Id);
     }
 }

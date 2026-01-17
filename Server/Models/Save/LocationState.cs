@@ -17,6 +17,9 @@ public class LocationDataState
     [JsonPropertyName("completed")] 
     public bool Completed { get; set; } = false;
 
+    [JsonPropertyName("boss")] 
+    public string? Boss { get; set; }
+
     [JsonPropertyName("exfilRequirements")]
     public List<MongoId> ExfilRequirements { get; set; } = [];
 

@@ -3,12 +3,14 @@ using KingOfTarkov.Services;
 using SPTarkov.DI.Annotations;
 using SPTarkov.Server.Core.Models.Common;
 using SPTarkov.Server.Core.Models.Eft.Common;
+using SPTarkov.Server.Core.Models.Utils;
 
 namespace KingOfTarkov.Helpers;
 
 [Injectable(InjectionType.Singleton)]
 public class LocationHelper(SaveService saveService,
-    LocationService locationService)
+    LocationService locationService,
+    ISptLogger<LocationHelper> logger)
 {
     public KeyValuePair<MongoId, LocationDataState>? GetLastLocation()
     {
@@ -26,10 +28,17 @@ public class LocationHelper(SaveService saveService,
         {
             if (!bosses.Contains(bossConfig.BossName))
                 continue;
-
+            
+            logger.Debug($"[KoT] Setting boss {bossConfig.BossName} to 100%");
             bossConfig.BossChance = 100;
             bossConfig.ShowOnTarkovMap = true;
             bossConfig.ShowOnTarkovMapPvE = true;
+
+            if (GetLastLocation()?.Value.Boss == bossConfig.BossName)
+            {
+                logger.Debug($"[KoT] Setting boss {bossConfig.BossName} to force spawn.");
+                bossConfig.ForceSpawn = true;
+            }
         }
     }
 }

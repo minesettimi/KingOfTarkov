@@ -112,7 +112,8 @@ public class NotifyStatusChangedPatch : ModulePatch
     public static void Postfix(QuestClass quest)
     {
         //only want our exfil quests, while in raid, and when it has been completed
-        if (!Singleton<AbstractGame>.Instance.InRaid || 
+        if (!Singleton<AbstractGame>.Instantiated || 
+            !Singleton<AbstractGame>.Instance.InRaid || 
             Plugin.RaidService.CurrentLocation == null || 
             !Plugin.RaidService.ExfilQuests.Contains(quest.Id) ||
             quest.QuestStatus != EQuestStatus.AvailableForFinish)
