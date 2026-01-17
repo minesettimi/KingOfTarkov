@@ -18,8 +18,3 @@ public record TrialDataResponse
     [JsonPropertyName("Location")]
     public Dictionary<MongoId, LocationDataState> Location { get; set; }
 }
-
-public record TrialIdResponse(MongoId trialId)
-{
-    [JsonPropertyName("id")] public MongoId Id { get; set; } = trialId;
-}

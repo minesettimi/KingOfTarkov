@@ -44,7 +44,6 @@
   //fix some bosses not having proper locales
   "QuestCondition/Elimination/Kill/BotRole/bossTagillaAgro": "Shadow Of Tagilla",
   "QuestCondition/Elimination/Kill/BotRole/bossKillaAgro": "Shadow Of Killa",
-  "QuestCondition/Elimination/Kill/BotRole/bossPartisan": "Partisan",
   "QuestCondition/Elimination/Kill/BotRole/bossKolontay": "Kolontay",
   "QuestCondition/Elimination/Kill/BotRole/bossKnight": "Knight",
   "QuestCondition/Elimination/Kill/BotRole/bossBoar": "Kaban",

@@ -12,26 +12,6 @@ public class StateService
     public StateData? stateData { get; private set; }
     public event Action? TrialUpdate;
 
-    public bool IsStateOutdated()
-    {
-        //trial data hasn't initialized yet
-        if (stateData == null)
-            return true;
-        
-        //check if state is updated
-        string? data = RequestHandler.GetJson("/kot/state/id");
-
-        if (data == null)
-        {
-            Plugin.PluginLogger.LogError("[KoT] Failed to get latest state id.");
-            return false;
-        }
-        
-        IdData dataResult = JsonConvert.DeserializeObject<IdData>(data)!;
-        
-        return dataResult.Id != stateData.Id;
-    }
-
     public async Task<bool> RequestState()
     {
         try

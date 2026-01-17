@@ -42,9 +42,3 @@ public class LocationData
     [JsonProperty("mods")]
     public List<MongoID> mods { get; set; }
 }
-
-public class IdData
-{
-    [JsonProperty("id")]
-    public MongoID Id { get; set; }
-}
