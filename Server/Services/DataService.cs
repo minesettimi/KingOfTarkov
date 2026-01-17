@@ -4,11 +4,9 @@ using SPTarkov.Server.Core.Models.Common;
 using SPTarkov.Server.Core.Models.Eft.Common;
 using SPTarkov.Server.Core.Models.Eft.Common.Tables;
 using SPTarkov.Server.Core.Models.Spt.Config;
-using SPTarkov.Server.Core.Models.Spt.Mod;
 using SPTarkov.Server.Core.Models.Utils;
 using SPTarkov.Server.Core.Servers;
 using SPTarkov.Server.Core.Services;
-using SPTarkov.Server.Core.Services.Mod;
 using SPTarkov.Server.Core.Utils;
 using Path = System.IO.Path;
 
@@ -19,14 +17,12 @@ public class DataService(ConfigService config,
     JsonUtil jsonUtil,
     ConfigServer configServer,
     DatabaseService databaseService,
-    CustomItemService customItemService,
     ISptLogger<DataService> logger)
 {
     public TrialData TrialConfig;
     public Dictionary<MongoId, ModifierData> Mods;
     public Dictionary<MongoId, Quest> ReplaceableQuests = new();
     public Dictionary<string, List<BossLocationSpawn>> CustomBossSpawns = new();
-    public List<NewItemFromCloneDetails> CustomItems = new();
     
     private CustomQuestData _customQuestData;
 
@@ -66,14 +62,6 @@ public class DataService(ConfigService config,
         }
         
         CustomBossSpawns = await jsonUtil.DeserializeFromFileAsync<Dictionary<string, List<BossLocationSpawn>>>(Path.Join(dataPath, "location_bosses.json")) ?? throw new Exception("[KoT] CustomBossSpawns data not found.");
-        
-        CustomItems = await jsonUtil.DeserializeFromFileAsync<List<NewItemFromCloneDetails>>(Path.Join(dataPath, "items.json")) 
-                      ?? throw new Exception("[KoT] Item data not found.");
-
-        foreach (NewItemFromCloneDetails item in CustomItems)
-        {
-            customItemService.CreateItemFromClone(item);
-        }
     }
     
     private void SetupCustomRepeatables()

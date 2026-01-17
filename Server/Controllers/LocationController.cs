@@ -100,7 +100,7 @@ public class LocationController(SaveService save,
         Item rewardToken = new()
         {
             Id = new MongoId(),
-            Template = "696bc00880324fad6d8fe72a"
+            Template = "6656560053eaaa7a23349c86"
         };
 
         PmcData pmcProfile = profile.CharacterData.PmcData;
