@@ -47,13 +47,13 @@ namespace KoTClient.Patches
             MatchmakerPlayerControllerClass matchmaker,
             MatchMakerSelectionLocationScreen __instance)
         {
-            StateService stateService = Plugin.StateService;
-
-            if (stateService.IsStateOutdated())
-            {
-                session.GetLevelSettings();
-                await stateService.RequestState();
-            }
+            // StateService stateService = Plugin.StateService;
+            //
+            // if (stateService.IsStateOutdated())
+            // {
+            //     session.GetLevelSettings();
+            //     await stateService.RequestState();
+            // }
             
             //MessageBoxHelper.Show($"Test Message", "KOTTEST", MessageBoxHelper.MessageBoxType.OK);
         }
