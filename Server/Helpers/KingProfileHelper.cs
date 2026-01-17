@@ -1,25 +1,47 @@
 using SPTarkov.DI.Annotations;
+using SPTarkov.Server.Core.Extensions;
+using SPTarkov.Server.Core.Helpers;
 using SPTarkov.Server.Core.Models.Common;
+using SPTarkov.Server.Core.Models.Eft.Common;
 using SPTarkov.Server.Core.Models.Eft.Common.Tables;
 using SPTarkov.Server.Core.Models.Eft.Profile;
 using SPTarkov.Server.Core.Servers;
+using SPTarkov.Server.Core.Services;
 
 namespace KingOfTarkov.Helpers;
 
 [Injectable(InjectionType.Singleton)]
-public class KingProfileHelper(SaveServer saveServer)
+public class KingProfileHelper(SaveServer saveServer,
+    ProfileHelper profileHelper,
+    DatabaseService databaseService)
 {
-    public void ResetAllRepeatables()
+    public void SetupTrialForProfiles(bool newTrial)
     {
         foreach ((MongoId session, SptProfile profile) in saveServer.GetProfiles())
         {
             if (saveServer.IsProfileInvalidOrUnloadable(session))
                 continue;
 
-            foreach (PmcDataRepeatableQuest quest in profile.CharacterData.PmcData.RepeatableQuests)
+            PmcData playerData = profile.CharacterData!.PmcData!;
+
+            foreach (PmcDataRepeatableQuest quest in playerData.RepeatableQuests!)
             {
                 quest.EndTime = 0;
             }
+
+            if (!newTrial) continue;
+
+            LevelUpPlayer(playerData, 3);
         }
+    }
+
+    public void LevelUpPlayer(PmcData profile, int number)
+    {
+        int playerLevel = profile.Info?.Level ?? 1;
+        
+        //level up
+        profile.Info.Experience = profileHelper.GetExperience(playerLevel + number);
+        profile.Info.Level =
+            profile.CalculateLevel(databaseService.GetGlobals().Configuration.Exp.Level.ExperienceTable); 
     }
 }

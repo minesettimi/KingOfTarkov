@@ -78,7 +78,7 @@ public class TrialService(SaveService saveService,
         
         currentSave.Location = newState;
         
-        profileHelper.ResetAllRepeatables();
+        profileHelper.SetupTrialForProfiles(newTrialNum == 1);
         GenerateExfilQuests();
         
         saveService.SaveCurrentState();

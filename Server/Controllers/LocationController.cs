@@ -1,30 +1,18 @@
-using KingOfTarkov.Models.Database;
-using KingOfTarkov.Models.Save;
 using KingOfTarkov.Services;
 using KingOfTarkov.Utils;
 using SPTarkov.DI.Annotations;
-using SPTarkov.Server.Core.Extensions;
-using SPTarkov.Server.Core.Helpers;
 using SPTarkov.Server.Core.Models.Common;
 using SPTarkov.Server.Core.Models.Eft.Common;
 using SPTarkov.Server.Core.Models.Eft.Common.Tables;
 using SPTarkov.Server.Core.Models.Eft.Profile;
-using SPTarkov.Server.Core.Models.Enums;
 using SPTarkov.Server.Core.Models.Utils;
-using SPTarkov.Server.Core.Services;
-using SPTarkov.Server.Core.Utils;
 using SPTarkov.Server.Core.Utils.Cloners;
 
 namespace KingOfTarkov.Helpers;
 
 [Injectable(InjectionType.Singleton)]
 public class LocationController(SaveService save,
-    TimeUtil timeUtil,
-    MailSendService mailSendService,
-    QuestHelper questHelper,
-    DatabaseService databaseService,
-    ProfileHelper profileHelper,
-    RepeatableQuestHelper repeatableQuestHelper,
+    KingProfileHelper profileHelper,
     LocationUtil locationUtil,
     TrialService trialService,
     LocationHelper locationHelper,
@@ -94,31 +82,10 @@ public class LocationController(SaveService save,
         locationId = locationUtil.GetMapOther(locationId);
 
         trialService.CompleteLocation(locationId);
-        
-        //TODO: Custom token
-
-        Item rewardToken = new()
-        {
-            Id = new MongoId(),
-            Template = "6656560053eaaa7a23349c86"
-        };
 
         PmcData pmcProfile = profile.CharacterData.PmcData;
         
-        //give player reward
-        int mailRewardTime = timeUtil.GetHoursAsSeconds((int)questHelper.GetMailItemRedeemTimeHoursForProfile(pmcProfile));
-        mailSendService.SendLocalisedNpcMessageToPlayer(sessionId,
-            Traders.FENCE,
-            MessageType.MessageWithItems,
-            "TrialReward",
-            [rewardToken],
-            mailRewardTime);
-
-        int playerLevel = pmcProfile.Info?.Level ?? 1;
-        
-        //level up
-        pmcProfile.Info.Experience = profileHelper.GetExperience(playerLevel + 1);
-        pmcProfile.Info.Level =
-            pmcProfile.CalculateLevel(databaseService.GetGlobals().Configuration.Exp.Level.ExperienceTable); 
+        //level player up
+        profileHelper.LevelUpPlayer(pmcProfile!, 1);
     }
 }
