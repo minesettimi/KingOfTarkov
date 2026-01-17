@@ -50,11 +50,16 @@
   "QuestCondition/Elimination/Kill/BotRole/bossBoar": "Kaban",
   "QuestCondition/Elimination/Kill/BotRole/bossBoarSniper": "Kaban's Sniper",
   
+  //items
+  "696bc00880324fad6d8fe72a Name": "Reward Token",
+  "696bc00880324fad6d8fe72a Description": "A token of Fence's gratitude. Rewarded for completing a trial. Can be traded in for rewards.",
+  "696bc00880324fad6d8fe72a ShortName": "Token",
+  
   //other
   "TrialTitleNumber": "Trial {0}:",
   "TrialPrefix": "Trial Of",
   
   "TrialReward": "Good work out there. Here's something to help you out.",
   
-  "ExfilCompleted": "All exfil requirements completed."
+  "ExfilCompleted": "Exfil points are now unlocked."
 }
