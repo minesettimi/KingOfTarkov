@@ -20,6 +20,17 @@ public class MainMenuAwakePatch : ModulePatch
     [PatchPostfix]
     public static void Postfix(MenuScreen __instance)
     {
+        //move beta up
+        Transform menuTransform = __instance.transform;
+
+        GameObject betaWarning = menuTransform.Find("BetaWarningPanel").gameObject;
+        RectTransform uiTransform = betaWarning.GetComponent<RectTransform>();
+
+        Vector3 pos = uiTransform.anchoredPosition;
+        pos.y += 15;
+
+        uiTransform.anchoredPosition = pos;
+        
         GameObject? livesAsset = Plugin.BundleLoader.Bundle.LoadAsset<GameObject>("LifeCount.prefab");
 
         if (livesAsset == null)
@@ -51,16 +62,6 @@ public class MainMenuShowPatch : ModulePatch
             ____playButton.Interactable = false;
             ____playButton.SetDisabledTooltip("LivesOutTooltip".Localized());
         }
-
-        Transform menuTransform = __instance.transform;
-
-        GameObject betaWarning = menuTransform.Find("BetaWarningPanel").gameObject;
-        RectTransform uiTransform = betaWarning.GetComponent<RectTransform>();
-
-        Vector3 pos = uiTransform.anchoredPosition;
-        pos.y += 15;
-
-        uiTransform.anchoredPosition = pos;
         
         TextMeshProUGUI lifeText = MainMenuAwakePatch.LifeCountObj.GetComponent<TextMeshProUGUI>();
         lifeText.SetText(string.Format("LivesLeft".Localized(), lives));

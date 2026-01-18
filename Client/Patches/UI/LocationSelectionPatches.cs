@@ -25,6 +25,11 @@ namespace KoTClient.Patches
         [PatchPostfix]
         public static void Postfix(MatchMakerSelectionLocationScreen __instance)
         {
+            Transform locationTransform = __instance.gameObject.transform;
+            
+            locationTransform.Find("Content/Location Info Panel/DescriptionPanel/Location Description").gameObject.SetActive(false);
+            locationTransform.Find("CaptionsHolder").gameObject.SetActive(false);
+            
             GameObject? infoAsset = Plugin.BundleLoader.Bundle.LoadAsset<GameObject>("TrialInfo.prefab");
 
             if (infoAsset == null)
@@ -35,6 +40,9 @@ namespace KoTClient.Patches
         
             TrialInfoObj = Object.Instantiate(infoAsset,  __instance.transform)!;
             TrialInfoObj.name = "TrialInfo";
+            
+            TrialUI trialUI = TrialInfoObj.GetComponent<TrialUI>();
+            trialUI.PrefixLabel.SetText("TrialPrefix".Localized());
         }
     }
     
@@ -49,11 +57,6 @@ namespace KoTClient.Patches
         [PatchPostfix]
         public static void Postfix(MatchMakerSelectionLocationScreen __instance)
         {
-            Transform locationTransform = __instance.gameObject.transform;
-            
-            locationTransform.Find("Content/Location Info Panel/DescriptionPanel/Location Description").gameObject.SetActive(false);
-            locationTransform.Find("CaptionsHolder").gameObject.SetActive(false);
-            
             TrialUI trialUI = SelectionAwakePatch.TrialInfoObj.GetComponent<TrialUI>();
             StateData? trialData = Plugin.StateService.StateData;
 
@@ -62,8 +65,6 @@ namespace KoTClient.Patches
                 NotificationManagerClass.DisplayMessageNotification("Trial Data not present in postfix!");
                 return;
             }
-            
-            trialUI.PrefixLabel.SetText("TrialPrefix".Localized());
             
             trialUI.NumLabel.SetText(string.Format("TrialTitleNumber".Localized(), trialData.trial.trialNum));
             trialUI.NameLabel.SetText($"{trialData.trial.trialType} name".Localized());

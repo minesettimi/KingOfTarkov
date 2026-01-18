@@ -10,6 +10,7 @@
       "BossName": "bossKolontay",
       "BossPlayer": false,
       "BossZone": "ZoneSandbox",
+      "Delay": 0,
       "IgnoreMaxBots": true,
       "RandomTimeSpawn": false,
       "ShowOnTarkovMap": false,

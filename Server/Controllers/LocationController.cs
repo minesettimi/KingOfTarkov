@@ -70,6 +70,7 @@ public class LocationController(SaveService save,
         if (isDead)
         {
             save.CurrentSave.Profile.Profiles[pmcProfile.Id.Value].Lives--;
+            save.SaveCurrentState();
             return;
         }
         
