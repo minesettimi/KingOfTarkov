@@ -14,6 +14,8 @@ namespace KoTClient.Patches
 {
     public class SelectionAwakePatch : ModulePatch
     {
+        public static GameObject TrialInfoObj;
+        
         protected override MethodBase GetTargetMethod()
         {
             return AccessTools.Method(typeof(MatchMakerSelectionLocationScreen),
@@ -23,13 +25,16 @@ namespace KoTClient.Patches
         [PatchPostfix]
         public static void Postfix(MatchMakerSelectionLocationScreen __instance)
         {
-            GameObject? testAsset = Plugin.BundleLoader.Bundle.LoadAsset<GameObject>("TrialInfo.prefab");
-        
-            if (testAsset == null)
+            GameObject? infoAsset = Plugin.BundleLoader.Bundle.LoadAsset<GameObject>("TrialInfo.prefab");
+
+            if (infoAsset == null)
+            {
                 NotificationManagerClass.DisplayMessageNotification("Error loading bundle.");
+                return;
+            }
         
-            GameObject obj = Object.Instantiate(testAsset,  __instance.transform);
-            obj.name = "TrialInfo";
+            TrialInfoObj = Object.Instantiate(infoAsset,  __instance.transform)!;
+            TrialInfoObj.name = "TrialInfo";
         }
     }
     
@@ -48,16 +53,8 @@ namespace KoTClient.Patches
             
             locationTransform.Find("Content/Location Info Panel/DescriptionPanel/Location Description").gameObject.SetActive(false);
             locationTransform.Find("CaptionsHolder").gameObject.SetActive(false);
-
-            GameObject trialInfo = locationTransform.Find("TrialInfo").gameObject;
             
-            if (trialInfo == null)
-            {
-                NotificationManagerClass.DisplayMessageNotification("trialInfo not found.");
-                return;
-            }
-            
-            TrialUI trialUI = trialInfo.GetComponent<TrialUI>();
+            TrialUI trialUI = SelectionAwakePatch.TrialInfoObj.GetComponent<TrialUI>();
             StateData? trialData = Plugin.StateService.StateData;
 
             if (trialData == null)

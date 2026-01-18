@@ -50,17 +50,19 @@
   "QuestCondition/Elimination/Kill/BotRole/bossBoarSniper": "Kaban's Sniper",
   
   //UI
-  //location selection
+  //UI Labels
   "TrialTitleNumber": "Trial {0}:",
   "TrialPrefix": "Trial Of",
   
-  //main menu
+  "LivesLeft": "Attempts Remaining: {0}",
+  
+  //tooltips
   "LivesOutTooltip": "You are out of attempts. You can retry by deleting the state and wiping the profile.",
   
   //errors
   "KoTProfileInvalid": "This profile is not allowed for this playthrough. Please make a new one.",
   "KoTProfileLocked": "Profile creation is currently locked. Please delete the state and restart the server.",
   
-  //messages
+  //notifications
   "ExfilCompleted": "All exfil requirements completed."
 }
