@@ -34,9 +34,11 @@ public class LocationHelper(SaveService saveService,
             bossConfig.ShowOnTarkovMap = true;
             bossConfig.ShowOnTarkovMapPvE = true;
 
+            //make *sure* the boss that is the target is killed
             if (GetLastLocation()?.Value.Boss == bossConfig.BossName)
             {
                 logger.Debug($"[KoT] Setting boss {bossConfig.BossName} to force spawn.");
+                bossConfig.Delay = 0; //don't make the player hunt just to find out they had to wait
                 bossConfig.ForceSpawn = true;
             }
         }
