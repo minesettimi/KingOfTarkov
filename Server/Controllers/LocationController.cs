@@ -65,10 +65,11 @@ public class LocationController(SaveService save,
         bool isSurvived,
         string locationName)
     {
+        PmcData pmcProfile = profile.CharacterData.PmcData;
+        
         if (isDead)
         {
-            //TODO: Lives system
-            
+            save.CurrentSave.Profile.Profiles[pmcProfile.Id.Value].Lives--;
             return;
         }
         
@@ -83,7 +84,6 @@ public class LocationController(SaveService save,
 
         trialService.CompleteLocation(locationId);
 
-        PmcData pmcProfile = profile.CharacterData.PmcData;
         
         //level player up
         profileHelper.LevelUpPlayer(pmcProfile!, 1);

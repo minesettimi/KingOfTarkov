@@ -16,7 +16,7 @@ public class TrialNumberHandler<T> where T : IConditional
 
     public double GetCurrentValue(ConditionProgressChecker _)
     {
-        return Plugin.StateService.stateData?.trial.trialNum - 1 ?? 0;
+        return Plugin.StateService.StateData?.trial.trialNum - 1 ?? 0;
     }
 
     public void OnValueChanged()

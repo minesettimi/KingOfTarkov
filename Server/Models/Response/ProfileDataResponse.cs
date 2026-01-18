@@ -10,3 +10,9 @@ public class ProfileDataResponse
     [JsonPropertyName("lives")]
     public int Lives { get; set; }
 }
+
+public class ProfileLockResponse(bool locked)
+{
+    [JsonPropertyName("locked")]
+    public bool Locked { get; set; } = locked;
+}

@@ -15,6 +15,12 @@ public class ProfileService(SaveServer saveServer,
 {
     public void InitializeProfile(MongoId sessionId, MongoId id)
     {
+        if (save.CurrentSave.Profile.Locked)
+        {
+            logger.Info("[KoT] Player tried making profile while profiles are locked!");
+            return;
+        }
+        
         SptProfile profile = saveServer.GetProfile(sessionId);
 
         if (profile.ProfileInfo!.Edition != "KingOfTarkov")
@@ -26,6 +32,9 @@ public class ProfileService(SaveServer saveServer,
         {
             Lives = 3
         });
+        
+        //TODO: FIKA support
+        save.CurrentSave.Profile.Locked = true;
         
         save.SaveCurrentState();
     }

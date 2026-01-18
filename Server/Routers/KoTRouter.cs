@@ -1,4 +1,5 @@
 using KingOfTarkov.Controllers;
+using KingOfTarkov.Services;
 using KoTServer.Controllers;
 using SPTarkov.DI.Annotations;
 using SPTarkov.Server.Core.DI;
@@ -27,6 +28,15 @@ public class KoTRouter(JsonUtil jsonUtil, KoTCallbacks koTCallbacks) : StaticRou
             sessionId,
             output
         ) => await koTCallbacks.HandleGetProfile(sessionId)
+    ),
+    new RouteAction<EmptyRequestData>(
+        "/kot/profile/locked",
+        async (
+            url,
+            info,
+            sessionId,
+            output
+        ) => await koTCallbacks.HandleProfileLocked()
     )
 ])
 { }
@@ -34,6 +44,7 @@ public class KoTRouter(JsonUtil jsonUtil, KoTCallbacks koTCallbacks) : StaticRou
 [Injectable]
 public class KoTCallbacks(HttpResponseUtil httpResponseUtil,
     ProfileController profileController,
+    SaveService save,
     TrialController trialController)
 {
     public ValueTask<string> HandleGetState()
@@ -44,5 +55,10 @@ public class KoTCallbacks(HttpResponseUtil httpResponseUtil,
     public ValueTask<string> HandleGetProfile(MongoId sessionId)
     {
         return new ValueTask<string>(httpResponseUtil.NoBody(profileController.GetProfile(sessionId)));
+    }
+
+    public ValueTask<string> HandleProfileLocked()
+    {
+        return new ValueTask<string>(httpResponseUtil.NoBody(new { locked = save.CurrentSave.Profile.Locked }));
     }
 }

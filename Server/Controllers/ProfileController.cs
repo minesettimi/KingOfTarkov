@@ -16,7 +16,7 @@ public class ProfileController(ProfileService profileService)
         return new ProfileDataResponse
         {
             Lives = profileState?.Lives ?? 0,
-            Valid = profileState == null
+            Valid = profileState != null
         };
     }
 }

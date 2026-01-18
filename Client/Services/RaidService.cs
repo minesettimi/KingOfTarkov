@@ -15,7 +15,7 @@ public class RaidService
         ExfilQuests.Clear();
 
         //avoid copying the ref from the data
-        foreach (MongoID quest in Plugin.StateService.stateData.location[locationId].exfilRequirements)
+        foreach (MongoID quest in Plugin.StateService.StateData.location[locationId].exfilRequirements)
         {
             ExfilQuests.Add(quest);
         }

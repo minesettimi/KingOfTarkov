@@ -1,8 +1,6 @@
 using System.Reflection;
-using System.Threading.Tasks;
 using EFT;
 using HarmonyLib;
-using JsonType;
 using SPT.Reflection.Patching;
 
 namespace KoTClient.Patches;

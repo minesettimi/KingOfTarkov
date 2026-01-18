@@ -41,23 +41,6 @@ namespace KoTClient.Patches
                 [typeof(ISession), typeof(RaidSettings), typeof(MatchmakerPlayerControllerClass)]);
         }
 
-        [PatchPrefix]
-        public static async void Prefix(ISession session,
-            RaidSettings raidSettings,
-            MatchmakerPlayerControllerClass matchmaker,
-            MatchMakerSelectionLocationScreen __instance)
-        {
-            // StateService stateService = Plugin.StateService;
-            //
-            // if (stateService.IsStateOutdated())
-            // {
-            //     session.GetLevelSettings();
-            //     await stateService.RequestState();
-            // }
-            
-            //MessageBoxHelper.Show($"Test Message", "KOTTEST", MessageBoxHelper.MessageBoxType.OK);
-        }
-
         [PatchPostfix]
         public static void Postfix(MatchMakerSelectionLocationScreen __instance)
         {
@@ -75,7 +58,7 @@ namespace KoTClient.Patches
             }
             
             TrialUI trialUI = trialInfo.GetComponent<TrialUI>();
-            StateData? trialData = Plugin.StateService.stateData;
+            StateData? trialData = Plugin.StateService.StateData;
 
             if (trialData == null)
             {

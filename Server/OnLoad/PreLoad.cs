@@ -15,7 +15,8 @@ public class PreLoad(ConfigService config) : IOnLoad
     [
         new GenerateAllOverride(),
         new HandlePostRaidOverride(),
-        new GetClientQuestsOverride()
+        new GetClientQuestsOverride(),
+        new CreateProfileOverride()
     ];
     
     public async Task OnLoad()
