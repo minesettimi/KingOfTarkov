@@ -4,7 +4,7 @@
     "1":
     {
       "locationCount": 2,
-      "globalModCount": 0,
+      "globalModCount": 1,
       "locationModCount": 0,
       "typeWhitelist": []
     },
@@ -169,7 +169,7 @@
       "min": 1,
       "modPool":
       [
-        "6963486f386980e1fa3d25d0"
+        "69641baf8e22a5d7181c3284"
       ]
     },
     "69634713f3ed3f71243d25ce":

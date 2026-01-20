@@ -15,6 +15,8 @@ public class RaidCreatePatch : ModulePatch
     [PatchPrefix]
     public static void Prefix(RaidSettings ____raidSettings)
     {
-        Plugin.RaidService.SetupRaidStart(____raidSettings.SelectedLocation._Id);
+        MongoID locationId = ____raidSettings.SelectedLocation._Id;
+        Plugin.RaidService.SetupRaidStart(locationId);
+        Plugin.ModService.CacheModifiers(locationId);
     }
 }

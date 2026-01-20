@@ -30,18 +30,17 @@ public class StateService
                 return true;
             }
 
-            throw new Exception("Could not retrieve trial data");
         }
         catch (Exception e)
         {
             Plugin.PluginLogger.LogError($"Failed to request KoT state with error: {e.Message}");
-            MessageBoxHelper.Show("Failed to get King Of Tarkov state.", "KOT_ERROR", MessageBoxHelper.MessageBoxType.OK);
+            throw new Exception("Could not retrieve trial data");
         }
 
         return false;
     }
 
-    public async Task<bool> RequestPlayerState()
+    public async Task RequestPlayerState()
     {
         string? data = await RequestHandler.GetJsonAsync("/kot/profile/data");
 
@@ -50,17 +49,12 @@ public class StateService
             PlayerData = JsonConvert.DeserializeObject<PlayerData>(data)!;
 
             if (!PlayerData.Valid)
-                throw new Exception("Player is not valid.");
+                throw new Exception();
         }
         catch (Exception e)
         {
             Plugin.PluginLogger.LogError($"Failed ot retrieve profile data with exception: {e.Message}");
-            MonoBehaviourSingleton<PreloaderUI>.Instance.ShowErrorScreen("INVALID_PROFILE",
-                "KoTProfileInvalid".Localized(), Application.Quit);
-
-            return false;
+            throw new Exception("KoTProfileInvalid".Localized());
         }
-
-        return true;
     }
 }

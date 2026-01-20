@@ -37,6 +37,15 @@ public class KoTRouter(JsonUtil jsonUtil, KoTCallbacks koTCallbacks) : StaticRou
             sessionId,
             output
         ) => await koTCallbacks.HandleProfileLocked()
+    ),
+    new RouteAction<EmptyRequestData>(
+        "/kot/modifier/list",
+        async (
+            url,
+            info,
+            sessionId,
+            output
+        ) => await koTCallbacks.HandleModifierList()
     )
 ])
 { }
@@ -45,6 +54,7 @@ public class KoTRouter(JsonUtil jsonUtil, KoTCallbacks koTCallbacks) : StaticRou
 public class KoTCallbacks(HttpResponseUtil httpResponseUtil,
     ProfileController profileController,
     SaveService save,
+    DataService dataService,
     TrialController trialController)
 {
     public ValueTask<string> HandleGetState()
@@ -60,5 +70,10 @@ public class KoTCallbacks(HttpResponseUtil httpResponseUtil,
     public ValueTask<string> HandleProfileLocked()
     {
         return new ValueTask<string>(httpResponseUtil.NoBody(new { locked = save.CurrentSave.Profile.Locked }));
+    }
+
+    public ValueTask<string> HandleModifierList()
+    {
+        return new ValueTask<string>(httpResponseUtil.NoBody(dataService.Mods));
     }
 }

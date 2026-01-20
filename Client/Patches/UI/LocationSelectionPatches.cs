@@ -1,12 +1,9 @@
 using System.Reflection;
-using System.Threading.Tasks;
 using EFT;
-using EFT.Communications;
 using EFT.UI.Matchmaker;
 using HarmonyLib;
-using KoTClient.Bundles;
 using KoTClient.Models;
-using KoTClient.Services;
+using KoTClient.UI;
 using SPT.Reflection.Patching;
 using UnityEngine;
 
@@ -25,11 +22,6 @@ namespace KoTClient.Patches
         [PatchPostfix]
         public static void Postfix(MatchMakerSelectionLocationScreen __instance)
         {
-            Transform locationTransform = __instance.gameObject.transform;
-            
-            locationTransform.Find("Content/Location Info Panel/DescriptionPanel/Location Description").gameObject.SetActive(false);
-            locationTransform.Find("CaptionsHolder").gameObject.SetActive(false);
-            
             GameObject? infoAsset = Plugin.BundleLoader.Bundle.LoadAsset<GameObject>("TrialInfo.prefab");
 
             if (infoAsset == null)
@@ -55,8 +47,13 @@ namespace KoTClient.Patches
         }
 
         [PatchPostfix]
-        public static void Postfix(MatchMakerSelectionLocationScreen __instance)
+        public static void Postfix(MatchMakerSelectionLocationScreen __instance, ISession ___iSession)
         {
+            Transform locationTransform = __instance.gameObject.transform;
+            
+            locationTransform.Find("Content/Location Info Panel/DescriptionPanel/Location Description").gameObject.SetActive(false);
+            locationTransform.Find("CaptionsHolder").gameObject.SetActive(false);
+            
             TrialUI trialUI = SelectionAwakePatch.TrialInfoObj.GetComponent<TrialUI>();
             StateData? trialData = Plugin.StateService.StateData;
 
@@ -76,6 +73,12 @@ namespace KoTClient.Patches
             }
             
             trialUI.NameLabel.color = color;
+
+
+            Transform modifierHolder = SelectionAwakePatch.TrialInfoObj.transform.Find("ModifierHolder");
+            ModifierUI modUI = modifierHolder.gameObject.GetComponent<ModifierUI>();
+            
+            modUI.ShowModifiers(___iSession, trialData.trial.mods);
         }
     }
 }

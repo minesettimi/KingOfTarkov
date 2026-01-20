@@ -21,10 +21,9 @@ public class GetLevelSettingsPatch : ModulePatch
         Plugin.StateService.RequestState();
         
         //its executed both on launch and post raid, should work fine
-        bool playerResult = await Plugin.StateService.RequestPlayerState();
+        await Plugin.StateService.RequestPlayerState();
 
-        if (!playerResult)
-            throw new Exception("Failed to validate profile!");
+        await Plugin.ModService.LoadModifierData();
 
         return result;
     }

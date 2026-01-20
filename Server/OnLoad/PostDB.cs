@@ -14,17 +14,23 @@ public class PostDB(QuestService questService,
     SaveService saveService,
     TrialService trialService,
     LocationService locationService,
+    ModifierService modifierService,
     ISptLogger<PostDB> logger): IOnLoad
 {
     public async Task OnLoad()
     {
         await dataService.Load();
-        await locationService.Load();
         await saveService.Load();
-        await configService.PostDBLoad();
+        
         await questService.Load();
+        
         await localeService.Load();
+        
+        await locationService.Load();
+        await configService.PostDBLoad();
         await trialService.Load();
+        
+        await modifierService.Load();
         
         logger.Success("[KoT] Finished initial loading.");
     }
