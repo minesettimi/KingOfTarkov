@@ -1,11 +1,13 @@
 using KingOfTarkov.Models.Save;
 using KingOfTarkov.Services;
+using KingOfTarkov.Utils;
 using SPTarkov.DI.Annotations;
 using SPTarkov.Server.Core.Helpers;
 using SPTarkov.Server.Core.Models.Common;
 using SPTarkov.Server.Core.Models.Eft.Common;
 using SPTarkov.Server.Core.Models.Eft.Common.Tables;
 using SPTarkov.Server.Core.Models.Enums;
+using SPTarkov.Server.Core.Models.Spt.Repeatable;
 using SPTarkov.Server.Core.Models.Utils;
 using SPTarkov.Server.Core.Utils;
 
@@ -16,6 +18,7 @@ namespace KingOfTarkov.Helpers;
 public class KingQuestHelper(ProfileHelper profileHelper,
     SaveService saveService,
     TimeUtil timeUtil,
+    LocationUtil locationUtil,
     ISptLogger<KingQuestHelper> logger)
 {
     public List<Quest> RetrieveDynamicQuests(MongoId sessionId)
@@ -70,5 +73,21 @@ public class KingQuestHelper(ProfileHelper profileHelper,
         };
         
         pmcData.Quests.Add(newStatus);
+    }
+
+    public void RemoveUnusedLocations(QuestTypePool pool)
+    {
+        foreach (KeyValuePair<ELocationName, List<string>> location in pool.Pool.Exploration.Locations)
+        {
+            //get id
+            string mapKey = location.Key.ToString().ToLower();
+
+            MongoId mapId = locationUtil.GetMapId(mapKey);
+
+            if (!saveService.CurrentSave.Location.Active.ContainsKey(mapId))
+            {
+                pool.Pool.Exploration.Locations.Remove(location.Key);
+            }
+        }
     }
 }

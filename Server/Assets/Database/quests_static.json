@@ -135,7 +135,7 @@
   },
   "6961dd8211328d671eaf5faf":
   {
-    "QuestName": "Stepping Stones",
+    "QuestName": "The Beginning",
     "_id": "6961dd8211328d671eaf5faf",
     "acceptPlayerMessage": "6961dd8211328d671eaf5faf acceptPlayerMessage",
     "acceptanceAndFinishingSource": "eft",
@@ -211,14 +211,14 @@
               "_id": "6961ebba21700be183af5fb3",
               "_tpl": "5449016a4bdc2d6f028b456f",
               "upd": {
-                "StackObjectsCount": 1000000
+                "StackObjectsCount": 500000
               }
             }
           ],
           "target": "6961ebba21700be183af5fb3",
           "type": "Item",
           "unknown": false,
-          "value": 1000000
+          "value": 500000
         },
         {
           "availableInGameEditions": [],
@@ -251,6 +251,400 @@
     "startedMessageText": "6961dd8211328d671eaf5faf startedMessageText",
     "status": 0,
     "successMessageText": "6961dd8211328d671eaf5faf successMessageText",
+    "traderId": "6617beeaa9cfa777ca915b7c",
+    "type": "Levelling"
+  },
+  "697119daab15b10ca274f9c8":
+  {
+    "QuestName": "Stepping Stones",
+    "_id": "697119daab15b10ca274f9c8",
+    "acceptPlayerMessage": "697119daab15b10ca274f9c8 acceptPlayerMessage",
+    "acceptanceAndFinishingSource": "eft",
+    "arenaLocations": [],
+    "canShowNotificationsInGame": true,
+    "changeQuestMessageText": "697119daab15b10ca274f9c8 changeQuestMessageText",
+    "completePlayerMessage": "697119daab15b10ca274f9c8 completePlayerMessage",
+    "conditions": {
+      "AvailableForFinish": [
+        {
+          "conditionType": "TrialNumber",
+          "dynamicLocale": false,
+          "globalQuestCounterId": "",
+          "id": "697124ba4b876bc6a274f9e7",
+          "index": 0,
+          "oneSessionOnly": false,
+          "isEncoded": false,
+          "parentId": "",
+          "type": "Levelling",
+          "value": 3,
+          "visibilityConditions": []
+        }
+      ],
+      "AvailableForStart":
+      [
+        {
+          "availableAfter": 0,
+          "conditionType": "Quest",
+          "dispersion": 0,
+          "dynamicLocale": false,
+          "globalQuestCounterId": "",
+          "id": "69711a10fca8ae9e3674f9cb",
+          "index": 0,
+          "parentId": "",
+          "status": [
+            3
+          ],
+          "target": "6961dd8211328d671eaf5faf",
+          "visibilityConditions": []
+        }
+      ],
+      "Fail": []
+    },
+    "declinePlayerMessage": "697119daab15b10ca274f9c8 declinePlayerMessage",
+    "description": "697119daab15b10ca274f9c8 description",
+    "failMessageText": "697119daab15b10ca274f9c8 failMessageText",
+    "gameModes": [],
+    "image": "/files/quest/icon/6682a79f3d914aa3b20e13cb.png",
+    "instantComplete": false,
+    "isKey": false,
+    "location": "any",
+    "name": "697119daab15b10ca274f9c8 name",
+    "note": "697119daab15b10ca274f9c8 note",
+    "progressSource": "eft",
+    "rankingModes": [],
+    "restartable": false,
+    "rewards": {
+      "Fail": [],
+      "Started": [],
+      "Success": [
+        {
+          "availableInGameEditions": [],
+          "gameMode": [
+            "regular",
+            "pve"
+          ],
+          "id": "69711f649a0979630674f9d0",
+          "isHidden": false,
+          "target": "54cb50c76803fa8b248b4571",
+          "type": "TraderStanding",
+          "unknown": false,
+          "value": 0.2
+        },
+        {
+          "availableInGameEditions": [],
+          "gameMode": [
+            "regular",
+            "pve"
+          ],
+          "id": "69711f755df61c11b674f9d1",
+          "isHidden": false,
+          "target": "54cb57776803fa99248b456e",
+          "type": "TraderStanding",
+          "unknown": false,
+          "value": 0.2
+        },
+        {
+          "availableInGameEditions": [],
+          "gameMode": [
+            "regular",
+            "pve"
+          ],
+          "id": "69711fa4dc43c5d87474f9d2",
+          "isHidden": false,
+          "target": "58330581ace78e27b8b10cee",
+          "type": "TraderStanding",
+          "unknown": false,
+          "value": 0.2
+        },
+        {
+          "availableInGameEditions": [],
+          "gameMode": [
+            "regular",
+            "pve"
+          ],
+          "id": "69711fa780699ab69174f9d3",
+          "isHidden": false,
+          "target": "5935c25fb3acc3127c3d8cd9",
+          "type": "TraderStanding",
+          "unknown": false,
+          "value": 0.2
+        },
+        {
+          "availableInGameEditions": [],
+          "gameMode": [
+            "regular",
+            "pve"
+          ],
+          "id": "69711facf35770192074f9d4",
+          "isHidden": false,
+          "target": "5a7c2eca46aef81a7ca2145d",
+          "type": "TraderStanding",
+          "unknown": false,
+          "value": 0.2
+        },
+        {
+          "availableInGameEditions": [],
+          "gameMode": [
+            "regular",
+            "pve"
+          ],
+          "id": "69711faff147c460ca74f9d5",
+          "isHidden": false,
+          "target": "5ac3b934156ae10c4430e83c",
+          "type": "TraderStanding",
+          "unknown": false,
+          "value": 0.2
+        },
+        {
+          "availableInGameEditions": [],
+          "gameMode": [
+            "regular",
+            "pve"
+          ],
+          "id": "69711fb3f7d6f1072674f9d6",
+          "isHidden": false,
+          "target": "5c0647fdd443bc2504c2d371",
+          "type": "TraderStanding",
+          "unknown": false,
+          "value": 0.2
+        },
+        {
+          "availableInGameEditions": [],
+          "gameMode": [
+            "regular",
+            "pve"
+          ],
+          "id": "69711fb6e91fdaac0e74f9d7",
+          "isHidden": false,
+          "target": "6617beeaa9cfa777ca915b7c",
+          "type": "TraderStanding",
+          "unknown": false,
+          "value": 0.2
+        },
+        {
+          "availableInGameEditions": [],
+          "findInRaid": false,
+          "gameMode": [
+            "regular",
+            "pve"
+          ],
+          "id": "69711dce025c7db04f74f9cd",
+          "isEncoded": false,
+          "isHidden": false,
+          "items": [
+            {
+              "_id": "697123e16be0cc066e74f9e6",
+              "_tpl": "5449016a4bdc2d6f028b456f",
+              "upd": {
+                "StackObjectsCount": 500000
+              }
+            }
+          ],
+          "target": "697123e16be0cc066e74f9e6",
+          "type": "Item",
+          "unknown": false,
+          "value": 500000
+        },
+        {
+          "availableInGameEditions": [],
+          "findInRaid": false,
+          "gameMode": [
+            "regular",
+            "pve"
+          ],
+          "id": "69711e94e5d86ca44c74f9cf",
+          "isEncoded": false,
+          "isHidden": false,
+          "items": [
+            {
+              "_id": "69711e87ce5f513bbf74f9ce",
+              "_tpl": "59db794186f77448bc595262",
+              "upd": {
+                "StackObjectsCount": 1
+              }
+            }
+          ],
+          "target": "69711e87ce5f513bbf74f9ce",
+          "type": "Item",
+          "unknown": false,
+          "value": 1
+        },
+        {
+          "availableInGameEditions": [],
+          "findInRaid": false,
+          "gameMode": [
+            "regular",
+            "pve"
+          ],
+          "id": "69712034a5cc11141474f9db",
+          "isEncoded": false,
+          "isHidden": false,
+          "items": [
+            {
+              "_id": "6971203775aca7aa4a74f9dc",
+              "_tpl": "59fb042886f7746c5005a7b2",
+              "upd": {
+                "StackObjectsCount": 1
+              }
+            }
+          ],
+          "target": "6971203775aca7aa4a74f9dc",
+          "type": "Item",
+          "unknown": true,
+          "value": 2
+        }
+      ]
+    },
+    "secretQuest": false,
+    "side": "Pmc",
+    "startedMessageText": "6697119daab15b10ca274f9c8 startedMessageText",
+    "status": 0,
+    "successMessageText": "697119daab15b10ca274f9c8 successMessageText",
+    "traderId": "6617beeaa9cfa777ca915b7c",
+    "type": "Levelling"
+  },
+  "697120b1774b176fea74f9dd":
+  {
+    "QuestName": "Climbing The Ladder",
+    "_id": "697120b1774b176fea74f9dd",
+    "acceptPlayerMessage": "697120b1774b176fea74f9dd acceptPlayerMessage",
+    "acceptanceAndFinishingSource": "eft",
+    "arenaLocations": [],
+    "canShowNotificationsInGame": true,
+    "changeQuestMessageText": "697120b1774b176fea74f9dd changeQuestMessageText",
+    "completePlayerMessage": "697120b1774b176fea74f9dd completePlayerMessage",
+    "conditions": {
+      "AvailableForFinish": [
+        {
+          "conditionType": "TrialNumber",
+          "dynamicLocale": false,
+          "globalQuestCounterId": "",
+          "id": "6971227a8fdbc0c19874f9de",
+          "index": 0,
+          "oneSessionOnly": false,
+          "isEncoded": false,
+          "parentId": "",
+          "type": "Levelling",
+          "value": 5,
+          "visibilityConditions": []
+        }
+      ],
+      "AvailableForStart":
+      [
+        {
+          "availableAfter": 0,
+          "conditionType": "Quest",
+          "dispersion": 0,
+          "dynamicLocale": false,
+          "globalQuestCounterId": "",
+          "id": "6971227e09cfd129ab74f9df",
+          "index": 0,
+          "parentId": "",
+          "status": [
+            3
+          ],
+          "target": "697119daab15b10ca274f9c8",
+          "visibilityConditions": []
+        }
+      ],
+      "Fail": []
+    },
+    "declinePlayerMessage": "697120b1774b176fea74f9dd declinePlayerMessage",
+    "description": "697120b1774b176fea74f9dd description",
+    "failMessageText": "697120b1774b176fea74f9dd failMessageText",
+    "gameModes": [],
+    "image": "/files/quest/icon/5a27cafa86f77424e20615d6.png",
+    "instantComplete": false,
+    "isKey": false,
+    "location": "any",
+    "name": "697120b1774b176fea74f9dd name",
+    "note": "697120b1774b176fea74f9dd note",
+    "progressSource": "eft",
+    "rankingModes": [],
+    "restartable": false,
+    "rewards": {
+      "Fail": [],
+      "Started": [],
+      "Success": [
+        {
+          "availableInGameEditions": [],
+          "findInRaid": false,
+          "gameMode": [
+            "regular",
+            "pve"
+          ],
+          "id": "6971231af690e3ae2d74f9e0",
+          "isEncoded": false,
+          "isHidden": false,
+          "items": [
+            {
+              "_id": "6971231e1ee7c2d04074f9e1",
+              "_tpl": "5449016a4bdc2d6f028b456f",
+              "upd": {
+                "StackObjectsCount": 1000000
+              }
+            }
+          ],
+          "target": "6971231e1ee7c2d04074f9e1",
+          "type": "Item",
+          "unknown": false,
+          "value": 1000000
+        },
+        {
+          "availableInGameEditions": [],
+          "findInRaid": false,
+          "gameMode": [
+            "regular",
+            "pve"
+          ],
+          "id": "6971232cf0ee7643f574f9e2",
+          "isEncoded": false,
+          "isHidden": false,
+          "items": [
+            {
+              "_id": "6971232ed4f50f78e074f9e3",
+              "_tpl": "59db794186f77448bc595262",
+              "upd": {
+                "StackObjectsCount": 1
+              }
+            }
+          ],
+          "target": "6971232ed4f50f78e074f9e3",
+          "type": "Item",
+          "unknown": false,
+          "value": 1
+        },
+        {
+          "availableInGameEditions": [],
+          "findInRaid": false,
+          "gameMode": [
+            "regular",
+            "pve"
+          ],
+          "id": "69712372fc4e4a79fc74f9e4",
+          "isEncoded": false,
+          "isHidden": false,
+          "items": [
+            {
+              "_id": "69712375c8a42ab3d074f9e5",
+              "_tpl": "5b6d9ce188a4501afc1b2b25",
+              "upd": {
+                "StackObjectsCount": 1
+              }
+            }
+          ],
+          "target": "69712375c8a42ab3d074f9e5",
+          "type": "Item",
+          "unknown": true,
+          "value": 1
+        }
+      ]
+    },
+    "secretQuest": false,
+    "side": "Pmc",
+    "startedMessageText": "6697120b1774b176fea74f9dd startedMessageText",
+    "status": 0,
+    "successMessageText": "697120b1774b176fea74f9dd successMessageText",
     "traderId": "6617beeaa9cfa777ca915b7c",
     "type": "Levelling"
   }

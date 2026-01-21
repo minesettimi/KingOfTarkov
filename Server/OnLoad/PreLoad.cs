@@ -1,4 +1,5 @@
 using KingOfTarkov.Overrides.Controllers;
+using KingOfTarkov.Overrides.Generators;
 using KingOfTarkov.Overrides.Helpers;
 using KingOfTarkov.Overrides.Services;
 using KingOfTarkov.Services;
@@ -16,7 +17,8 @@ public class PreLoad(ConfigService config) : IOnLoad
         new GenerateAllOverride(),
         new HandlePostRaidOverride(),
         new GetClientQuestsOverride(),
-        new CreateProfileOverride()
+        new CreateProfileOverride(),
+        new TryGetLocationInfoOverride()
     ];
     
     public async Task OnLoad()

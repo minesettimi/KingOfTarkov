@@ -54,5 +54,9 @@
         <Reference Include="UnityEngine.TextRenderingModule" HintPath="..\..\..\EscapeFromTarkov_Data\Managed\UnityEngine.TextRenderingModule.dll" />
         <Reference Include="UnityEngine.UI" HintPath="..\..\..\EscapeFromTarkov_Data\Managed\UnityEngine.UI.dll" />
     </ItemGroup>
+    
+    <ItemGroup>
+      <Folder Include="Patches\Modifiers\" />
+    </ItemGroup>
 
 </Project>
