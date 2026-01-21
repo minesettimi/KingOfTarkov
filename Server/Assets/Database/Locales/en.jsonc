@@ -57,6 +57,9 @@
   
   "LivesLeft": "Attempts Remaining: {0}",
   
+  "LocationHeader": "Raid Info",
+  "LocationExfils": "{0} Exfil Requirements",
+  
   //tooltips
   "LivesOutTooltip": "You are out of attempts. You can retry by deleting the state and wiping the profile.",
   

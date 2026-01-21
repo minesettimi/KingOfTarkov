@@ -20,7 +20,7 @@ public class ModifierUI : UIElement
     private List<GameObject> _modIcons;
     private ISession _session;
 
-    public void ShowModifiers(ISession session, List<MongoID> modifiers)
+    public void Show(ISession session, List<MongoID> modifiers)
     {
         UI.Dispose();
 
@@ -37,7 +37,6 @@ public class ModifierUI : UIElement
 
     public void ShowMod(KeyValuePair<MongoID, ModifierData> modData, ModifierIconUI modIcon)
     {
-        Plugin.PluginLogger.LogWarning($"Mod data: {modData.Value.Image}");
         modIcon.SetEnabledTooltip($"{modData.Key} name".Localized());
         if (modData.Value.Sprite == null)
         {
