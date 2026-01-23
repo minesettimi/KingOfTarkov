@@ -81,17 +81,27 @@
   },
   "69641f0d1a7fda7de51c3295":
   {
-    "name": "Low On Gas",
+    "name": "Slow Engine",
     "image": "/files/modifiers/icon/error.png"
   },
   "69641f26d1723deca91c3296":
   {
-    "name": "Blood Hungry Snipers",
+    "name": "Blood Thirsty Snipers",
     "image": "/files/modifiers/icon/error.png"
   },
   "69641f35f803fa7a201c3297":
   {
     "name": "Taxi Tax",
+    "image": "/files/modifiers/icon/error.png"
+  },
+  "6971568817fa49e7d374f9e9":
+  {
+    "name": "Anti Aircraft",
+    "image": "/files/modifiers/icon/error.png"
+  },
+  "6971a16640ca8d842155fe95":
+  {
+    "name": "Blackhole Corpses",
     "image": "/files/modifiers/icon/error.png"
   }
 }

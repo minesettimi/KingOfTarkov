@@ -31,7 +31,7 @@
   "69641c39c12fc4b3661c3287 description": "It's suddenly snowing?",
 
   "69641c76dcf788fcf81c3289 name": "Poison Bullets",
-  "69641c76dcf788fcf81c3289 description": "Someones been putting strange fluids on their bullets",
+  "69641c76dcf788fcf81c3289 description": "Someones been putting poison on their bullets",
 
   "69641c5d0e8b8f30ec1c3288 name": "Explosive Bullets",
   "69641c5d0e8b8f30ec1c3288 description": "Each bullet is packed with nitroglycerin",
@@ -60,14 +60,20 @@
   "69641eef2da8bdbbff1c3294 name": "Professional Camper",
   "69641eef2da8bdbbff1c3294 description": "Partisan is said to haunt these parts",
 
-  "69641f0d1a7fda7de51c3295 name": "Low On Gas",
-  "69641f0d1a7fda7de51c3295 description": "Vehicle exfils can't stick around as long",
+  "69641f0d1a7fda7de51c3295 name": "Slow Engine",
+  "69641f0d1a7fda7de51c3295 description": "Vehicle exfils take longer to leave",
 
-  "69641f26d1723deca91c3296 name": "Blood Hungry Snipers",
+  "69641f26d1723deca91c3296 name": "Blood Thirsty Snipers",
   "69641f26d1723deca91c3296 description": "Snipers don't care about flares",
 
-  "9641f35f803fa7a201c3297 name": "Taxi Tax",
-  "9641f35f803fa7a201c3297 description": "Vehicle exfils expect a higher rate to escape",
+  "69641f35f803fa7a201c3297 name": "Taxi Tax",
+  "69641f35f803fa7a201c3297 description": "Vehicle exfils expect a 5x higher rate to escape",
+  
+  "6971568817fa49e7d374f9e9 name": "Anti-Aircraft",
+  "6971568817fa49e7d374f9e9 description": "There won't be any airdrops today",
+  
+  "6971a16640ca8d842155fe95 name": "Blackhole Corpses",
+  "6971a16640ca8d842155fe95 description": "Bodies disappear without a trace",
   
   //quests
   //trial quests

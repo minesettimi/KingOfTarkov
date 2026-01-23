@@ -1,3 +1,4 @@
+using KingOfTarkov.Models;
 using KingOfTarkov.Services;
 using KingOfTarkov.Utils;
 using SPTarkov.DI.Annotations;
@@ -5,6 +6,7 @@ using SPTarkov.Server.Core.Models.Common;
 using SPTarkov.Server.Core.Models.Eft.Common;
 using SPTarkov.Server.Core.Models.Eft.Common.Tables;
 using SPTarkov.Server.Core.Models.Eft.Profile;
+using SPTarkov.Server.Core.Models.Enums;
 using SPTarkov.Server.Core.Models.Utils;
 using SPTarkov.Server.Core.Utils.Cloners;
 
@@ -17,6 +19,7 @@ public class LocationController(SaveService save,
     TrialService trialService,
     LocationHelper locationHelper,
     ICloner cloner,
+    ModifierService modService,
     ISptLogger<LocationController> logger)
 {
 
@@ -34,6 +37,8 @@ public class LocationController(SaveService save,
                 location.IsSecret = true;
                 location.Locked = false;
                 
+                HandleLocationModifiers(location);
+                
                 //last map
                 if (activeMaps.Count == 1)
                 {
@@ -50,6 +55,76 @@ public class LocationController(SaveService save,
         }
 
         return initial;
+    }
+
+    private void HandleLocationModifiers(LocationBase location)
+    {
+        if (modService.HasMod(ModIds.ANTI_AIRCRAFT, location.IdField))
+            location.AirdropParameters?.Clear();
+        
+        //exfils
+        foreach (Exit exfil in location.Exits)
+        {
+            if (exfil.Name.Contains("sniper_exit", StringComparison.CurrentCultureIgnoreCase) 
+                && modService.HasMod(ModIds.BLOOD_SNIPERS, location.IdField))
+            {
+                exfil.Chance = 0;
+                exfil.ChancePVE = 0;
+            }
+
+            if (exfil is { RequirementTip: "EXFIL_Item", ExfiltrationType: ExfiltrationType.SharedTimer })
+            {
+                if (modService.HasMod(ModIds.TAXI_TAX, location.IdField))
+                {
+                    exfil.Count *= 5;
+                    exfil.CountPVE *= 5;
+                }
+
+                if (modService.HasMod(ModIds.SLOW_ENGINE, location.IdField))
+                {
+                    exfil.ExfiltrationTime *= 2.5;
+                    exfil.ExfiltrationTimePVE *= 2.5;
+                }
+            }
+        }
+
+        bool hasPartisan = false;
+
+        bool partisanMod = modService.HasMod(ModIds.PROFESSIONAL_CAMPER, location.IdField);
+        //bot spawns
+        foreach (BossLocationSpawn bossSetting in location.BossLocationSpawn)
+        {
+            if (bossSetting.BossName == "bossPartisan" && partisanMod)
+            {
+                hasPartisan = true;
+                bossSetting.BossChance = 100;
+            }
+            
+            if (bossSetting.BossName == "sectantPriest" && modService.HasMod(ModIds.NOBODY_EXPECTS_CULT, location.IdField))
+            {
+                bossSetting.BossChance = 100;
+            }
+        }
+
+        if (!hasPartisan && partisanMod)
+        {
+            location.BossLocationSpawn.Add(new BossLocationSpawn()
+            {
+                BossChance = 100,
+                BossName = "bossPartisan",
+                BossDifficulty = "normal",
+                IgnoreMaxBots = true,
+                TriggerId = "TRIGGER_PARTISAN",
+                TriggerName = "botEvent"
+            });
+        }
+        
+        if (modService.HasMod(ModIds.BETTER_THINGS_TO_DO, location.IdField))
+        {
+            location.EscapeTimeLimit *= 0.5;
+            location.EscapeTimeLimitCoop /= 2;
+            location.EscapeTimeLimitPVE /= 2;
+        }
     }
     
     public List<MongoId> GetActiveMaps()
@@ -87,6 +162,6 @@ public class LocationController(SaveService save,
 
         
         //level player up
-        profileHelper.LevelUpPlayer(pmcProfile!, 1);
+        profileHelper.LevelUpPlayer(pmcProfile!, 2);
     }
 }
