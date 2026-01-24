@@ -5,8 +5,8 @@ public static class ModIds
     public const string BETTER_THINGS_TO_DO = "69641baf8e22a5d7181c3284"; //
     public const string OOPS_ALL_KILLA = "69635493661702de5b3d25d5"; //
     public const string WHO_TURNED_OFF_LIGHTS = "69641bcda88a8c37ed1c3285";
-    public const string EXTREME_METABOLISM = "69641bfddc2b21a1c11c3286";
-    public const string DESERT_WEATHER = "69713e68a14861969174f9e8";
+    public const string EXTREME_METABOLISM = "69641bfddc2b21a1c11c3286"; //
+    public const string DESERT_WEATHER = "69713e68a14861969174f9e8"; //
     public const string SUDDEN_BLIZZARD = "69641c39c12fc4b3661c3287"; //
     public const string POISON_BULLETS = "69641c76dcf788fcf81c3289";
     public const string EXPLOSIVE_BULLETS = "69641c5d0e8b8f30ec1c3288"; //

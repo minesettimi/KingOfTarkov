@@ -45,30 +45,6 @@
       "Time": -1,
       "TriggerId": "",
       "TriggerName": ""
-    },
-    {
-      "BossChance": 100,
-      "BossDifficult": "normal",
-      "BossEscortAmount": "0",
-      "BossEscortDifficult": "normal",
-      "BossEscortType": "bossZryachiy",
-      "BossName": "ravangeZryachiyEvent",
-      "BossPlayer": false,
-      "BossZone": "ZoneSandbox",
-      "Delay": 0,
-      "ForceSpawn": true,
-      "IgnoreMaxBots": true,
-      "RandomTimeSpawn": false,
-      "ShowOnTarkovMap": false,
-      "ShowOnTarkovMapPvE": false,
-      "SpawnMode": [
-        "pve",
-        "regular"
-      ],
-      "Supports": null,
-      "Time": -1,
-      "TriggerId": "",
-      "TriggerName": ""
     }
   ],
   "laboratory":

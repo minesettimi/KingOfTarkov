@@ -57,17 +57,17 @@ public class LocationController(SaveService save,
         return initial;
     }
 
-    private void HandleLocationModifiers(LocationBase location, MongoId id)
+    private void HandleLocationModifiers(LocationBase location, MongoId locationId)
     {
         
-        if (modService.HasMod(ModIds.ANTI_AIRCRAFT, id))
+        if (modService.HasMod(ModIds.ANTI_AIRCRAFT, locationId))
             location.AirdropParameters?.Clear();
         
         //exfils
         foreach (Exit exfil in location.Exits)
         {
             if (exfil.Name.Contains("sniper_exit", StringComparison.CurrentCultureIgnoreCase) 
-                && modService.HasMod(ModIds.BLOOD_SNIPERS, id))
+                && modService.HasMod(ModIds.BLOOD_SNIPERS, locationId))
             {
                 exfil.Chance = 0;
                 exfil.ChancePVE = 0;
@@ -75,13 +75,13 @@ public class LocationController(SaveService save,
 
             if (exfil is { RequirementTip: "EXFIL_Item", ExfiltrationType: ExfiltrationType.SharedTimer })
             {
-                if (modService.HasMod(ModIds.TAXI_TAX, id))
+                if (modService.HasMod(ModIds.TAXI_TAX, locationId))
                 {
                     exfil.Count *= 5;
                     exfil.CountPVE *= 5;
                 }
 
-                if (modService.HasMod(ModIds.SLOW_ENGINE, id))
+                if (modService.HasMod(ModIds.SLOW_ENGINE, locationId))
                 {
                     exfil.ExfiltrationTime *= 2.5;
                     exfil.ExfiltrationTimePVE *= 2.5;
@@ -93,45 +93,25 @@ public class LocationController(SaveService save,
         //bot spawns
         foreach (BossLocationSpawn bossSetting in location.BossLocationSpawn)
         {
-            if (bossSetting.BossName == "bossPartisan" && modService.HasMod(ModIds.PROFESSIONAL_CAMPER, id))
+            if (bossSetting.BossName == "bossPartisan" && modService.HasMod(ModIds.PROFESSIONAL_CAMPER, locationId))
             {
                 bossSetting.ForceSpawn = true;
                 bossSetting.BossChance = 100;
             }
             
-            if (bossSetting.BossName == "sectantPriest" && modService.HasMod(ModIds.NOBODY_EXPECTS_CULT, id))
+            if (bossSetting.BossName == "sectantPriest" && modService.HasMod(ModIds.NOBODY_EXPECTS_CULT, locationId))
             {
                 bossSetting.ForceSpawn = true;
                 bossSetting.BossChance = 100;
             }
-        }
 
-        if (modService.HasMod(ModIds.VENGEFUL, id))
-        {
-            location.BossLocationSpawn.Add(new BossLocationSpawn
+            if (bossSetting.BossName == "ravangeZryachiyEvent" && modService.HasMod(ModIds.VENGEFUL, locationId))
             {
-                BossChance = 100,
-                BossDifficulty = "normal",
-                BossEscortAmount = "0",
-                BossEscortDifficulty = "normal",
-                BossEscortType = "bossZryachiy",
-                BossName = "ravangeZryachiyEvent",
-                IsBossPlayer = false,
-                BossZone = "BotZone",
-                Delay = 0,
-                ForceSpawn = true,
-                IgnoreMaxBots = true,
-                IsRandomTimeSpawn = false,
-                ShowOnTarkovMap = false,
-                ShowOnTarkovMapPvE = false,
-                SpawnMode = ["pve", "regular"],
-                Time = -1,
-                TriggerId = "",
-                TriggerName = ""
-            });
+                bossSetting.BossChance = 100;
+            }
         }
         
-        if (modService.HasMod(ModIds.BETTER_THINGS_TO_DO, id))
+        if (modService.HasMod(ModIds.BETTER_THINGS_TO_DO, locationId))
         {
             location.EscapeTimeLimit *= 0.5;
             location.EscapeTimeLimitCoop /= 2;

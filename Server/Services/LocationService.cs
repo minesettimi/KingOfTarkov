@@ -35,6 +35,33 @@ public class LocationService(LocationUtil locationUtil,
             
             locationDb[mapName].Base.BossLocationSpawn.AddRange(bossSpawn);
         }
+        
+        //universal bosses
+        foreach ((string key, Location location) in locationDb)
+        {
+            //vengeful event
+            location.Base.BossLocationSpawn.Add(new BossLocationSpawn
+            {
+                BossChance = 0,
+                BossDifficulty = "normal",
+                BossEscortAmount = "0",
+                BossEscortDifficulty = "normal",
+                BossEscortType = "bossZryachiy",
+                BossName = "ravangeZryachiyEvent",
+                IsBossPlayer = false,
+                BossZone = "BotZone",
+                Delay = 0,
+                ForceSpawn = true,
+                IgnoreMaxBots = true,
+                IsRandomTimeSpawn = false,
+                ShowOnTarkovMap = false,
+                ShowOnTarkovMapPvE = false,
+                SpawnMode = ["pve", "regular"],
+                Time = -1,
+                TriggerId = "",
+                TriggerName = ""
+            });
+        }
     }
     
     private void CacheBosses()
