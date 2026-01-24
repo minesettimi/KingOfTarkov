@@ -54,7 +54,7 @@ public class KingProfileHelper(SaveServer saveServer,
     public MongoId? GetLocationFromSession(MongoId sessionId)
     {
         ProfileActivityRaidData raidData = profileActivityService.GetProfileActivityRaidData(sessionId);
-        string? locationName = raidData.RaidConfiguration?.Location;
+        string? locationName = raidData.RaidConfiguration?.Location?.ToLower();
 
         return locationName != null ? locationUtil.GetMapId(locationName) : null;
     }

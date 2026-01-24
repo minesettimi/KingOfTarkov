@@ -37,7 +37,7 @@ public class LocationController(SaveService save,
                 location.IsSecret = true;
                 location.Locked = false;
                 
-                HandleLocationModifiers(location);
+                HandleLocationModifiers(location, checkId);
                 
                 //last map
                 if (activeMaps.Count == 1)
@@ -57,16 +57,17 @@ public class LocationController(SaveService save,
         return initial;
     }
 
-    private void HandleLocationModifiers(LocationBase location)
+    private void HandleLocationModifiers(LocationBase location, MongoId id)
     {
-        if (modService.HasMod(ModIds.ANTI_AIRCRAFT, location.IdField))
+        
+        if (modService.HasMod(ModIds.ANTI_AIRCRAFT, id))
             location.AirdropParameters?.Clear();
         
         //exfils
         foreach (Exit exfil in location.Exits)
         {
             if (exfil.Name.Contains("sniper_exit", StringComparison.CurrentCultureIgnoreCase) 
-                && modService.HasMod(ModIds.BLOOD_SNIPERS, location.IdField))
+                && modService.HasMod(ModIds.BLOOD_SNIPERS, id))
             {
                 exfil.Chance = 0;
                 exfil.ChancePVE = 0;
@@ -74,52 +75,63 @@ public class LocationController(SaveService save,
 
             if (exfil is { RequirementTip: "EXFIL_Item", ExfiltrationType: ExfiltrationType.SharedTimer })
             {
-                if (modService.HasMod(ModIds.TAXI_TAX, location.IdField))
+                if (modService.HasMod(ModIds.TAXI_TAX, id))
                 {
                     exfil.Count *= 5;
                     exfil.CountPVE *= 5;
                 }
 
-                if (modService.HasMod(ModIds.SLOW_ENGINE, location.IdField))
+                if (modService.HasMod(ModIds.SLOW_ENGINE, id))
                 {
                     exfil.ExfiltrationTime *= 2.5;
                     exfil.ExfiltrationTimePVE *= 2.5;
                 }
             }
         }
-
-        bool hasPartisan = false;
-
-        bool partisanMod = modService.HasMod(ModIds.PROFESSIONAL_CAMPER, location.IdField);
+        
+        
         //bot spawns
         foreach (BossLocationSpawn bossSetting in location.BossLocationSpawn)
         {
-            if (bossSetting.BossName == "bossPartisan" && partisanMod)
+            if (bossSetting.BossName == "bossPartisan" && modService.HasMod(ModIds.PROFESSIONAL_CAMPER, id))
             {
-                hasPartisan = true;
+                bossSetting.ForceSpawn = true;
                 bossSetting.BossChance = 100;
             }
             
-            if (bossSetting.BossName == "sectantPriest" && modService.HasMod(ModIds.NOBODY_EXPECTS_CULT, location.IdField))
+            if (bossSetting.BossName == "sectantPriest" && modService.HasMod(ModIds.NOBODY_EXPECTS_CULT, id))
             {
+                bossSetting.ForceSpawn = true;
                 bossSetting.BossChance = 100;
             }
         }
 
-        if (!hasPartisan && partisanMod)
+        if (modService.HasMod(ModIds.VENGEFUL, id))
         {
-            location.BossLocationSpawn.Add(new BossLocationSpawn()
+            location.BossLocationSpawn.Add(new BossLocationSpawn
             {
                 BossChance = 100,
-                BossName = "bossPartisan",
                 BossDifficulty = "normal",
+                BossEscortAmount = "0",
+                BossEscortDifficulty = "normal",
+                BossEscortType = "bossZryachiy",
+                BossName = "ravangeZryachiyEvent",
+                IsBossPlayer = false,
+                BossZone = "BotZone",
+                Delay = 0,
+                ForceSpawn = true,
                 IgnoreMaxBots = true,
-                TriggerId = "TRIGGER_PARTISAN",
-                TriggerName = "botEvent"
+                IsRandomTimeSpawn = false,
+                ShowOnTarkovMap = false,
+                ShowOnTarkovMapPvE = false,
+                SpawnMode = ["pve", "regular"],
+                Time = -1,
+                TriggerId = "",
+                TriggerName = ""
             });
         }
         
-        if (modService.HasMod(ModIds.BETTER_THINGS_TO_DO, location.IdField))
+        if (modService.HasMod(ModIds.BETTER_THINGS_TO_DO, id))
         {
             location.EscapeTimeLimit *= 0.5;
             location.EscapeTimeLimitCoop /= 2;

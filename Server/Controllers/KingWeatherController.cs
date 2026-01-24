@@ -17,7 +17,7 @@ public class KingWeatherController(KingProfileHelper profileHelper, KingWeatherH
 
         if (locationId == null || !modService.HasMod(ModIds.SUDDEN_BLIZZARD, locationId.Value))
             return weatherData;
-        
+
         weatherData.Season = Season.WINTER;
 
         weatherData.Weather ??= [];

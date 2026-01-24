@@ -23,6 +23,52 @@
       "Time": -1,
       "TriggerId": "",
       "TriggerName": ""
+    },
+    {
+      "BossChance": 22,
+      "BossDifficult": "normal",
+      "BossEscortAmount": "3,4",
+      "BossEscortDifficult": "normal",
+      "BossEscortType": "sectantWarrior",
+      "BossName": "sectantPriest",
+      "BossPlayer": false,
+      "BossZone": "ZoneSandbox",
+      "IgnoreMaxBots": true,
+      "RandomTimeSpawn": false,
+      "ShowOnTarkovMap": false,
+      "ShowOnTarkovMapPvE": false,
+      "SpawnMode": [
+        "pve",
+        "regular"
+      ],
+      "Supports": null,
+      "Time": -1,
+      "TriggerId": "",
+      "TriggerName": ""
+    },
+    {
+      "BossChance": 100,
+      "BossDifficult": "normal",
+      "BossEscortAmount": "0",
+      "BossEscortDifficult": "normal",
+      "BossEscortType": "bossZryachiy",
+      "BossName": "ravangeZryachiyEvent",
+      "BossPlayer": false,
+      "BossZone": "ZoneSandbox",
+      "Delay": 0,
+      "ForceSpawn": true,
+      "IgnoreMaxBots": true,
+      "RandomTimeSpawn": false,
+      "ShowOnTarkovMap": false,
+      "ShowOnTarkovMapPvE": false,
+      "SpawnMode": [
+        "pve",
+        "regular"
+      ],
+      "Supports": null,
+      "Time": -1,
+      "TriggerId": "",
+      "TriggerName": ""
     }
   ],
   "laboratory":
@@ -40,6 +86,201 @@
       "ForceSpawn": false,
       "IgnoreMaxBots": true,
       "RandomTimeSpawn": false,
+      "ShowOnTarkovMap": false,
+      "ShowOnTarkovMapPvE": false,
+      "SpawnMode": [
+        "pve",
+        "regular"
+      ],
+      "Supports": null,
+      "Time": -1,
+      "TriggerId": "",
+      "TriggerName": ""
+    },
+    {
+      "BossChance": 0,
+      "BossDifficult": "normal",
+      "BossEscortAmount": "4",
+      "BossEscortDifficult": "normal",
+      "BossEscortType": "sectantWarrior",
+      "BossName": "sectantPriest",
+      "BossPlayer": false,
+      "BossZone": "BotZoneBasement",
+      "Delay": 0,
+      "DependKarma": false,
+      "DependKarmaPVE": false,
+      "ForceSpawn": false,
+      "IgnoreMaxBots": true,
+      "RandomTimeSpawn": false,
+      "ShowOnTarkovMap": false,
+      "ShowOnTarkovMapPvE": false,
+      "SpawnMode": [
+        "regular",
+        "pve"
+      ],
+      "Supports": null,
+      "Time": -1,
+      "TriggerId": "",
+      "TriggerName": ""
+    }
+  ],
+  "tarkovstreets":
+  [
+    {
+      "BossChance": 0,
+      "BossDifficult": "normal",
+      "BossEscortAmount": "4",
+      "BossEscortDifficult": "normal",
+      "BossEscortType": "sectantWarrior",
+      "BossName": "sectantPriest",
+      "BossPlayer": false,
+      "BossZone": "ZoneFactory,ZoneHotel_1,ZoneHotel_2,ZoneConcordiaParking",
+      "Delay": 0,
+      "DependKarma": false,
+      "DependKarmaPVE": false,
+      "ForceSpawn": false,
+      "IgnoreMaxBots": true,
+      "RandomTimeSpawn": false,
+      "ShowOnTarkovMap": false,
+      "ShowOnTarkovMapPvE": false,
+      "SpawnMode": [
+        "regular",
+        "pve"
+      ],
+      "Supports": null,
+      "Time": -1,
+      "TriggerId": "",
+      "TriggerName": ""
+    }
+  ],
+  "rezervbase":
+  [
+    {
+      "BossChance": 0,
+      "BossDifficult": "normal",
+      "BossEscortAmount": "4",
+      "BossEscortDifficult": "normal",
+      "BossEscortType": "sectantWarrior",
+      "BossName": "sectantPriest",
+      "BossPlayer": false,
+      "BossZone": "ZoneSubCommand,ZoneSubStorage",
+      "Delay": 0,
+      "DependKarma": false,
+      "DependKarmaPVE": false,
+      "ForceSpawn": false,
+      "IgnoreMaxBots": true,
+      "RandomTimeSpawn": false,
+      "ShowOnTarkovMap": false,
+      "ShowOnTarkovMapPvE": false,
+      "SpawnMode": [
+        "regular",
+        "pve"
+      ],
+      "Supports": null,
+      "Time": -1,
+      "TriggerId": "",
+      "TriggerName": ""
+    }
+  ],
+  "lighthouse":
+  [
+    {
+      "BossChance": 0,
+      "BossDifficult": "normal",
+      "BossEscortAmount": "4",
+      "BossEscortDifficult": "normal",
+      "BossEscortType": "sectantWarrior",
+      "BossName": "sectantPriest",
+      "BossPlayer": false,
+      "BossZone": "Zone_OldHouse",
+      "Delay": 0,
+      "DependKarma": false,
+      "DependKarmaPVE": false,
+      "ForceSpawn": false,
+      "IgnoreMaxBots": true,
+      "RandomTimeSpawn": false,
+      "ShowOnTarkovMap": false,
+      "ShowOnTarkovMapPvE": false,
+      "SpawnMode": [
+        "regular",
+        "pve"
+      ],
+      "Supports": null,
+      "Time": -1,
+      "TriggerId": "",
+      "TriggerName": ""
+    }
+  ],
+  "labyrinth":
+  [
+    {
+      "BossChance": 0,
+      "BossDifficult": "normal",
+      "BossEscortAmount": "4",
+      "BossEscortDifficult": "normal",
+      "BossEscortType": "sectantWarrior",
+      "BossName": "sectantPriest",
+      "BossPlayer": false,
+      "BossZone": "BotZone",
+      "Delay": 0,
+      "DependKarma": false,
+      "DependKarmaPVE": false,
+      "ForceSpawn": false,
+      "IgnoreMaxBots": true,
+      "RandomTimeSpawn": false,
+      "ShowOnTarkovMap": false,
+      "ShowOnTarkovMapPvE": false,
+      "SpawnMode": [
+        "regular",
+        "pve"
+      ],
+      "Supports": null,
+      "Time": -1,
+      "TriggerId": "",
+      "TriggerName": ""
+    }
+  ],
+  "interchange":
+  [
+    {
+      "BossChance": 0,
+      "BossDifficult": "normal",
+      "BossEscortAmount": "4",
+      "BossEscortDifficult": "normal",
+      "BossEscortType": "sectantWarrior",
+      "BossName": "sectantPriest",
+      "BossPlayer": false,
+      "BossZone": "ZoneRoad,ZoneTrucks,ZoneCenterBot",
+      "Delay": 0,
+      "DependKarma": false,
+      "DependKarmaPVE": false,
+      "ForceSpawn": false,
+      "IgnoreMaxBots": true,
+      "RandomTimeSpawn": false,
+      "ShowOnTarkovMap": false,
+      "ShowOnTarkovMapPvE": false,
+      "SpawnMode": [
+        "regular",
+        "pve"
+      ],
+      "Supports": null,
+      "Time": -1,
+      "TriggerId": "",
+      "TriggerName": ""
+    }
+  ],
+  "factory4day":
+  [
+    {
+      "BossChance": 10,
+      "BossDifficult": "normal",
+      "BossEscortAmount": "2,3",
+      "BossEscortDifficult": "normal",
+      "BossEscortType": "sectantWarrior",
+      "BossName": "sectantPriest",
+      "BossPlayer": false,
+      "BossZone": "BotZone",
+      "IgnoreMaxBots": true,
       "ShowOnTarkovMap": false,
       "ShowOnTarkovMapPvE": false,
       "SpawnMode": [

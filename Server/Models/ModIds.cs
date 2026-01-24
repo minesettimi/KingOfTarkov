@@ -12,7 +12,7 @@ public static class ModIds
     public const string EXPLOSIVE_BULLETS = "69641c5d0e8b8f30ec1c3288"; //
     public const string CURSED = "69641cdb3a6474c01a1c328a"; //
     public const string SCAV_TRAINING = "69641cf7e8f4ea1f731c328b"; //
-    public const string NOBODY_EXPECTS_CULT = "69641d1c93259454391c328c";
+    public const string NOBODY_EXPECTS_CULT = "69641d1c93259454391c328c"; //
     public const string GRENADE_SURPLUS = "69641d78abe078d69b1c328e";
     public const string RAINING_FIRE = "69641d8659ec5b9fb71c328f";
     public const string AMMO_SURPLUS = "69641e4c6df6e6ba751c3292";
@@ -23,4 +23,5 @@ public static class ModIds
     public const string TAXI_TAX = "69641f35f803fa7a201c3297"; // 
     public const string ANTI_AIRCRAFT = "6971568817fa49e7d374f9e9"; //
     public const string BLACKHOLE_CORPSES = "6971a16640ca8d842155fe95";
+    public const string VENGEFUL = "69743b8a9ff301273ab9cfe3";
 }

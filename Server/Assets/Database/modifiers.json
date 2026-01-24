@@ -103,5 +103,10 @@
   {
     "name": "Blackhole Corpses",
     "image": "/files/modifiers/icon/error.png"
+  },
+  "69743b8a9ff301273ab9cfe3":
+  {
+    "name": "The Vengeful",
+    "image": "/files/modifiers/icon/error.png"
   }
 }

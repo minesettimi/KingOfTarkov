@@ -19,7 +19,7 @@ public class WeatherControllerOverride : AbstractPatch
     }
 
     [PatchPostfix]
-    public static GetLocalWeatherResponseData Postfix(MongoId sessionId, GetLocalWeatherResponseData __result)
+    public static GetLocalWeatherResponseData Postfix(GetLocalWeatherResponseData __result, MongoId sessionId)
     {
         return _weatherController.HandleWeatherChanges(__result, sessionId);
     }
