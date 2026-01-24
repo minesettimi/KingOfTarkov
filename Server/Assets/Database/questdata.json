@@ -310,17 +310,17 @@
             "min": 1,
             "max": 15
           },
-          "minExtracts": 1,
-          "maxExtracts": 1,
+          "minExtracts": 3,
+          "maxExtracts": 5,
           "minExtractsWithSpecificExit": 1,
-          "maxExtractsWithSpecificExit": 1,
+          "maxExtractsWithSpecificExit": 4,
           "possibleSkillRewards": [
             "Endurance",
             "Strength",
             "Vitality"
           ],
           "specificExits": {
-            "chance": 20,
+            "chance": 10,
             "passageRequirementWhitelist": [
               "None",
               "TransferItem",
@@ -336,17 +336,17 @@
             "min": 16,
             "max": 40
           },
-          "minExtracts": 1,
-          "maxExtracts": 1,
-          "minExtractsWithSpecificExit": 1,
-          "maxExtractsWithSpecificExit": 1,
+          "minExtracts": 4,
+          "maxExtracts": 8,
+          "minExtractsWithSpecificExit": 2,
+          "maxExtractsWithSpecificExit": 5,
           "possibleSkillRewards": [
             "Endurance",
             "Strength",
             "Vitality"
           ],
           "specificExits": {
-            "chance": 45,
+            "chance": 15,
             "passageRequirementWhitelist": [
               "None",
               "TransferItem",
@@ -362,17 +362,17 @@
             "min": 41,
             "max": 100
           },
-          "minExtracts": 1,
-          "maxExtracts": 1,
-          "minExtractsWithSpecificExit": 1,
-          "maxExtractsWithSpecificExit": 1,
+          "minExtracts": 5,
+          "maxExtracts": 15,
+          "minExtractsWithSpecificExit": 3,
+          "maxExtractsWithSpecificExit": 6,
           "possibleSkillRewards": [
             "Endurance",
             "Strength",
             "Vitality"
           ],
           "specificExits": {
-            "chance": 100,
+            "chance": 20,
             "passageRequirementWhitelist": [
               "None",
               "TransferItem",

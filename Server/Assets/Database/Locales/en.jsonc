@@ -63,8 +63,8 @@
   "69641f0d1a7fda7de51c3295 name": "Slow Engine",
   "69641f0d1a7fda7de51c3295 description": "Vehicle exfils take longer to leave",
 
-  "69641f26d1723deca91c3296 name": "Blood Thirsty Snipers",
-  "69641f26d1723deca91c3296 description": "Snipers don't care about flares",
+  "69641f26d1723deca91c3296 name": "No Survivors",
+  "69641f26d1723deca91c3296 description": "Snipers will shoot even if you fire a flare",
 
   "69641f35f803fa7a201c3297 name": "Taxi Tax",
   "69641f35f803fa7a201c3297 description": "Vehicle exfils expect a 5x higher rate to escape",

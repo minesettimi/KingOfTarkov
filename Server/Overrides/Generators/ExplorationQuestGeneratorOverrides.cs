@@ -22,6 +22,6 @@ public class TryGetLocationInfoOverride : AbstractPatch
     [PatchPrefix]
     public static void Prefix(QuestTypePool pool)
     {
-        _questHelper.RemoveUnusedLocations(pool);
+        //_questHelper.RemoveUnusedLocations(pool);
     }
 }

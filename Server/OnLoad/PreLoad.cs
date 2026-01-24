@@ -18,7 +18,8 @@ public class PreLoad(ConfigService config) : IOnLoad
         new HandlePostRaidOverride(),
         new GetClientQuestsOverride(),
         new CreateProfileOverride(),
-        new TryGetLocationInfoOverride()
+        new TryGetLocationInfoOverride(),
+        new WeatherControllerOverride()
     ];
     
     public async Task OnLoad()

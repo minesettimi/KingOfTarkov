@@ -62,7 +62,7 @@ public class LocationService(LocationUtil locationUtil,
 
         //blacklist Zryachiy due to generally requiring way more to kill him as well as the unaccessible lighthouse item
         return spawns.Select(l => l.BossName)
-            .Where(s => s != "bossZryachiy" && (s.StartsWith("boss") || s.StartsWith("sectant")))
+            .Where(s => s != "bossZryachiy" && s.StartsWith("boss"))
             .ToList();
     }
 }

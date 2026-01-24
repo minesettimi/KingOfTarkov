@@ -54,6 +54,8 @@ public class StateService
         catch (Exception e)
         {
             Plugin.PluginLogger.LogError($"Failed ot retrieve profile data with exception: {e.Message}");
+            MonoBehaviourSingleton<PreloaderUI>.Instance.ShowErrorScreen("INVALID_PROFILE",
+                "KoTProfileInvalid".Localized(), Application.Quit);
             throw new Exception("KoTProfileInvalid".Localized());
         }
     }

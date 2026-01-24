@@ -1,3 +1,4 @@
+using System;
 using System.Reflection;
 using EFT.UI;
 using HarmonyLib;
@@ -27,8 +28,7 @@ public class ProfileCreationPatch : ModulePatch
         {
             MonoBehaviourSingleton<PreloaderUI>.Instance.ShowErrorScreen("PROFILE_BLOCKED",
                 "KoTProfileLocked".Localized(), Application.Quit);
-
-            return false;
+            throw new Exception("KotProfileLocked".Localized());
         }
 
         return true;

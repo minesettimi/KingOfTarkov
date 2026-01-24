@@ -1,3 +1,4 @@
+using KingOfTarkov.Utils;
 using SPTarkov.DI.Annotations;
 using SPTarkov.Server.Core.Extensions;
 using SPTarkov.Server.Core.Helpers;
@@ -5,6 +6,7 @@ using SPTarkov.Server.Core.Models.Common;
 using SPTarkov.Server.Core.Models.Eft.Common;
 using SPTarkov.Server.Core.Models.Eft.Common.Tables;
 using SPTarkov.Server.Core.Models.Eft.Profile;
+using SPTarkov.Server.Core.Models.Spt.Services;
 using SPTarkov.Server.Core.Models.Utils;
 using SPTarkov.Server.Core.Servers;
 using SPTarkov.Server.Core.Services;
@@ -15,6 +17,8 @@ namespace KingOfTarkov.Helpers;
 public class KingProfileHelper(SaveServer saveServer,
     ProfileHelper profileHelper,
     DatabaseService databaseService,
+    ProfileActivityService profileActivityService,
+    LocationUtil locationUtil,
     ISptLogger<KingProfileHelper> logger)
 {
     public void SetupTrialForProfiles(bool newTrial)
@@ -45,5 +49,13 @@ public class KingProfileHelper(SaveServer saveServer,
         profile.Info.Experience = profileHelper.GetExperience(playerLevel + number);
         profile.Info.Level =
             profile.CalculateLevel(databaseService.GetGlobals().Configuration.Exp.Level.ExperienceTable); 
+    }
+
+    public MongoId? GetLocationFromSession(MongoId sessionId)
+    {
+        ProfileActivityRaidData raidData = profileActivityService.GetProfileActivityRaidData(sessionId);
+        string? locationName = raidData.RaidConfiguration?.Location;
+
+        return locationName != null ? locationUtil.GetMapId(locationName) : null;
     }
 }
