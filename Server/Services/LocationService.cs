@@ -29,6 +29,7 @@ public class LocationService(LocationUtil locationUtil,
         CacheBosses();
         
         CacheLocations(locations);
+        SetupTrialLocations(locations);
         
         return Task.CompletedTask;
     }
@@ -170,7 +171,6 @@ public class LocationService(LocationUtil locationUtil,
         {
             switch (bossSetting.BossName)
             {
-                case "bossPartisan" when modService.HasMod(ModIds.PROFESSIONAL_CAMPER, locationId):
                 case "sectantPriest" when modService.HasMod(ModIds.NOBODY_EXPECTS_CULT, locationId):
                 case "ravangeZryachiyEvent" when modService.HasMod(ModIds.VENGEFUL, locationId):
                     bossSetting.ForceSpawn = true;
@@ -181,9 +181,10 @@ public class LocationService(LocationUtil locationUtil,
         
         if (modService.HasMod(ModIds.BETTER_THINGS_TO_DO, locationId))
         {
-            location.EscapeTimeLimit *= 0.5;
-            location.EscapeTimeLimitCoop /= 2;
-            location.EscapeTimeLimitPVE /= 2;
+            int newTimeLimit = (int)Math.Round(location.EscapeTimeLimit!.Value * 0.75);
+            location.EscapeTimeLimit = newTimeLimit;
+            location.EscapeTimeLimitCoop = newTimeLimit;
+            location.EscapeTimeLimitPVE = newTimeLimit;
         }
     }
 }

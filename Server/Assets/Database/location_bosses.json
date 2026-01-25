@@ -289,8 +289,8 @@
       "ForceSpawn": true,
       "IgnoreMaxBots": true,
       "RandomTimeSpawn": false,
-      "ShowOnTarkovMap": true,
-      "ShowOnTarkovMapPvE": true,
+      "ShowOnTarkovMap": false,
+      "ShowOnTarkovMapPvE": false,
       "SpawnMode": [
         "pve",
         "regular"

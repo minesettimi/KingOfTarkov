@@ -60,9 +60,5 @@
         <Link>Models\ModIds.cs</Link>
       </Compile>
     </ItemGroup>
-    
-    <ItemGroup>
-      <Folder Include="Patches\Modifiers\Location\" />
-    </ItemGroup>
 
 </Project>

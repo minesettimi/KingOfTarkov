@@ -57,9 +57,6 @@
   "69641e8c1ac56bc92c1c3293 name": "Armor Surplus",
   "69641e8c1ac56bc92c1c3293 description": "They're practically unkillable",
 
-  "69641eef2da8bdbbff1c3294 name": "Professional Camper",
-  "69641eef2da8bdbbff1c3294 description": "Partisan is said to haunt these parts",
-
   "69641f0d1a7fda7de51c3295 name": "Slow Engine",
   "69641f0d1a7fda7de51c3295 description": "Vehicle exfils take longer to leave",
 
@@ -73,7 +70,7 @@
   "6971568817fa49e7d374f9e9 description": "There won't be any airdrops today",
   
   "6971a16640ca8d842155fe95 name": "Blackhole Corpses",
-  "6971a16640ca8d842155fe95 description": "Bodies disappear without a trace",
+  "6971a16640ca8d842155fe95 description": "Nothing left behind",
   
   "69743b8a9ff301273ab9cfe3 name": "The Vengeful",
   "69743b8a9ff301273ab9cfe3 description": "The ghost of Zryachiy has come for revenge",
@@ -142,5 +139,5 @@
   "KoTProfileLocked": "Profile creation is currently locked. Please delete the state and restart the server.",
   
   //notifications
-  "ExfilCompleted": "All exfil requirements completed."
+  "ExfilCompleted": "All exfil requirements completed. You are free to leave."
 }

@@ -9,7 +9,7 @@ using SPT.Reflection.Patching;
 
 namespace KoTClient.Patches.Modifiers.Game;
 
-public class BaseLocalGamePatch : ModulePatch
+public class ActivateRuddansPatch : ModulePatch
 {
     protected override MethodBase GetTargetMethod()
     {
