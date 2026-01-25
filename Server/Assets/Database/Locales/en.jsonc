@@ -74,19 +74,25 @@
   "6961f4c5ef60c44df4af5fb7": "Complete a trial",
   
   "697119daab15b10ca274f9c8 name": "Stepping Stones",
-  "697119daab15b10ca274f9c8 description": "Now that you have completed your first trial; I think you are ready for some real challenges, warrior.\n\nFrom here on out, each trial and raid will have modifiers that will shake up the raid.\n\nKeep your feet steady and you shall reach victory. Complete 2 more trials and I will give out a letter of recommendation and some helpful equipment.",
+  "697119daab15b10ca274f9c8 description": "I think you are now ready for some real challenges, warrior.\n\nFrom here on out, each trial and raid will have modifiers that will shake up the raid.\n\nKeep your feet steady and you shall reach victory. Complete 2 more trials and I will give out a letter of recommendation and some helpful equipment.",
   "697119daab15b10ca274f9c8 successMessageText": "You certainly have a fire inside of you. Let's hope it will carry you to the throne. Keep up the pace and victory will be yours before you know it.",
   "69711a302c3056c5eb74f9cc": "Complete the 3rd trial",
   
   "697120b1774b176fea74f9dd name": "Climbing The Ladder",
   "697120b1774b176fea74f9dd description": "",
-  "697120b1774b176fea74f9dd successMessageText": "You are halfway there, gladiator. I am starting to believe in your success. The next stretch will be your hardest yet.",
-  "697124ba4b876bc6a274f9e7": "",
+  "697120b1774b176fea74f9dd successMessageText": "You are halfway there, gladiator. I am starting to believe in you will be victorious.",
+  "697124ba4b876bc6a274f9e7": "Complete the 5th trial",
+  
+  "6976728138aae1f559667752 name": "Approaching The Summit",
+  "6976728138aae1f559667752 description": "",
+  "6976728138aae1f559667752 successMessageText": "You have climbed far. Your hope ",
+  "697672ce09a518391c667753": "Complete the 8th trial",
   
   "696319c33a65c367b83d25c1 name": "King Of Tarkov",
   "696319c33a65c367b83d25c1 description": "Welcome, champion! I hear you are looking to take on the King of Tarkov challenge. You must have a death wish, but who am I to say no?\n\nIt will be a long fight but if you can beat all 10 trials you will be crowned the king. Each trial consists of several locations you need to escape alive. Complete all of them to win the trial.\n\nGive me the word and the bloodbath will begin.",
   "696319c33a65c367b83d25c1 successMessageText": "I never thought I would see the day that someone would beat the challenge. You have become a king.",
   "69631a0bc6c5f245d93d25c2": "Complete 10 trials",
+  
   
   //escape quests
   "ExfilDescription": "Completing a raid won't be so easy. I need you to complete these tasks before you can leave.",

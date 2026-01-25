@@ -647,5 +647,150 @@
     "successMessageText": "697120b1774b176fea74f9dd successMessageText",
     "traderId": "6617beeaa9cfa777ca915b7c",
     "type": "Levelling"
+  },
+  "6976728138aae1f559667752":
+  {
+    "QuestName": "Approaching The Summit",
+    "_id": "6976728138aae1f559667752",
+    "acceptPlayerMessage": "6976728138aae1f559667752 acceptPlayerMessage",
+    "acceptanceAndFinishingSource": "eft",
+    "arenaLocations": [],
+    "canShowNotificationsInGame": true,
+    "changeQuestMessageText": "6976728138aae1f559667752 changeQuestMessageText",
+    "completePlayerMessage": "6976728138aae1f559667752 completePlayerMessage",
+    "conditions": {
+      "AvailableForFinish": [
+        {
+          "conditionType": "TrialNumber",
+          "dynamicLocale": false,
+          "globalQuestCounterId": "",
+          "id": "697672ce09a518391c667753",
+          "index": 0,
+          "oneSessionOnly": false,
+          "isEncoded": false,
+          "parentId": "",
+          "type": "Levelling",
+          "value": 8,
+          "visibilityConditions": []
+        }
+      ],
+      "AvailableForStart":
+      [
+        {
+          "availableAfter": 0,
+          "conditionType": "Quest",
+          "dispersion": 0,
+          "dynamicLocale": false,
+          "globalQuestCounterId": "",
+          "id": "69767359864d2717c2667754",
+          "index": 0,
+          "parentId": "",
+          "status": [
+            3
+          ],
+          "target": "697120b1774b176fea74f9dd",
+          "visibilityConditions": []
+        }
+      ],
+      "Fail": []
+    },
+    "declinePlayerMessage": "6976728138aae1f559667752 declinePlayerMessage",
+    "description": "6976728138aae1f559667752 description",
+    "failMessageText": "6976728138aae1f559667752 failMessageText",
+    "gameModes": [],
+    "image": "/files/quest/icon/66562bb83e8d4075e2354446.png",
+    "instantComplete": false,
+    "isKey": false,
+    "location": "any",
+    "name": "6976728138aae1f559667752 name",
+    "note": "6976728138aae1f559667752 note",
+    "progressSource": "eft",
+    "rankingModes": [],
+    "restartable": false,
+    "rewards": {
+      "Fail": [],
+      "Started": [],
+      "Success": [
+        {
+          "availableInGameEditions": [],
+          "findInRaid": false,
+          "gameMode": [
+            "regular",
+            "pve"
+          ],
+          "id": "697677821d2d5cde2266775b",
+          "isEncoded": false,
+          "isHidden": false,
+          "items": [
+            {
+              "_id": "6976776f3d0255333a667759",
+              "_tpl": "5449016a4bdc2d6f028b456f",
+              "upd": {
+                "StackObjectsCount": 1000000
+              }
+            }
+          ],
+          "target": "6976776f3d0255333a667759",
+          "type": "Item",
+          "unknown": false,
+          "value": 1000000
+        },
+        {
+          "availableInGameEditions": [],
+          "findInRaid": false,
+          "gameMode": [
+            "regular",
+            "pve"
+          ],
+          "id": "6976776cd6d69c700e667758",
+          "isEncoded": false,
+          "isHidden": false,
+          "items": [
+            {
+              "_id": "697677616f4055ad41667757",
+              "_tpl": "5857a8bc2459772bad15db29",
+              "upd": {
+                "StackObjectsCount": 1
+              }
+            }
+          ],
+          "target": "697677616f4055ad41667757",
+          "type": "Item",
+          "unknown": false,
+          "value": 1
+        },
+        {
+          "availableInGameEditions": [],
+          "findInRaid": false,
+          "gameMode": [
+            "regular",
+            "pve"
+          ],
+          "id": "697677582b943de96e667756",
+          "isEncoded": false,
+          "isHidden": false,
+          "items": [
+            {
+              "_id": "6976774ffe4d34b3b3667755",
+              "_tpl": "5c0a840b86f7742ffa4f2482",
+              "upd": {
+                "StackObjectsCount": 1
+              }
+            }
+          ],
+          "target": "6976774ffe4d34b3b3667755",
+          "type": "Item",
+          "unknown": true,
+          "value": 2
+        }
+      ]
+    },
+    "secretQuest": false,
+    "side": "Pmc",
+    "startedMessageText": "66976728138aae1f559667752 startedMessageText",
+    "status": 0,
+    "successMessageText": "6976728138aae1f559667752 successMessageText",
+    "traderId": "6617beeaa9cfa777ca915b7c",
+    "type": "Levelling"
   }
 }
