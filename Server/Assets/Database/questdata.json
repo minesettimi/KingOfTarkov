@@ -59,13 +59,13 @@
         5
       ],
       "reputation": [
-        0.07,
-        0.08,
-        0.09,
-        0.09,
         0.1,
         0.11,
-        0.12
+        0.12,
+        0.12,
+        0.13,
+        0.14,
+        0.15
       ],
       "rewardSpread": 0.35,
       "skillRewardChance": [
@@ -78,13 +78,13 @@
         100
       ],
       "skillPointReward": [
-        125,
-        135,
-        145,
-        150,
-        155,
-        160,
-        165
+        1250,
+        1350,
+        1450,
+        1500,
+        1550,
+        1600,
+        1650
       ]
     },
     "locations": {
@@ -310,17 +310,17 @@
             "min": 1,
             "max": 15
           },
-          "minExtracts": 3,
-          "maxExtracts": 5,
-          "minExtractsWithSpecificExit": 1,
-          "maxExtractsWithSpecificExit": 4,
+          "minExtracts": 2,
+          "maxExtracts": 2,
+          "minExtractsWithSpecificExit": 2,
+          "maxExtractsWithSpecificExit": 2,
           "possibleSkillRewards": [
             "Endurance",
             "Strength",
             "Vitality"
           ],
           "specificExits": {
-            "chance": 10,
+            "chance": 100,
             "passageRequirementWhitelist": [
               "None",
               "TransferItem",
@@ -336,17 +336,17 @@
             "min": 16,
             "max": 40
           },
-          "minExtracts": 4,
-          "maxExtracts": 8,
+          "minExtracts": 2,
+          "maxExtracts": 2,
           "minExtractsWithSpecificExit": 2,
-          "maxExtractsWithSpecificExit": 5,
+          "maxExtractsWithSpecificExit": 2,
           "possibleSkillRewards": [
             "Endurance",
             "Strength",
             "Vitality"
           ],
           "specificExits": {
-            "chance": 15,
+            "chance": 100,
             "passageRequirementWhitelist": [
               "None",
               "TransferItem",
@@ -362,17 +362,17 @@
             "min": 41,
             "max": 100
           },
-          "minExtracts": 5,
-          "maxExtracts": 15,
-          "minExtractsWithSpecificExit": 3,
-          "maxExtractsWithSpecificExit": 6,
+          "minExtracts": 2,
+          "maxExtracts": 2,
+          "minExtractsWithSpecificExit": 2,
+          "maxExtractsWithSpecificExit": 2,
           "possibleSkillRewards": [
             "Endurance",
             "Strength",
             "Vitality"
           ],
           "specificExits": {
-            "chance": 20,
+            "chance": 100,
             "passageRequirementWhitelist": [
               "None",
               "TransferItem",
@@ -400,8 +400,8 @@
             "max": 6
           },
           "uniqueItemCount": {
-            "min": 1,
-            "max": 2
+            "min": 2,
+            "max": 4
           },
           "requestedBulletCount": {
             "min": 20,
@@ -429,12 +429,12 @@
             "Vitality"
           ],
           "requestedItemCount": {
-            "min": 4,
-            "max": 8
+            "min": 6,
+            "max": 12
           },
           "uniqueItemCount": {
-            "min": 1,
-            "max": 2
+            "min": 2,
+            "max": 4
           },
           "requestedBulletCount": {
             "min": 20,
@@ -462,12 +462,12 @@
             "Vitality"
           ],
           "requestedItemCount": {
-            "min": 6,
-            "max": 12
+            "min": 8,
+            "max": 16
           },
           "uniqueItemCount": {
-            "min": 1,
-            "max": 3
+            "min": 2,
+            "max": 6
           },
           "requestedBulletCount": {
             "min": 20,
@@ -510,76 +510,6 @@
               "data": {
                 "isBoss": false,
                 "isPmc": true
-              }
-            },
-            {
-              "key": "bossBully",
-              "relativeProbability": 0,
-              "data": {
-                "isBoss": true
-              }
-            },
-            {
-              "key": "bossGluhar",
-              "relativeProbability": 0,
-              "data": {
-                "isBoss": true
-              }
-            },
-            {
-              "key": "bossKilla",
-              "relativeProbability": 0,
-              "data": {
-                "isBoss": true
-              }
-            },
-            {
-              "key": "bossSanitar",
-              "relativeProbability": 0,
-              "data": {
-                "isBoss": true
-              }
-            },
-            {
-              "key": "bossTagilla",
-              "relativeProbability": 0,
-              "data": {
-                "isBoss": true
-              }
-            },
-            {
-              "key": "bossKojaniy",
-              "relativeProbability": 0,
-              "data": {
-                "isBoss": true
-              }
-            },
-            {
-              "key": "bossKnight",
-              "relativeProbability": 0,
-              "data": {
-                "isBoss": true
-              }
-            },
-            {
-              "key": "bossZryachiy",
-              "relativeProbability": 0,
-              "data": {
-                "isBoss": true
-              }
-            },
-            {
-              "key": "bossBoar",
-              "relativeProbability": 0,
-              "data": {
-                "isBoss": true
-              }
-            },
-            {
-              "key": "bossBoarSniper",
-              "relativeProbability": 0,
-              "data": {
-                "isBoss": true
               }
             }
           ],
@@ -776,83 +706,6 @@
                 "isBoss": false,
                 "isPmc": true
               }
-            },
-            {
-              "key": "bossBully",
-              "relativeProbability": 0.4,
-              "data": {
-                "isBoss": true
-              }
-            },
-            {
-              "key": "bossGluhar",
-              "relativeProbability": 0.4,
-              "data": {
-                "isBoss": true
-              }
-            },
-            {
-              "key": "bossKilla",
-              "relativeProbability": 0.4,
-              "data": {
-                "isBoss": true
-              }
-            },
-            {
-              "key": "bossSanitar",
-              "relativeProbability": 0.4,
-              "data": {
-                "isBoss": true
-              }
-            },
-            {
-              "key": "bossTagilla",
-              "relativeProbability": 0.4,
-              "data": {
-                "isBoss": true
-              }
-            },
-            {
-              "key": "bossKojaniy",
-              "relativeProbability": 0.4,
-              "data": {
-                "isBoss": true
-              }
-            },
-            {
-              "key": "bossKnight",
-              "relativeProbability": 0,
-              "data": {
-                "isBoss": true
-              }
-            },
-            {
-              "key": "bossZryachiy",
-              "relativeProbability": 0,
-              "data": {
-                "isBoss": true
-              }
-            },
-            {
-              "key": "bossKolontay",
-              "relativeProbability": 0.4,
-              "data": {
-                "isBoss": true
-              }
-            },
-            {
-              "key": "bossBoar",
-              "relativeProbability": 0,
-              "data": {
-                "isBoss": true
-              }
-            },
-            {
-              "key": "bossBoarSniper",
-              "relativeProbability": 0,
-              "data": {
-                "isBoss": true
-              }
             }
           ],
           "bodyPartChance": 15,
@@ -1047,83 +900,6 @@
               "data": {
                 "isBoss": false,
                 "isPmc": true
-              }
-            },
-            {
-              "key": "bossBully",
-              "relativeProbability": 0.4,
-              "data": {
-                "isBoss": true
-              }
-            },
-            {
-              "key": "bossGluhar",
-              "relativeProbability": 0.4,
-              "data": {
-                "isBoss": true
-              }
-            },
-            {
-              "key": "bossKilla",
-              "relativeProbability": 0.4,
-              "data": {
-                "isBoss": true
-              }
-            },
-            {
-              "key": "bossSanitar",
-              "relativeProbability": 0.4,
-              "data": {
-                "isBoss": true
-              }
-            },
-            {
-              "key": "bossTagilla",
-              "relativeProbability": 0.4,
-              "data": {
-                "isBoss": true
-              }
-            },
-            {
-              "key": "bossKojaniy",
-              "relativeProbability": 0.4,
-              "data": {
-                "isBoss": true
-              }
-            },
-            {
-              "key": "bossKnight",
-              "relativeProbability": 0,
-              "data": {
-                "isBoss": true
-              }
-            },
-            {
-              "key": "bossZryachiy",
-              "relativeProbability": 0,
-              "data": {
-                "isBoss": true
-              }
-            },
-            {
-              "key": "bossBoar",
-              "relativeProbability": 0,
-              "data": {
-                "isBoss": true
-              }
-            },
-            {
-              "key": "bossKolontay",
-              "relativeProbability": 0.4,
-              "data": {
-                "isBoss": true
-              }
-            },
-            {
-              "key": "bossBoarSniper",
-              "relativeProbability": 0,
-              "data": {
-                "isBoss": true
               }
             }
           ],

@@ -22,6 +22,23 @@ public class TryGetLocationInfoOverride : AbstractPatch
     [PatchPrefix]
     public static void Prefix(QuestTypePool pool)
     {
-        //_questHelper.RemoveUnusedLocations(pool);
+        _questHelper.RemoveUnusedLocations(pool);
+    }
+}
+
+//fix bug by hard setting it
+public class GetNumberOfExitsOverride : AbstractPatch
+{
+    protected override MethodBase? GetTargetMethod()
+    {
+        return typeof(ExplorationQuestGenerator).GetMethod("GetNumberOfExits",
+            BindingFlags.Instance | BindingFlags.NonPublic);
+    }
+
+    [PatchPrefix]
+    public static bool Prefix(ref int __result)
+    {
+        __result = 1;
+        return false;
     }
 }

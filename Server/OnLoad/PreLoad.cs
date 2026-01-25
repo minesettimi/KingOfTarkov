@@ -18,7 +18,8 @@ public class PreLoad(ConfigService config) : IOnLoad
         new GetClientQuestsOverride(),
         new CreateProfileOverride(),
         new TryGetLocationInfoOverride(),
-        new WeatherControllerOverride()
+        new WeatherControllerOverride(),
+        new GetNumberOfExitsOverride()
     ];
     
     public async Task OnLoad()

@@ -11,6 +11,7 @@ namespace KingOfTarkov.Services;
 [Injectable(InjectionType.Singleton)]
 public class ProfileService(SaveServer saveServer,
     ISptLogger<ProfileService> logger,
+    ConfigService configService,
     SaveService save)
 {
     public void InitializeProfile(MongoId sessionId, MongoId id)
@@ -27,14 +28,27 @@ public class ProfileService(SaveServer saveServer,
         {
             logger.Warning("[KoT] Player created non-KingOfTarkov profile! There may be issues!");
         }
+
+        Dictionary<MongoId, ProfileInfoState> profileList = save.CurrentSave.Profile.Profiles;
+        if (profileList.ContainsKey(id))
+        {
+            if (configService.KingConfig.Developer)
+                profileList.Remove(id);
+            else
+            {
+                logger.Error("[KoT] Tried to make new profile already indexed");
+                return;
+            }
+
+        }
         
-        save.CurrentSave.Profile.Profiles.Add(id, new ProfileInfoState()
+        profileList.Add(id, new ProfileInfoState()
         {
             Lives = 3
         });
         
         //TODO: FIKA support
-        save.CurrentSave.Profile.Locked = true;
+        //save.CurrentSave.Profile.Locked = true;
         
         save.SaveCurrentState();
     }
