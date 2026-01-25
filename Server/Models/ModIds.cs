@@ -13,10 +13,6 @@ public static class ModIds
     public const string CURSED = "69641cdb3a6474c01a1c328a"; //
     public const string SCAV_TRAINING = "69641cf7e8f4ea1f731c328b"; //
     public const string NOBODY_EXPECTS_CULT = "69641d1c93259454391c328c"; //
-    public const string GRENADE_SURPLUS = "69641d78abe078d69b1c328e";
-    public const string RAINING_FIRE = "69641d8659ec5b9fb71c328f";
-    public const string AMMO_SURPLUS = "69641e4c6df6e6ba751c3292";
-    public const string ARMOR_SURPLUS = "69641e8c1ac56bc92c1c3293";
     public const string SLOW_ENGINE = "69641f0d1a7fda7de51c3295"; //
     public const string BLOOD_SNIPERS = "69641f26d1723deca91c3296"; //
     public const string TAXI_TAX = "69641f35f803fa7a201c3297"; // 
