@@ -57,7 +57,7 @@ public class MainMenuShowPatch : ModulePatch
     {
         int lives = Plugin.StateService.PlayerData.Lives;
         
-        if (Plugin.StateService.PlayerData.Lives == 0)
+        if (Plugin.StateService.PlayerData.Lives <= 0)
         {
             ____playButton.Interactable = false;
             ____playButton.SetDisabledTooltip("LivesOutTooltip".Localized());

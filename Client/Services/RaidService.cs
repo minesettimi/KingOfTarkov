@@ -21,7 +21,6 @@ public class RaidService
         }
         
         Plugin.PluginLogger.LogInfo($"[KoT] Raid started on location: {locationId}");
-        //TODO: Update Modifier list
     }
 
     public void ExfilQuestCompleted(QuestClass quest)

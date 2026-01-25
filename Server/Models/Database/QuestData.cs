@@ -16,4 +16,7 @@ public class ExfilData
     
     [JsonPropertyName("boss")]
     public MongoId Boss { get; set; }
+    
+    [JsonPropertyName("revive")]
+    public MongoId Revive { get; set; }
 }

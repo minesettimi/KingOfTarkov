@@ -17,6 +17,7 @@ public class QuestGenerator(DataService dataService,
     LocationUtil locationUtil,
     LocationService locationService,
     RandomUtil randomUtil,
+    ConfigService config,
     ISptLogger<QuestGenerator> logger)
 {
     //mainly want to ban partisan because he doesn't spawn like regular bosses
@@ -31,9 +32,9 @@ public class QuestGenerator(DataService dataService,
         
         Quest? baseQuest = GenerateExfilQuest(templateId, locationId);
 
-        if (baseQuest is null)
+        if (baseQuest == null)
         {
-            logger.Error("[Kot] Failed to generate exfil elimination quest.");
+            logger.Error("[KoT] Failed to generate exfil elimination quest.");
             return null;
         }
 
@@ -48,13 +49,13 @@ public class QuestGenerator(DataService dataService,
     
     public KeyValuePair<string, Quest>? GenerateBossExfilQuest(MongoId locationId)
     {
-        MongoId templateId = dataService.TrialConfig.Quests.Exfil.Elimination;
+        MongoId templateId = dataService.TrialConfig.Quests.Exfil.Boss;
         
         Quest? baseQuest = GenerateExfilQuest(templateId, locationId);
 
-        if (baseQuest is null)
+        if (baseQuest == null)
         {
-            logger.Error("[Kot] Failed to generate exfil elimination quest.");
+            logger.Error("[KoT] Failed to generate exfil boss elimination quest.");
             return null;
         }
         
@@ -70,8 +71,27 @@ public class QuestGenerator(DataService dataService,
 
         return new KeyValuePair<string, Quest>(selectedBoss, baseQuest);
     }
+
+    public Quest? GenerateReviveQuest()
+    {
+        MongoId templateId = dataService.TrialConfig.Quests.Exfil.Revive;
+
+        Quest? baseQuest = GenerateQuest(templateId);
+
+        if (baseQuest == null)
+        {
+            logger.Error("[KoT] Failed to generate revive quest.");
+            return null;
+        }
+
+        //set currency
+        QuestCondition currencyCondition = baseQuest.Conditions.AvailableForFinish![0];
+        currencyCondition.Value = config.Difficulty.Core.ReviveCost;
+
+        return baseQuest;
+    }
     
-    public Quest? GenerateExfilQuest(MongoId template, MongoId locationId)
+    private Quest? GenerateExfilQuest(MongoId template, MongoId locationId)
     {
         Quest? newQuest = GenerateQuest(template);
         

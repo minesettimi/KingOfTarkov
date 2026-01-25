@@ -3,6 +3,7 @@ using KingOfTarkov.Helpers;
 using KingOfTarkov.Models.Save;
 using SPTarkov.DI.Annotations;
 using SPTarkov.Server.Core.Models.Common;
+using SPTarkov.Server.Core.Models.Eft.Common;
 using SPTarkov.Server.Core.Models.Eft.Common.Tables;
 using SPTarkov.Server.Core.Models.Utils;
 
@@ -66,7 +67,11 @@ public class TrialService(KingProfileHelper profileHelper,
     
     public void StartNewTrial()
     {
+        
         SaveState currentSave = save.CurrentSave;
+
+        if (currentSave.Trial.TrialNum == 10)
+            return;
         
         int newTrialNum = currentSave.Trial.TrialNum + 1;
         

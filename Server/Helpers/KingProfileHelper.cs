@@ -1,3 +1,4 @@
+using KingOfTarkov.Generators;
 using KingOfTarkov.Services;
 using KingOfTarkov.Utils;
 using SPTarkov.DI.Annotations;
@@ -39,7 +40,7 @@ public class KingProfileHelper(SaveServer saveServer,
 
             if (!newTrial) continue;
 
-            LevelUpPlayer(playerData, config.BaseDifficulty.Trial.LevelPerTrial);
+            LevelUpPlayer(playerData, config.Difficulty.Trial.LevelPerTrial);
         }
     }
 

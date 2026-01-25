@@ -110,6 +110,11 @@
   "ExfilName 653e6760052c01c1c805532f": "Exfil: Ground Zero",
   "ExfilName 6733700029c367a3d40b02af": "Exfil: Labyrinth",
   
+  //revive quests
+  "ReviveName": "Swan Song",
+  "ReviveDescription": "Looks like you're not quite cut out for the challenge. Luckily for you, I have interest in seeing that challenge being beaten.\n\nI will help you get back in but it won't be easy or cheap to do it under Ref's radar.\n\nPay the fee and you'll be trying again in no time.",
+  "ReviveSuccess": "Payment received. You're back in the game.",
+  
   //fix some bosses not having proper locales
   "QuestCondition/Elimination/Kill/BotRole/bossTagillaAgro": "Shadow Of Tagilla",
   "QuestCondition/Elimination/Kill/BotRole/bossKillaAgro": "Shadow Of Killa",

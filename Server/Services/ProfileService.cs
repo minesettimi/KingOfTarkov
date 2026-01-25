@@ -44,11 +44,12 @@ public class ProfileService(SaveServer saveServer,
         
         profileList.Add(id, new ProfileInfoState
         {
-            Lives = configService.BaseDifficulty.Core.Lives
+            Lives = configService.Difficulty.Core.Lives,
+            Revives = configService.Difficulty.Core.ReviveLimit
         });
         
         //TODO: FIKA support
-        //save.CurrentSave.Profile.Locked = true;
+        save.CurrentSave.Profile.Locked = !configService.BaseConfig.Developer;
         
         save.SaveCurrentState();
     }

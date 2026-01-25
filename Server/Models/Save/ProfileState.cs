@@ -17,6 +17,9 @@ public class ProfileInfoState
     [JsonPropertyName("lives")]
     public int Lives { get; set; }
     
+    [JsonPropertyName("revives")]
+    public int Revives { get; set; }
+    
     [JsonPropertyName("quests")]
     public List<MongoId> Quests { get; set; } = [];
 }

@@ -166,5 +166,62 @@
     "traderId": "6617beeaa9cfa777ca915b7c",
     "type": "Exploration",
     "sptState": "Started"
+  },
+  "69769f658ba1e500f766775c":
+  {
+    "QuestName": "Revive Payment",
+    "_id": "69769f658ba1e500f766775c",
+    "acceptPlayerMessage": "",
+    "acceptanceAndFinishingSource": "eft",
+    "arenaLocations": [],
+    "canShowNotificationsInGame": true,
+    "conditions": {
+      "AvailableForFinish": [
+        {
+          "conditionType": "HandoverItem",
+          "dogtagLevel": 0,
+          "dynamicLocale": true,
+          "globalQuestCounterId": "",
+          "id": "6976a0015891b4910166775f",
+          "index": 0,
+          "isEncoded": false,
+          "maxDurability": 100,
+          "minDurability": 0,
+          "onlyFoundInRaid": false,
+          "parentId": "",
+          "target": [
+            "5449016a4bdc2d6f028b456f"
+          ],
+          "value": 10000000,
+          "visibilityConditions": []
+        }
+      ],
+      "AvailableForStart": [],
+      "Fail": []
+    },
+    "description": "ReviveDescription",
+    "gameModes": [],
+    "image": "/files/quest/icon/66562aaaa636bd24a654f416.png",
+    "instantComplete": true,
+    "isKey": false,
+    "location": "any",
+    "name": "ReviveName",
+    "note": "",
+    "progressSource": "eft",
+    "rankingModes": [],
+    "restartable": false,
+    "rewards": {
+      "Fail": [],
+      "Started": [],
+      "Success": []
+    },
+    "secretQuest": false,
+    "side": "Pmc",
+    "startedMessageText": "",
+    "status": 2,
+    "successMessageText": "6976728138aae1f559667752 successMessageText",
+    "traderId": "579dc571d53a0658a154fbec",
+    "type": "Loyalty",
+    "sptState": "Started"
   }
 }

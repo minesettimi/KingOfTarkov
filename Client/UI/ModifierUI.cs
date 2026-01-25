@@ -38,7 +38,7 @@ public class ModifierUI : UIElement
     public void ShowMod(KeyValuePair<MongoID, ModifierData> modData, ModifierIconUI modIcon)
     {
         modIcon.SetEnabledTooltip($"{modData.Key} name".Localized() +
-                                  "<br><color=#2e2e2e>" + $"{modData.Key} description".Localized() + "</color>");
+                                  "<br><color=#535353>" + $"{modData.Key} description".Localized() + "</color>");
         
         if (modData.Value.Sprite == null)
         {

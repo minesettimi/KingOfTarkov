@@ -23,7 +23,7 @@ public class ConfigService(ModHelper modHelper,
     public readonly string ModPath = modHelper.GetAbsolutePathToModFolder(Assembly.GetExecutingAssembly());
     
     public BaseConfig BaseConfig;
-    public BaseDifficulty BaseDifficulty;
+    public BaseDifficulty Difficulty;
 
     public async Task Load()
     {
@@ -38,12 +38,12 @@ public class ConfigService(ModHelper modHelper,
         if (selectedDifficulty == null)
         {
             logger.Error($"[KoT] Difficulty: \"{BaseConfig.Difficulty}.jsonc\" not found.");
-            BaseDifficulty = new BaseDifficulty();
+            Difficulty = new BaseDifficulty();
         }
         else
         {
             logger.Info($"[KoT] Initializing for {BaseConfig.Difficulty} difficulty.");
-            BaseDifficulty = selectedDifficulty;
+            Difficulty = selectedDifficulty;
         }
         
         await File.WriteAllTextAsync(configPath, jsonUtil.Serialize(BaseConfig, true));
@@ -93,12 +93,12 @@ public class ConfigService(ModHelper modHelper,
         //increase loot multipliers
         foreach ((string key, double value) in locationConfig.LooseLootMultiplier)
         {
-            locationConfig.LooseLootMultiplier[key] = value + BaseDifficulty.Location.LooseLootAdd;
+            locationConfig.LooseLootMultiplier[key] = value + Difficulty.Location.LooseLootAdd;
         }
 
         foreach ((string key, double value) in locationConfig.StaticLootMultiplier)
         {
-            locationConfig.StaticLootMultiplier[key] = value + BaseDifficulty.Location.StaticLootAdd;
+            locationConfig.StaticLootMultiplier[key] = value + Difficulty.Location.StaticLootAdd;
         }
         
         TraderConfig traderConfig = configServer.GetConfig<TraderConfig>();

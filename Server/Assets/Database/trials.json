@@ -77,7 +77,8 @@
     "exfil":
     {
       "elimination": "69693d9cffb48a8137fda9c8",
-      "boss": "69693feabfc77076a7fda9c9"
+      "boss": "69693feabfc77076a7fda9c9",
+      "revive": "69769f658ba1e500f766775c"
     }
   },
   "locations":
