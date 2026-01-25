@@ -172,6 +172,7 @@ public class LocationService(LocationUtil locationUtil,
             switch (bossSetting.BossName)
             {
                 case "sectantPriest" when modService.HasMod(ModIds.NOBODY_EXPECTS_CULT, locationId):
+                case "sectantPredvestnik" when modService.HasMod(ModIds.FORGOTTEN_SOLDIERS, locationId):
                 case "ravangeZryachiyEvent" when modService.HasMod(ModIds.VENGEFUL, locationId):
                     bossSetting.ForceSpawn = true;
                     bossSetting.BossChance = 100;

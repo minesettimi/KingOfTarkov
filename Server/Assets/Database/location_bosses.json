@@ -285,7 +285,7 @@
       "BossName": "ravangeZryachiyEvent",
       "BossPlayer": false,
       "BossZone": "",
-      "Delay": 0,
+      "Delay": 30,
       "ForceSpawn": true,
       "IgnoreMaxBots": true,
       "RandomTimeSpawn": false,
@@ -296,6 +296,54 @@
         "regular"
       ],
       "Supports": null,
+      "Time": -1,
+      "TriggerId": "",
+      "TriggerName": ""
+    },
+    {
+      "BossChance": 0,
+      "BossDifficult": "normal",
+      "BossEscortAmount": "2",
+      "BossEscortDifficult": "normal",
+      "BossEscortType": "sectantWarrior",
+      "BossName": "sectantPredvestnik",
+      "BossPlayer": false,
+      "BossZone": "",
+      "Delay": 0,
+      "DependKarma": false,
+      "DependKarmaPVE": false,
+      "ForceSpawn": true,
+      "IgnoreMaxBots": true,
+      "RandomTimeSpawn": true,
+      "ShowOnTarkovMap": false,
+      "ShowOnTarkovMapPvE": false,
+      "SpawnMode": [
+        "regular",
+        "pve"
+      ],
+      "Supports": [
+        {
+          "BossEscortAmount": "1",
+          "BossEscortDifficult": [
+            "normal"
+          ],
+          "BossEscortType": "sectantPrizrak"
+        },
+        {
+          "BossEscortAmount": "1",
+          "BossEscortDifficult": [
+            "normal"
+          ],
+          "BossEscortType": "sectantOni"
+        },
+        {
+          "BossEscortAmount": "0",
+          "BossEscortDifficult": [
+            "normal"
+          ],
+          "BossEscortType": "followerGluharScout"
+        }
+      ],
       "Time": -1,
       "TriggerId": "",
       "TriggerName": ""

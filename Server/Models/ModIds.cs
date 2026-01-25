@@ -19,4 +19,5 @@ public static class ModIds
     public const string ANTI_AIRCRAFT = "6971568817fa49e7d374f9e9"; //
     public const string BLACKHOLE_CORPSES = "6971a16640ca8d842155fe95"; //
     public const string VENGEFUL = "69743b8a9ff301273ab9cfe3"; //
+    public const string FORGOTTEN_SOLDIERS = "697665d21a0af5a3ec667751"; //
 }
