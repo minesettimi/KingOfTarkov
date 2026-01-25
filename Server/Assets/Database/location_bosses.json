@@ -45,6 +45,30 @@
       "Time": -1,
       "TriggerId": "",
       "TriggerName": ""
+    },
+    {
+      "BossChance": 0,
+      "BossDifficult": "normal",
+      "BossEscortAmount": "0",
+      "BossEscortDifficult": "normal",
+      "BossEscortType": "bossZryachiy",
+      "BossName": "ravangeZryachiyEvent",
+      "BossPlayer": false,
+      "BossZone": "ZoneSandbox",
+      "Delay": 0,
+      "ForceSpawn": true,
+      "IgnoreMaxBots": true,
+      "RandomTimeSpawn": false,
+      "ShowOnTarkovMap": true,
+      "ShowOnTarkovMapPvE": true,
+      "SpawnMode": [
+        "pve",
+        "regular"
+      ],
+      "Supports": null,
+      "Time": -1,
+      "TriggerId": "",
+      "TriggerName": ""
     }
   ],
   "laboratory":
@@ -98,6 +122,30 @@
       "Time": -1,
       "TriggerId": "",
       "TriggerName": ""
+    },
+    {
+      "BossChance": 0,
+      "BossDifficult": "normal",
+      "BossEscortAmount": "0",
+      "BossEscortDifficult": "normal",
+      "BossEscortType": "bossZryachiy",
+      "BossName": "ravangeZryachiyEvent",
+      "BossPlayer": false,
+      "BossZone": "BotZoneFloor1,BotZoneFloor2,BotZoneBasement",
+      "Delay": 0,
+      "ForceSpawn": true,
+      "IgnoreMaxBots": true,
+      "RandomTimeSpawn": false,
+      "ShowOnTarkovMap": true,
+      "ShowOnTarkovMapPvE": true,
+      "SpawnMode": [
+        "pve",
+        "regular"
+      ],
+      "Supports": null,
+      "Time": -1,
+      "TriggerId": "",
+      "TriggerName": ""
     }
   ],
   "tarkovstreets":
@@ -122,6 +170,30 @@
       "SpawnMode": [
         "regular",
         "pve"
+      ],
+      "Supports": null,
+      "Time": -1,
+      "TriggerId": "",
+      "TriggerName": ""
+    },
+    {
+      "BossChance": 0,
+      "BossDifficult": "normal",
+      "BossEscortAmount": "0",
+      "BossEscortDifficult": "normal",
+      "BossEscortType": "bossZryachiy",
+      "BossName": "ravangeZryachiyEvent",
+      "BossPlayer": false,
+      "BossZone": "ZoneFactory,ZoneHotel_1,ZoneHotel_2,ZoneConcordiaParking",
+      "Delay": 0,
+      "ForceSpawn": true,
+      "IgnoreMaxBots": true,
+      "RandomTimeSpawn": false,
+      "ShowOnTarkovMap": true,
+      "ShowOnTarkovMapPvE": true,
+      "SpawnMode": [
+        "pve",
+        "regular"
       ],
       "Supports": null,
       "Time": -1,
@@ -156,6 +228,30 @@
       "Time": -1,
       "TriggerId": "",
       "TriggerName": ""
+    },
+    {
+      "BossChance": 0,
+      "BossDifficult": "normal",
+      "BossEscortAmount": "0",
+      "BossEscortDifficult": "normal",
+      "BossEscortType": "bossZryachiy",
+      "BossName": "ravangeZryachiyEvent",
+      "BossPlayer": false,
+      "BossZone": "ZoneSubCommand,ZoneSubStorage",
+      "Delay": 0,
+      "ForceSpawn": true,
+      "IgnoreMaxBots": true,
+      "RandomTimeSpawn": false,
+      "ShowOnTarkovMap": true,
+      "ShowOnTarkovMapPvE": true,
+      "SpawnMode": [
+        "pve",
+        "regular"
+      ],
+      "Supports": null,
+      "Time": -1,
+      "TriggerId": "",
+      "TriggerName": ""
     }
   ],
   "lighthouse":
@@ -180,6 +276,30 @@
       "SpawnMode": [
         "regular",
         "pve"
+      ],
+      "Supports": null,
+      "Time": -1,
+      "TriggerId": "",
+      "TriggerName": ""
+    },
+    {
+      "BossChance": 0,
+      "BossDifficult": "normal",
+      "BossEscortAmount": "0",
+      "BossEscortDifficult": "normal",
+      "BossEscortType": "bossZryachiy",
+      "BossName": "ravangeZryachiyEvent",
+      "BossPlayer": false,
+      "BossZone": "Zone_OldHouse",
+      "Delay": 0,
+      "ForceSpawn": true,
+      "IgnoreMaxBots": true,
+      "RandomTimeSpawn": false,
+      "ShowOnTarkovMap": true,
+      "ShowOnTarkovMapPvE": true,
+      "SpawnMode": [
+        "pve",
+        "regular"
       ],
       "Supports": null,
       "Time": -1,
@@ -214,6 +334,30 @@
       "Time": -1,
       "TriggerId": "",
       "TriggerName": ""
+    },
+    {
+      "BossChance": 0,
+      "BossDifficult": "normal",
+      "BossEscortAmount": "0",
+      "BossEscortDifficult": "normal",
+      "BossEscortType": "bossZryachiy",
+      "BossName": "ravangeZryachiyEvent",
+      "BossPlayer": false,
+      "BossZone": "BotZone",
+      "Delay": 0,
+      "ForceSpawn": true,
+      "IgnoreMaxBots": true,
+      "RandomTimeSpawn": false,
+      "ShowOnTarkovMap": true,
+      "ShowOnTarkovMapPvE": true,
+      "SpawnMode": [
+        "pve",
+        "regular"
+      ],
+      "Supports": null,
+      "Time": -1,
+      "TriggerId": "",
+      "TriggerName": ""
     }
   ],
   "interchange":
@@ -243,6 +387,30 @@
       "Time": -1,
       "TriggerId": "",
       "TriggerName": ""
+    },
+    {
+      "BossChance": 0,
+      "BossDifficult": "normal",
+      "BossEscortAmount": "0",
+      "BossEscortDifficult": "normal",
+      "BossEscortType": "bossZryachiy",
+      "BossName": "ravangeZryachiyEvent",
+      "BossPlayer": false,
+      "BossZone": "ZoneRoad,ZoneTrucks,ZoneCenterBot",
+      "Delay": 0,
+      "ForceSpawn": true,
+      "IgnoreMaxBots": true,
+      "RandomTimeSpawn": false,
+      "ShowOnTarkovMap": true,
+      "ShowOnTarkovMapPvE": true,
+      "SpawnMode": [
+        "pve",
+        "regular"
+      ],
+      "Supports": null,
+      "Time": -1,
+      "TriggerId": "",
+      "TriggerName": ""
     }
   ],
   "factory4day":
@@ -259,6 +427,165 @@
       "IgnoreMaxBots": true,
       "ShowOnTarkovMap": false,
       "ShowOnTarkovMapPvE": false,
+      "SpawnMode": [
+        "pve",
+        "regular"
+      ],
+      "Supports": null,
+      "Time": -1,
+      "TriggerId": "",
+      "TriggerName": ""
+    },
+    {
+      "BossChance": 0,
+      "BossDifficult": "normal",
+      "BossEscortAmount": "0",
+      "BossEscortDifficult": "normal",
+      "BossEscortType": "bossZryachiy",
+      "BossName": "ravangeZryachiyEvent",
+      "BossPlayer": false,
+      "BossZone": "BotZone",
+      "Delay": 0,
+      "ForceSpawn": true,
+      "IgnoreMaxBots": true,
+      "RandomTimeSpawn": false,
+      "ShowOnTarkovMap": true,
+      "ShowOnTarkovMapPvE": true,
+      "SpawnMode": [
+        "pve",
+        "regular"
+      ],
+      "Supports": null,
+      "Time": -1,
+      "TriggerId": "",
+      "TriggerName": ""
+    }
+  ],
+  "sandboxhigh": 
+  [
+    {
+      "BossChance": 0,
+      "BossDifficult": "normal",
+      "BossEscortAmount": "0",
+      "BossEscortDifficult": "normal",
+      "BossEscortType": "bossZryachiy",
+      "BossName": "ravangeZryachiyEvent",
+      "BossPlayer": false,
+      "BossZone": "ZoneSandbox",
+      "Delay": 0,
+      "ForceSpawn": true,
+      "IgnoreMaxBots": true,
+      "RandomTimeSpawn": false,
+      "ShowOnTarkovMap": true,
+      "ShowOnTarkovMapPvE": true,
+      "SpawnMode": [
+        "pve",
+        "regular"
+      ],
+      "Supports": null,
+      "Time": -1,
+      "TriggerId": "",
+      "TriggerName": ""
+    }
+  ],
+  "factory4night": 
+  [
+    {
+      "BossChance": 0,
+      "BossDifficult": "normal",
+      "BossEscortAmount": "0",
+      "BossEscortDifficult": "normal",
+      "BossEscortType": "bossZryachiy",
+      "BossName": "ravangeZryachiyEvent",
+      "BossPlayer": false,
+      "BossZone": "BotZone",
+      "Delay": 0,
+      "ForceSpawn": true,
+      "IgnoreMaxBots": true,
+      "RandomTimeSpawn": false,
+      "ShowOnTarkovMap": true,
+      "ShowOnTarkovMapPvE": true,
+      "SpawnMode": [
+        "pve",
+        "regular"
+      ],
+      "Supports": null,
+      "Time": -1,
+      "TriggerId": "",
+      "TriggerName": ""
+    }
+  ],
+  "bigmap": 
+  [
+    {
+      "BossChance": 0,
+      "BossDifficult": "normal",
+      "BossEscortAmount": "0",
+      "BossEscortDifficult": "normal",
+      "BossEscortType": "bossZryachiy",
+      "BossName": "ravangeZryachiyEvent",
+      "BossPlayer": false,
+      "BossZone": "ZoneDormitory,ZoneGasStation,ZoneScavBase",
+      "Delay": 0,
+      "ForceSpawn": true,
+      "IgnoreMaxBots": true,
+      "RandomTimeSpawn": false,
+      "ShowOnTarkovMap": true,
+      "ShowOnTarkovMapPvE": true,
+      "SpawnMode": [
+        "pve",
+        "regular"
+      ],
+      "Supports": null,
+      "Time": -1,
+      "TriggerId": "",
+      "TriggerName": ""
+    }
+  ],
+  "shoreline": 
+  [
+    {
+      "BossChance": 0,
+      "BossDifficult": "normal",
+      "BossEscortAmount": "0",
+      "BossEscortDifficult": "normal",
+      "BossEscortType": "bossZryachiy",
+      "BossName": "ravangeZryachiyEvent",
+      "BossPlayer": false,
+      "BossZone": "ZoneGreenHouses,ZonePort,ZoneSanatorium1,ZoneSanatorium2,ZoneSmuglers",
+      "Delay": 0,
+      "ForceSpawn": true,
+      "IgnoreMaxBots": true,
+      "RandomTimeSpawn": false,
+      "ShowOnTarkovMap": true,
+      "ShowOnTarkovMapPvE": true,
+      "SpawnMode": [
+        "pve",
+        "regular"
+      ],
+      "Supports": null,
+      "Time": -1,
+      "TriggerId": "",
+      "TriggerName": ""
+    }
+  ],
+  "woods": 
+  [
+    {
+      "BossChance": 0,
+      "BossDifficult": "normal",
+      "BossEscortAmount": "0",
+      "BossEscortDifficult": "normal",
+      "BossEscortType": "bossZryachiy",
+      "BossName": "ravangeZryachiyEvent",
+      "BossPlayer": false,
+      "BossZone": "ZoneScavBase2",
+      "Delay": 0,
+      "ForceSpawn": true,
+      "IgnoreMaxBots": true,
+      "RandomTimeSpawn": false,
+      "ShowOnTarkovMap": true,
+      "ShowOnTarkovMapPvE": true,
       "SpawnMode": [
         "pve",
         "regular"

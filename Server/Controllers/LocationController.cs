@@ -93,21 +93,15 @@ public class LocationController(SaveService save,
         //bot spawns
         foreach (BossLocationSpawn bossSetting in location.BossLocationSpawn)
         {
-            if (bossSetting.BossName == "bossPartisan" && modService.HasMod(ModIds.PROFESSIONAL_CAMPER, locationId))
+            switch (bossSetting.BossName)
             {
-                bossSetting.ForceSpawn = true;
-                bossSetting.BossChance = 100;
-            }
-            
-            if (bossSetting.BossName == "sectantPriest" && modService.HasMod(ModIds.NOBODY_EXPECTS_CULT, locationId))
-            {
-                bossSetting.ForceSpawn = true;
-                bossSetting.BossChance = 100;
-            }
-
-            if (bossSetting.BossName == "ravangeZryachiyEvent" && modService.HasMod(ModIds.VENGEFUL, locationId))
-            {
-                bossSetting.BossChance = 100;
+                case "bossPartisan" when modService.HasMod(ModIds.PROFESSIONAL_CAMPER, locationId):
+                case "sectantPriest" when modService.HasMod(ModIds.NOBODY_EXPECTS_CULT, locationId):
+                /* && modService.HasMod(ModIds.VENGEFUL, locationId)*/
+                case "ravangeZryachiyEvent":
+                    bossSetting.ForceSpawn = true;
+                    bossSetting.BossChance = 100;
+                    break;
             }
         }
         
