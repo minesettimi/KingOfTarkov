@@ -14,7 +14,6 @@ public class PreLoad(ConfigService config) : IOnLoad
 {
     private readonly List<AbstractPatch> _patches =
     [
-        new GenerateAllOverride(),
         new HandlePostRaidOverride(),
         new GetClientQuestsOverride(),
         new CreateProfileOverride(),

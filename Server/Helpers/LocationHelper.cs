@@ -4,14 +4,17 @@ using SPTarkov.DI.Annotations;
 using SPTarkov.Server.Core.Models.Common;
 using SPTarkov.Server.Core.Models.Eft.Common;
 using SPTarkov.Server.Core.Models.Utils;
+using SPTarkov.Server.Core.Services;
+using SPTarkov.Server.Core.Utils.Cloners;
 
 namespace KingOfTarkov.Helpers;
 
 [Injectable(InjectionType.Singleton)]
 public class LocationHelper(SaveService saveService,
-    LocationService locationService,
     ISptLogger<LocationHelper> logger)
 {
+    
+    
     public KeyValuePair<MongoId, LocationDataState>? GetLastLocation()
     {
         if (saveService.RemainingRaids != 1)
@@ -20,9 +23,9 @@ public class LocationHelper(SaveService saveService,
         return saveService.CurrentSave.Location.Active.First(l => !l.Value.Completed);
     }
 
-    public void SetupBossLocation(MongoId key, LocationBase locationBase)
+    public void SetupBossLocation(MongoId key, LocationBase locationBase, Dictionary<MongoId, List<string>> bossCache)
     {
-        List<string> bosses = locationService.BossCache[key];
+        List<string> bosses = bossCache[key];
 
         foreach (BossLocationSpawn bossConfig in locationBase.BossLocationSpawn)
         {
@@ -44,5 +47,12 @@ public class LocationHelper(SaveService saveService,
                 bossConfig.ForceSpawn = true;
             }
         }
+    }
+    
+    public List<MongoId> GetActiveMaps()
+    {
+        return saveService.CurrentSave.Location.Active
+            .Where(l => !l.Value.Completed)
+            .Select(l => l.Key).ToList();
     }
 }

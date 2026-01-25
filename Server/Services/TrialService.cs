@@ -9,20 +9,21 @@ using SPTarkov.Server.Core.Models.Utils;
 namespace KingOfTarkov.Services;
 
 [Injectable(InjectionType.Singleton)]
-public class TrialService(SaveService saveService, 
-    KingProfileHelper profileHelper, 
+public class TrialService(KingProfileHelper profileHelper, 
     TrialGenerator trialGenerator,
     SaveService save,
     QuestGenerator questGenerator,
     LocationHelper locationHelper,
+    LocationService locationService,
     ISptLogger<TrialService> logger)
 {
     public Task Load()
     {
-        if (saveService.NewTrial)
+        if (save.NewTrial)
         {
             StartNewTrial();
-            saveService.NewTrial = false;
+            save.NewTrial = false;
+            save.SaveCurrentState();
         }
         
         return Task.CompletedTask;
@@ -41,7 +42,7 @@ public class TrialService(SaveService saveService,
             //delete exfil quests
             foreach (MongoId questId in currentLocation.ExfilRequirements)
             {
-                saveService.CurrentSave.Quests.Exfil.Remove(questId);
+                save.CurrentSave.Quests.Exfil.Remove(questId);
             }
         }
 
@@ -59,12 +60,13 @@ public class TrialService(SaveService saveService,
                 break;
         }
         
+        locationService.SetupNewLocations();
         save.SaveCurrentState();
     }
     
     public void StartNewTrial()
     {
-        SaveState currentSave = saveService.CurrentSave;
+        SaveState currentSave = save.CurrentSave;
         
         int newTrialNum = currentSave.Trial.TrialNum + 1;
         
@@ -74,14 +76,12 @@ public class TrialService(SaveService saveService,
         
         LocationState newState = trialGenerator.GenerateLocationState(newTrialNum, currentSave.Trial, locationState.Previous);
         newState.Previous.AddRange(locationState.Active.Keys);
-        saveService.RemainingRaids = newState.Active.Count;
+        save.RemainingRaids = newState.Active.Count;
         
         currentSave.Location = newState;
         
         profileHelper.SetupTrialForProfiles(newTrialNum == 1);
         GenerateExfilQuests();
-        
-        saveService.SaveCurrentState();
         
         logger.Info($"[KoT] Started new Trial {newTrialNum}");
     }
@@ -89,7 +89,7 @@ public class TrialService(SaveService saveService,
     public void GenerateExfilQuests()
     {
         Dictionary<MongoId, Quest> newQuestList = [];
-        foreach ((MongoId id, LocationDataState data) in saveService.CurrentSave.Location.Active)
+        foreach ((MongoId id, LocationDataState data) in save.CurrentSave.Location.Active)
         {
             Quest? newQuest = questGenerator.GenerateEliminationExfilQuest(id);
 
@@ -100,7 +100,7 @@ public class TrialService(SaveService saveService,
             data.ExfilRequirements.Add(newQuest.Id);
         }
         
-        saveService.CurrentSave.Quests.Exfil = newQuestList;
+        save.CurrentSave.Quests.Exfil = newQuestList;
     }
     
     public void SetupTrialFinale()
@@ -126,7 +126,7 @@ public class TrialService(SaveService saveService,
         
         finalLocation.Value.Value.Boss = result.Key;
         
-        saveService.CurrentSave.Quests.Exfil.Add(result.Value.Id, result.Value);
+        save.CurrentSave.Quests.Exfil.Add(result.Value.Id, result.Value);
         finalLocation.Value.Value.ExfilRequirements.Add(result.Value.Id);
     }
 }
