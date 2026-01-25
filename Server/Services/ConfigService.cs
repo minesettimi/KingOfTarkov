@@ -1,12 +1,15 @@
 using System.Reflection;
 using KingOfTarkov.Models.Config;
+using KingOfTarkov.Models.Difficulty;
 using SPTarkov.DI.Annotations;
 using SPTarkov.Server.Core.Helpers;
 using SPTarkov.Server.Core.Models.Common;
 using SPTarkov.Server.Core.Models.Eft.Common;
 using SPTarkov.Server.Core.Models.Spt.Config;
+using SPTarkov.Server.Core.Models.Utils;
 using SPTarkov.Server.Core.Servers;
 using SPTarkov.Server.Core.Utils;
+using BaseConfig = KingOfTarkov.Models.Config.BaseConfig;
 
 namespace KingOfTarkov.Services;
 
@@ -14,19 +17,36 @@ namespace KingOfTarkov.Services;
 public class ConfigService(ModHelper modHelper,
     ConfigServer configServer,
     DatabaseServer databaseServer,
-    JsonUtil jsonUtil)
+    JsonUtil jsonUtil,
+    ISptLogger<ConfigService> logger)
 {
     public readonly string ModPath = modHelper.GetAbsolutePathToModFolder(Assembly.GetExecutingAssembly());
     
-    public KingConfig KingConfig;
+    public BaseConfig BaseConfig;
+    public BaseDifficulty BaseDifficulty;
 
     public async Task Load()
     {
         string configPath = Path.Join(ModPath, "config.json");
+        string difficultyPath = Path.Join(ModPath, "Difficulties");
         
-        KingConfig = await jsonUtil.DeserializeFromFileAsync<KingConfig>(configPath) ?? new KingConfig();
+        BaseConfig = await jsonUtil.DeserializeFromFileAsync<BaseConfig>(configPath) ?? new BaseConfig();
+        BaseDifficulty? selectedDifficulty =
+            await jsonUtil.DeserializeFromFileAsync<BaseDifficulty>(Path.Join(difficultyPath,
+                $"{BaseConfig.Difficulty}.jsonc"));
+
+        if (selectedDifficulty == null)
+        {
+            logger.Error($"[KoT] Difficulty: \"{BaseConfig.Difficulty}.jsonc\" not found.");
+            BaseDifficulty = new BaseDifficulty();
+        }
+        else
+        {
+            logger.Info($"[KoT] Initializing for {BaseConfig.Difficulty} difficulty.");
+            BaseDifficulty = selectedDifficulty;
+        }
         
-        await File.WriteAllTextAsync(configPath, jsonUtil.Serialize(KingConfig, true));
+        await File.WriteAllTextAsync(configPath, jsonUtil.Serialize(BaseConfig, true));
     }
 
     public async Task PostDBLoad()
@@ -51,7 +71,7 @@ public class ConfigService(ModHelper modHelper,
     {
         CoreConfig coreConfig = configServer.GetConfig<CoreConfig>();
         
-        if (!KingConfig.Developer)
+        if (!BaseConfig.Developer)
         {
             //disable chat bots
             foreach (MongoId id in coreConfig.Features.ChatbotFeatures.EnabledBots.Keys)
@@ -60,7 +80,7 @@ public class ConfigService(ModHelper modHelper,
             }
         }
 
-        if (KingConfig.DisableStockProfiles)
+        if (BaseConfig.DisableStockProfiles)
         {
             foreach (string stockProfile in StockProfiles)
             {
@@ -73,12 +93,12 @@ public class ConfigService(ModHelper modHelper,
         //increase loot multipliers
         foreach ((string key, double value) in locationConfig.LooseLootMultiplier)
         {
-            locationConfig.LooseLootMultiplier[key] = value + KingConfig.ConfigEdits.LooseLootAdd;
+            locationConfig.LooseLootMultiplier[key] = value + BaseDifficulty.Location.LooseLootAdd;
         }
 
         foreach ((string key, double value) in locationConfig.StaticLootMultiplier)
         {
-            locationConfig.StaticLootMultiplier[key] = value + KingConfig.ConfigEdits.StaticLootAdd;
+            locationConfig.StaticLootMultiplier[key] = value + BaseDifficulty.Location.StaticLootAdd;
         }
         
         TraderConfig traderConfig = configServer.GetConfig<TraderConfig>();
@@ -89,7 +109,7 @@ public class ConfigService(ModHelper modHelper,
         //disable cheese
         LostOnDeathConfig lostOnDeathConfig = configServer.GetConfig<LostOnDeathConfig>();
 
-        lostOnDeathConfig.WipeOnRaidStart = !KingConfig.Developer;
+        lostOnDeathConfig.WipeOnRaidStart = !BaseConfig.Developer;
         
         //-----------------
         //database settings

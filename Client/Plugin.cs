@@ -11,7 +11,7 @@ using SPT.Reflection.Patching;
 namespace KoTClient
 {
     
-    [BepInPlugin("com.minesettimi.kingoftarkov", "King Of Tarkov", "0.0.1")]
+    [BepInPlugin("com.minesettimi.kingoftarkov", "King Of Tarkov", "0.6.0")]
     public class Plugin : BaseUnityPlugin
     {
         public static BundleLoader BundleLoader;

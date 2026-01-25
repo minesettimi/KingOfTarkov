@@ -1,0 +1,19 @@
+{
+  "core":
+  {
+    "lives": 5, //lives per profile
+    "revives": true, //can a player buy back their lives
+    "reviveCost": 1000000, //how much does it cost
+    "reviveLimit": 1 //how many revives are allowed per playthrough
+  },
+  "trial":
+  {
+    "levelPerRaid": 2, //how many levels are gained per raid completion
+    "levelPerTrial": 3 //how many level are gained per trial completion
+  },
+  "location":
+  {
+    "staticLootAdditive": 0.5, //how much to add to the static loot multiplier
+    "looseLootAdditive": 2.0 //how much to add to the loose loot multiplier
+  }
+}

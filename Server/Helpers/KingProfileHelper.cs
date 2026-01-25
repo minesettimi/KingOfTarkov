@@ -1,3 +1,4 @@
+using KingOfTarkov.Services;
 using KingOfTarkov.Utils;
 using SPTarkov.DI.Annotations;
 using SPTarkov.Server.Core.Extensions;
@@ -19,6 +20,7 @@ public class KingProfileHelper(SaveServer saveServer,
     DatabaseService databaseService,
     ProfileActivityService profileActivityService,
     LocationUtil locationUtil,
+    ConfigService config,
     ISptLogger<KingProfileHelper> logger)
 {
     public void SetupTrialForProfiles(bool newTrial)
@@ -37,7 +39,7 @@ public class KingProfileHelper(SaveServer saveServer,
 
             if (!newTrial) continue;
 
-            LevelUpPlayer(playerData, 3);
+            LevelUpPlayer(playerData, config.BaseDifficulty.Trial.LevelPerTrial);
         }
     }
 

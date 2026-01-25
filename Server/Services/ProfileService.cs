@@ -32,7 +32,7 @@ public class ProfileService(SaveServer saveServer,
         Dictionary<MongoId, ProfileInfoState> profileList = save.CurrentSave.Profile.Profiles;
         if (profileList.ContainsKey(id))
         {
-            if (configService.KingConfig.Developer)
+            if (configService.BaseConfig.Developer)
                 profileList.Remove(id);
             else
             {
@@ -42,9 +42,9 @@ public class ProfileService(SaveServer saveServer,
 
         }
         
-        profileList.Add(id, new ProfileInfoState()
+        profileList.Add(id, new ProfileInfoState
         {
-            Lives = 3
+            Lives = configService.BaseDifficulty.Core.Lives
         });
         
         //TODO: FIKA support

@@ -13,6 +13,7 @@ public class LocationController(SaveService save,
     KingProfileHelper profileHelper,
     LocationUtil locationUtil,
     TrialService trialService,
+    ConfigService config,
     ISptLogger<LocationController> logger)
 {
 
@@ -44,6 +45,6 @@ public class LocationController(SaveService save,
 
         
         //level player up
-        profileHelper.LevelUpPlayer(pmcProfile!, 2);
+        profileHelper.LevelUpPlayer(pmcProfile!, config.BaseDifficulty.Trial.LevelPerRaid);
     }
 }

@@ -39,7 +39,7 @@ public class SaveService(ConfigService config,
     }
     public void SaveCurrentState()
     {
-        File.WriteAllTextAsync(_savePath, jsonUtil.Serialize(CurrentSave, config.KingConfig.Developer));
+        File.WriteAllTextAsync(_savePath, jsonUtil.Serialize(CurrentSave, config.BaseConfig.Developer));
     }
     
     //TODO: Save historical data for some kind of stats system
