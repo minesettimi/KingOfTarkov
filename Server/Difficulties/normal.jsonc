@@ -2,7 +2,7 @@
   "core":
   {
     "lives": 5, //lives per profile
-    "revives": true, //can a player buy back their lives
+    "revives": false, //can a player buy back their lives
     "reviveCost": 1000000, //how much does it cost
     "reviveLimit": 1 //how many revives are allowed per playthrough
   },

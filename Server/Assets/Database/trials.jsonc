@@ -4,7 +4,7 @@
     "1":
     {
       "locationCount": 2,
-      "globalModCount": 1,
+      "globalModCount": 0,
       "locationModCount": 0,
       "typeWhitelist": []
     },
@@ -273,7 +273,7 @@
       "max": 8,
       "modPool":
       [
-        "9641c76dcf788fcf81c3289", //poison bullets
+        "69641c76dcf788fcf81c3289", //poison bullets
         "69641c39c12fc4b3661c3287", //blizzard
         "69743b8a9ff301273ab9cfe3", //vengeful
         "69641cf7e8f4ea1f731c328b", //training
@@ -300,7 +300,7 @@
     {
       "name": "The End",
       "color": "#000000",
-      "min": 9,
+      "min": 10,
       "max": 10,
       "exclusive": true,
       "modPool":

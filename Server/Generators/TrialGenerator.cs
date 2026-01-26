@@ -28,7 +28,7 @@ public class TrialGenerator(DataService dataService,
         }
         else
         {
-            typePool = trialConfig.Types.Where(type => type.Value.Min == trialNum)
+            typePool = trialConfig.Types.Where(type => type.Value.Min >= trialNum && type.Value.Max <= trialNum)
                 .Select(p => p.Key).ToList();
         }
 
@@ -57,16 +57,33 @@ public class TrialGenerator(DataService dataService,
         {
             locationState.Active.Add(id, new LocationDataState
             {
-                Mods = GenerateMods(currentType, newData.LocationModCount, trialSave.Mods)
+                Mods = GenerateMods(currentType, newData.LocationModCount, trialSave.Mods, id)
             });
         }
 
         return locationState;
     }
 
-    private List<MongoId> GenerateMods(TrialTypeData trialType, int number, List<MongoId> blacklist)
+    private List<MongoId> GenerateMods(TrialTypeData trialType, int number, List<MongoId> blacklist, MongoId? location = null)
     {
         List<MongoId> modPool = trialType.ModPool.Except(blacklist).ToList();
+
+        if (!trialType.Exclusive)
+        {
+            modPool.AddRange(dataService.TrialConfig.GlobalMods);
+        }
+
+        if (location == null)
+        {
+            Dictionary<MongoId, ModifierData> modPoolData = 
+                dataService.Mods.Where(mod => modPool.Contains(mod.Key)).ToDictionary();
+            modPool.RemoveAll(mod => modPoolData[mod].NonGlobal);
+        }
+        else
+        {
+            List<MongoId> locationBlacklist = dataService.TrialConfig.Locations[location.Value].ModBlacklist;
+            modPool.RemoveAll(mod => locationBlacklist.Contains(mod));
+        }
         
         if (modPool.Count < number)
         {
@@ -74,7 +91,7 @@ public class TrialGenerator(DataService dataService,
             number = modPool.Count;
         }
         
-        return randomUtil.DrawRandomFromList(modPool, number, false);
+        return randomUtil.DrawRandomFromList(modPool, number, trialType.Exclusive);
     }
 
     private List<MongoId> GenerateLocations(int trialNum, int locationCount, List<MongoId> previousLocs)

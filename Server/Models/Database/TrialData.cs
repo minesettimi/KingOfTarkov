@@ -15,7 +15,7 @@ public class TrialData
     public List<MongoId> GlobalMods { get; set; } = new();
     
     [JsonPropertyName("locations")]
-    public Dictionary<string, LocationData> Locations { get; set; } = new();
+    public Dictionary<MongoId, LocationData> Locations { get; set; } = new();
     
     [JsonPropertyName("types")]
     public Dictionary<MongoId, TrialTypeData> Types { get; set; } = new();
@@ -33,5 +33,5 @@ public class TrialNumData
     public int LocationModCount { get; set; } = 0;
     
     [JsonPropertyName("typeWhitelist")]
-    public List<MongoId>? TypeWhitelist { get; set; }
+    public List<MongoId>? TypeWhitelist { get; set; } = [];
 }

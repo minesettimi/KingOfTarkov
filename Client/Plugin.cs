@@ -1,17 +1,13 @@
-﻿using System;
-using System.IO;
-using System.Reflection;
-using BepInEx;
+﻿using BepInEx;
 using BepInEx.Logging;
 using KoTClient.Bundles;
-using KoTClient.Patches;
 using KoTClient.Services;
 using SPT.Reflection.Patching;
 
 namespace KoTClient
 {
     
-    [BepInPlugin("com.minesettimi.kingoftarkov", "King Of Tarkov", "0.7.0")]
+    [BepInPlugin("com.minesettimi.kingoftarkov", "King Of Tarkov", "0.8.0")]
     public class Plugin : BaseUnityPlugin
     {
         public static BundleLoader BundleLoader;
