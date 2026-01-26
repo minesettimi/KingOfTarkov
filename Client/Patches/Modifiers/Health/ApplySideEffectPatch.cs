@@ -10,13 +10,8 @@ namespace KoTClient.Patches.Health;
 
 public class ApplySideEffectPatch : ModulePatch
 {
-    private static Type testType;
-    private static MethodInfo applyBuff;
-    
     protected override MethodBase GetTargetMethod()
     {
-        testType = typeof(ActiveHealthController).GetNestedType("Stimulator");
-        
         return AccessTools.Method(typeof(ActiveHealthController), nameof(ActiveHealthController.TryApplySideEffects));
     }
 

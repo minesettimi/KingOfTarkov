@@ -1,4 +1,5 @@
 using System.Text.Json.Serialization;
+using SPTarkov.Server.Core.Models.Common;
 
 namespace KingOfTarkov.Models.Database;
 
@@ -18,4 +19,7 @@ public class LocationData
     
     [JsonPropertyName("maxWeight")]
     public double MaxWeight { get; set; } = 1.0;
+    
+    [JsonPropertyName("blacklist")]
+    public List<MongoId> ModBlacklist { get; set; } = new();
 }

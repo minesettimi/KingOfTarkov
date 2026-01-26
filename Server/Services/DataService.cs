@@ -30,7 +30,7 @@ public class DataService(ConfigService config,
     {
         string dataPath = Path.Join(config.ModPath, "Assets", "Database");
         
-        TrialData? data = await jsonUtil.DeserializeFromFileAsync<TrialData>(Path.Join(dataPath, "trials.json"));
+        TrialData? data = await jsonUtil.DeserializeFromFileAsync<TrialData>(Path.Join(dataPath, "trials.jsonc"));
 
         TrialConfig = data ?? throw new Exception("[KoT] TrialConfig data not found.");
         

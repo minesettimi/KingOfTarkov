@@ -11,6 +11,9 @@ public class TrialData
     [JsonPropertyName("quests")]
     public QuestData Quests { get; set; } = new();
     
+    [JsonPropertyName("globalMods")]
+    public List<MongoId> GlobalMods { get; set; } = new();
+    
     [JsonPropertyName("locations")]
     public Dictionary<string, LocationData> Locations { get; set; } = new();
     

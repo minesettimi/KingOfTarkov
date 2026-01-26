@@ -2,96 +2,98 @@
   "69635493661702de5b3d25d5":
   {
     "name": "Oops All Killa",
-    "image": "/files/modifiers/icon/error.png"
+    "image": "/files/modifiers/icon/blue.png"
   },
   "69641baf8e22a5d7181c3284":
   {
     "name": "Better Things To Do",
-    "image": "/files/modifiers/icon/error.png"
+    "image": "/files/modifiers/icon/white.png"
   },
   "69641bcda88a8c37ed1c3285":
   {
     "name": "Who Turned Off The Lights",
-    "image": "/files/modifiers/icon/error.png"
+    "image": "/files/modifiers/icon/black.png"
   },
   "69641bfddc2b21a1c11c3286":
   {
     "name": "Extreme Metabolism",
-    "image": "/files/modifiers/icon/error.png"
+    "image": "/files/modifiers/icon/yellow.png"
   },
   "69713e68a14861969174f9e8":
   {
     "name": "Desert Weather",
-    "image": "/files/modifiers/icon/error.png"
+    "image": "/files/modifiers/icon/yellow.png"
   },
   "69641c39c12fc4b3661c3287":
   {
     "name": "Sudden Blizzard",
-    "image": "/files/modifiers/icon/error.png"
+    "image": "/files/modifiers/icon/white.png"
   },
   "69641c76dcf788fcf81c3289":
   {
     "name": "Poison Bullets",
-    "image": "/files/modifiers/icon/error.png"
+    "image": "/files/modifiers/icon/purple.png"
   },
   "69641c5d0e8b8f30ec1c3288":
   {
     "name": "Explosive Bullets",
-    "image": "/files/modifiers/icon/error.png"
+    "image": "/files/modifiers/icon/red.png"
   },
   "69641cdb3a6474c01a1c328a":
   {
     "name": "Cursed",
-    "image": "/files/modifiers/icon/error.png"
+    "image": "/files/modifiers/icon/black.png"
   },
   "69641cf7e8f4ea1f731c328b":
   {
     "name": "Scav Training",
-    "image": "/files/modifiers/icon/error.png"
+    "image": "/files/modifiers/icon/red.png"
   },
   "69641d1c93259454391c328c":
   {
     "name": "Nobody Ever Expects The Cult",
-    "image": "/files/modifiers/icon/error.png"
-  },
-  "69641eef2da8bdbbff1c3294":
-  {
-    "name": "Professional Camper",
-    "image": "/files/modifiers/icon/error.png"
+    "image": "/files/modifiers/icon/black.png"
   },
   "69641f0d1a7fda7de51c3295":
   {
     "name": "Slow Engine",
-    "image": "/files/modifiers/icon/error.png"
+    "nonGlobal": true,
+    "free": true,
+    "image": "/files/modifiers/icon/orange.png"
   },
   "69641f26d1723deca91c3296":
   {
-    "name": "Blood Thirsty Snipers",
-    "image": "/files/modifiers/icon/error.png"
+    "name": "No Survivors",
+    "nonGlobal": true,
+    "image": "/files/modifiers/icon/blue.png"
   },
   "69641f35f803fa7a201c3297":
   {
     "name": "Taxi Tax",
-    "image": "/files/modifiers/icon/error.png"
+    "nonGlobal": true,
+    "free": true,
+    "image": "/files/modifiers/icon/orange.png"
   },
   "6971568817fa49e7d374f9e9":
   {
     "name": "Anti Aircraft",
-    "image": "/files/modifiers/icon/error.png"
+    "nonGlobal": true,
+    "free": true,
+    "image": "/files/modifiers/icon/blue.png"
   },
   "6971a16640ca8d842155fe95":
   {
     "name": "Blackhole Corpses",
-    "image": "/files/modifiers/icon/error.png"
+    "image": "/files/modifiers/icon/black.png"
   },
   "69743b8a9ff301273ab9cfe3":
   {
     "name": "The Vengeful",
-    "image": "/files/modifiers/icon/error.png"
+    "image": "/files/modifiers/icon/cyan.png"
   },
   "697665d21a0af5a3ec667751":
   {
     "name": "Forgotten Soldiers",
-    "image": "/files/modifiers/icon/error.png"
+    "image": "/files/modifiers/icon/cyan.png"
   }
 }

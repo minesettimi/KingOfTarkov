@@ -17,7 +17,6 @@ public class ModifierUI : UIElement
     public RectTransform ModifierHolder;
 
     private Dictionary<MongoID, ModifierData> _modList;
-    private List<GameObject> _modIcons;
     private ISession _session;
 
     public void Show(ISession session, List<MongoID> modifiers)

@@ -14,6 +14,12 @@ public class TrialTypeData
     [JsonPropertyName("min")]
     public int Min { get; set; }
     
+    [JsonPropertyName("max")]
+    public int Max { get; set; }
+    
+    [JsonPropertyName("exclusive")]
+    public bool Exclusive { get; set; } = false;
+    
     [JsonPropertyName("modPool")]
     public List<MongoId> ModPool { get; set; } = [];
 }

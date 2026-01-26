@@ -95,7 +95,14 @@
       "min": 1,
       "max": 6,
       "minWeight": 6.0,
-      "maxWeight": 2.0
+      "maxWeight": 2.0,
+      "blacklist": 
+      [
+        "6971568817fa49e7d374f9e9",
+        "69641f35f803fa7a201c3297",
+        "69641f26d1723deca91c3296",
+        "69641f0d1a7fda7de51c3295"
+      ]
     },
     "5714dbc024597771384a510d":
     {
@@ -109,21 +116,38 @@
       "min": 6,
       "max": 10,
       "minWeight": 2.0,
-      "maxWeight": 50.0
+      "maxWeight": 50.0,
+      "blacklist":
+      [
+        "6971568817fa49e7d374f9e9",
+        "69641f35f803fa7a201c3297",
+        "69641f26d1723deca91c3296",
+        "69641f0d1a7fda7de51c3295"
+      ]
     },
     "5704e5fad2720bc05b8b4567":
     {
       "min": 4,
       "max": 9,
       "minWeight": 2.0,
-      "maxWeight": 15.0
+      "maxWeight": 15.0,
+      "blacklist":
+      [
+        "69641f35f803fa7a201c3297",
+        "69641f26d1723deca91c3296",
+        "69641f0d1a7fda7de51c3295"
+      ]
     },
     "5704e554d2720bac5b8b456e":
     {
       "min": 2,
       "max": 6,
       "minWeight": 2.0,
-      "maxWeight": 5.0
+      "maxWeight": 5.0,
+      "blacklist": 
+      [
+        "69641f26d1723deca91c3296"
+      ]
     },
     "5704e3c2d2720bac5b8b4567":
     {
@@ -137,7 +161,11 @@
       "min": 6,
       "max": 10,
       "minWeight": 1.0,
-      "maxWeight": 9.0
+      "maxWeight": 9.0,
+      "blacklist": 
+      [
+        "69641f26d1723deca91c3296"
+      ]
     },
     "5714dc692459777137212e12":
     {
@@ -151,16 +179,39 @@
       "min": 1,
       "max": 9,
       "minWeight": 4.0,
-      "maxWeight": 4.0
+      "maxWeight": 4.0,
+      "blacklist": 
+      [
+        "69641f0d1a7fda7de51c3295",
+        "69641f35f803fa7a201c3297",
+        "6971568817fa49e7d374f9e9"
+      ]
     },
     "6733700029c367a3d40b02af":
     {
       "min": 8,
       "max": 10,
       "minWeight": 2.0,
-      "maxWeight": 50.0
+      "maxWeight": 50.0,
+      "blacklist":
+      [
+        "6971568817fa49e7d374f9e9",
+        "69641f35f803fa7a201c3297",
+        "69641f26d1723deca91c3296",
+        "69641f0d1a7fda7de51c3295",
+        "69641bcda88a8c37ed1c3285",
+        "69641c39c12fc4b3661c3287"
+      ]
     }
   },
+  "globalMods": 
+  [
+    "69641baf8e22a5d7181c3284", //better things
+    "69641bfddc2b21a1c11c3286", //extreme meta
+    "69641d1c93259454391c328c", //cult
+    "69641f35f803fa7a201c3297", //taxi tax
+    "69641f0d1a7fda7de51c3295" //slow engine
+  ],
   "types":
   {
     "69667f0967be0d67b08995b5":
@@ -168,19 +219,21 @@
       "name": "The Beginning",
       "color": "#ebebeb",
       "min": 1,
-      "modPool":
-      [
-        "69641baf8e22a5d7181c3284"
-      ]
+      "modPool": []
     },
     "69634713f3ed3f71243d25ce":
     {
       "name": "Fire",
-      "color": "#8c0000",
+      "color": "#e01a00",
       "min": 2,
+      "max": 4,
       "modPool":
       [
-        "6963486f386980e1fa3d25d0"
+        "69641c5d0e8b8f30ec1c3288", //explosive bull
+        "69641cf7e8f4ea1f731c328b", //raider
+        "69641f26d1723deca91c3296", //snipers
+        "69641cdb3a6474c01a1c328a", //cursed
+        "69713e68a14861969174f9e8" //desert
       ]
     },
     "69667e5cfb9284cdfe8995b4":
@@ -188,9 +241,28 @@
       "name": "Rock",
       "color": "#666666",
       "min": 2,
+      "max": 4,
       "modPool":
       [
-        "6963486f386980e1fa3d25d0"
+        "69641cf7e8f4ea1f731c328b", //cursed
+        "69641bcda88a8c37ed1c3285", //lights
+        "69641c39c12fc4b3661c3287", //blizzard
+        "6971568817fa49e7d374f9e9" //anti-aircraft
+      ]
+    },
+    "6977ac7d7748c92129daa4df":
+    {
+      "name": "Blood",
+      "color": "#730000",
+      "min": 3,
+      "max": 6,
+      "modPool":
+      [
+        "69641cf7e8f4ea1f731c328b", //cursed,
+        "697665d21a0af5a3ec667751", //forgotten
+        "69641cf7e8f4ea1f731c328b", //training
+        "69641f26d1723deca91c3296", //snipers
+        "69641bcda88a8c37ed1c3285" //lights
       ]
     },
     "696348b8da2f8535603d25d1":
@@ -198,10 +270,14 @@
       "name": "Poison",
       "color": "#00cf0a",
       "min": 5,
+      "max": 8,
       "modPool":
       [
-        "696348bd34e66ea99f3d25d3",
-        "696348c38377d2f1c53d25d4"
+        "9641c76dcf788fcf81c3289", //poison bullets
+        "69641c39c12fc4b3661c3287", //blizzard
+        "69743b8a9ff301273ab9cfe3", //vengeful
+        "69641cf7e8f4ea1f731c328b", //training
+        "69641bcda88a8c37ed1c3285" //lights
       ]
     },
     "69667f2169c162c0838995b6":
@@ -209,20 +285,28 @@
       "name": "Void",
       "color": "#09001f",
       "min": 5,
+      "max": 8,
       "modPool":
       [
-        "696348bd34e66ea99f3d25d3",
-        "696348c38377d2f1c53d25d4"
+        "6971a16640ca8d842155fe95", //blackhole
+        "697665d21a0af5a3ec667751", //forgotten
+        "69641cdb3a6474c01a1c328a", //cursed
+        "69641bcda88a8c37ed1c3285", //lights
+        "6971568817fa49e7d374f9e9", //anti-air
+        "69641c5d0e8b8f30ec1c3288" //explosive bull
       ]
     },
     "6963ed4908d8d15b601c3282":
     {
       "name": "The End",
       "color": "#000000",
-      "min": 10,
+      "min": 9,
+      "max": 10,
+      "exclusive": true,
       "modPool":
       [
-        
+        "69635493661702de5b3d25d5", //killa
+        "69743b8a9ff301273ab9cfe3" //vengeful
       ]
     }
   }
