@@ -28,3 +28,25 @@ public class GetClientQuestsOverride : AbstractPatch
         return __result;
     }
 }
+
+public class GetQuestFromDbOverride : AbstractPatch
+{
+    private static KingQuestHelper _questHelper;
+    
+    protected override MethodBase? GetTargetMethod()
+    {
+        _questHelper = ServiceLocator.ServiceProvider.GetService<KingQuestHelper>();
+        return typeof(QuestHelper).GetMethod(nameof(QuestHelper.GetQuestFromDb));
+    }
+
+    [PatchPrefix]
+    public static bool Prefix(MongoId questId, ref Quest? __result)
+    {
+        Quest? dynamicQuest = _questHelper.GetDynamicQuest(questId);
+        if (dynamicQuest == null)
+            return true;
+
+        __result = dynamicQuest;
+        return false;
+    }
+}

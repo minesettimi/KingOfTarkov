@@ -107,6 +107,7 @@ public class QuestGenerator(DataService dataService,
         string locationName = locationUtil.GetMapKey(locationId);
             
         QuestCondition finishCondition = newQuest.Conditions.AvailableForFinish![0];
+        finishCondition.Counter!.Id = new MongoId();
 
         List<string> locationNames = [locationName];
         
@@ -142,7 +143,6 @@ public class QuestGenerator(DataService dataService,
         
         QuestCondition finishCondition = newQuest.Conditions.AvailableForFinish![0];
         finishCondition.Id = new MongoId();
-        finishCondition.Counter!.Id = new MongoId();
 
         return newQuest;
     }

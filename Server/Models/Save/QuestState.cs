@@ -10,5 +10,5 @@ public class QuestState
     public Dictionary<MongoId, Quest> Exfil { get; set; }
     
     [JsonPropertyName("personal")]
-    public Dictionary<MongoId, Quest> Personal { get; set; }
+    public Dictionary<MongoId, Quest> Personal { get; set; } = new();
 }

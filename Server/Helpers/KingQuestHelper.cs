@@ -90,4 +90,14 @@ public class KingQuestHelper(ProfileHelper profileHelper,
             }
         }
     }
+
+    public Quest? GetDynamicQuest(MongoId id)
+    {
+        QuestState questState = saveService.CurrentSave.Quests;
+
+        if (questState.Personal.TryGetValue(id, out Quest? quest) || questState.Exfil.TryGetValue(id, out quest))
+            return quest;
+
+        return null;
+    }
 }

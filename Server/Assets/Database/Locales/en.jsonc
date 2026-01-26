@@ -112,7 +112,7 @@
   
   //revive quests
   "ReviveName": "Swan Song",
-  "ReviveDescription": "Looks like you're not quite cut out for the challenge. Luckily for you, I have interest in seeing that challenge being beaten.\n\nI will help you get back in but it won't be easy or cheap to do it under Ref's radar.\n\nPay the fee and you'll be trying again in no time.",
+  "ReviveDescription": "Looks like you're not quite cut out for the challenge. We both have mutual interest in you winning this challenge.\n\nI will help you get back in but it won't be cheap to do it under Ref's radar.\n\nPay the fee and you'll be trying again in no time.",
   "ReviveSuccess": "Payment received. You're back in the game.",
   
   //fix some bosses not having proper locales

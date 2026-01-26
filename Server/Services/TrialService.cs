@@ -3,7 +3,6 @@ using KingOfTarkov.Helpers;
 using KingOfTarkov.Models.Save;
 using SPTarkov.DI.Annotations;
 using SPTarkov.Server.Core.Models.Common;
-using SPTarkov.Server.Core.Models.Eft.Common;
 using SPTarkov.Server.Core.Models.Eft.Common.Tables;
 using SPTarkov.Server.Core.Models.Utils;
 
@@ -20,13 +19,13 @@ public class TrialService(KingProfileHelper profileHelper,
 {
     public Task Load()
     {
-        if (save.NewTrial)
-        {
-            StartNewTrial();
-            save.NewTrial = false;
-            save.SaveCurrentState();
-        }
+        if (!save.NewTrial) return Task.CompletedTask;
         
+        StartNewTrial();
+        save.NewTrial = false;
+        locationService.SetupNewLocations();
+        save.SaveCurrentState();
+
         return Task.CompletedTask;
     }
 

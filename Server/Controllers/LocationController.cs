@@ -35,9 +35,7 @@ public class LocationController(SaveService save,
         
         if (isDead)
         {
-            profileData.Lives--;
-
-            if (profileData.Lives == 0 && config.Difficulty.Core.Revives && profileData.Revives > 0)
+            if (--profileData.Lives == 0 && config.Difficulty.Core.Revives && profileData.Revives > 0)
             {
                 profileData.Revives--;
                 GivePlayerReviveQuest(pmcProfile.Id!.Value);
@@ -62,7 +60,7 @@ public class LocationController(SaveService save,
         profileHelper.LevelUpPlayer(pmcProfile!, config.Difficulty.Trial.LevelPerRaid);
     }
     
-    private void GivePlayerReviveQuest(MongoId playerId)
+    public void GivePlayerReviveQuest(MongoId playerId)
     {
         Quest? reviveQuest = questGenerator.GenerateReviveQuest();
 
@@ -71,5 +69,7 @@ public class LocationController(SaveService save,
 
         ProfileInfoState profileData = save.CurrentSave.Profile.Profiles[playerId];
         profileData.Quests.Add(reviveQuest.Id);
+        
+        save.CurrentSave.Quests.Personal.Add(reviveQuest.Id, reviveQuest);
     }
 }

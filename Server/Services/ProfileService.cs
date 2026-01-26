@@ -1,3 +1,4 @@
+using KingOfTarkov.Helpers;
 using KingOfTarkov.Models.Save;
 using SPTarkov.DI.Annotations;
 using SPTarkov.Server.Core.Models.Common;
@@ -12,6 +13,7 @@ namespace KingOfTarkov.Services;
 public class ProfileService(SaveServer saveServer,
     ISptLogger<ProfileService> logger,
     ConfigService configService,
+    LocationController locationController,
     SaveService save)
 {
     public void InitializeProfile(MongoId sessionId, MongoId id)
@@ -51,6 +53,7 @@ public class ProfileService(SaveServer saveServer,
         //TODO: FIKA support
         save.CurrentSave.Profile.Locked = !configService.BaseConfig.Developer;
         
+        locationController.GivePlayerReviveQuest(id);
         save.SaveCurrentState();
     }
 
