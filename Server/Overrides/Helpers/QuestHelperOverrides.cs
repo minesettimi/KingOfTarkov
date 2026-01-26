@@ -1,10 +1,13 @@
 using System.Reflection;
 using KingOfTarkov.Helpers;
+using KoTServer.Controllers;
 using SPTarkov.Reflection.Patching;
 using SPTarkov.Server.Core.DI;
 using SPTarkov.Server.Core.Helpers;
 using SPTarkov.Server.Core.Models.Common;
+using SPTarkov.Server.Core.Models.Eft.Common;
 using SPTarkov.Server.Core.Models.Eft.Common.Tables;
+using SPTarkov.Server.Core.Models.Eft.Quests;
 
 namespace KingOfTarkov.Overrides.Helpers;
 
@@ -48,5 +51,32 @@ public class GetQuestFromDbOverride : AbstractPatch
 
         __result = dynamicQuest;
         return false;
+    }
+}
+
+public class CompleteQuestOverride : AbstractPatch
+{
+    private static KingQuestController _questController;
+    private static KingQuestHelper _questHelper;
+    
+    protected override MethodBase? GetTargetMethod()
+    {
+        _questHelper = ServiceLocator.ServiceProvider.GetService<KingQuestHelper>();
+        _questController = ServiceLocator.ServiceProvider.GetService<KingQuestController>();
+        return typeof(QuestHelper).GetMethod(nameof(QuestHelper.CompleteQuest));
+    }
+
+    [PatchPostfix]
+    public static void Postfix(PmcData pmcData, CompleteQuestRequestData request)
+    {
+        MongoId questId = request.QuestId;
+        
+        Quest? dynamicQuest = _questHelper.GetDynamicQuest(questId);
+        if (dynamicQuest == null)
+            return;
+        
+        _questController.HandleQuest(dynamicQuest, pmcData);
+
+        pmcData.Quests!.RemoveAll(quest => quest.QId == questId);
     }
 }

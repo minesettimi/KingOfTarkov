@@ -20,7 +20,9 @@ public class PreLoad(ConfigService config) : IOnLoad
         new TryGetLocationInfoOverride(),
         new WeatherControllerOverride(),
         new GetNumberOfExitsOverride(),
-        new GetQuestFromDbOverride()
+        new GetQuestFromDbOverride(),
+        new CompleteQuestOverride(),
+        new GetQuestDbRewardOverride()
     ];
     
     public async Task OnLoad()

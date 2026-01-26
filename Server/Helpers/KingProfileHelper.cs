@@ -22,6 +22,7 @@ public class KingProfileHelper(SaveServer saveServer,
     ProfileActivityService profileActivityService,
     LocationUtil locationUtil,
     ConfigService config,
+    SaveService saveService,
     ISptLogger<KingProfileHelper> logger)
 {
     public void SetupTrialForProfiles(bool newTrial)

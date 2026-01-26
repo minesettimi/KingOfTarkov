@@ -169,7 +169,7 @@
   },
   "69769f658ba1e500f766775c":
   {
-    "QuestName": "Revive Payment",
+    "QuestName": "RevivePayment",
     "_id": "69769f658ba1e500f766775c",
     "acceptPlayerMessage": "",
     "acceptanceAndFinishingSource": "eft",

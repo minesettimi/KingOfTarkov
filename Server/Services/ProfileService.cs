@@ -53,7 +53,6 @@ public class ProfileService(SaveServer saveServer,
         //TODO: FIKA support
         save.CurrentSave.Profile.Locked = !configService.BaseConfig.Developer;
         
-        locationController.GivePlayerReviveQuest(id);
         save.SaveCurrentState();
     }
 
