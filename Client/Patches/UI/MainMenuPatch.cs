@@ -57,10 +57,17 @@ public class MainMenuShowPatch : ModulePatch
     {
         int lives = Plugin.StateService.PlayerData.Lives;
         
+        
         if (Plugin.StateService.PlayerData.Lives <= 0)
         {
             ____playButton.Interactable = false;
-            ____playButton.SetDisabledTooltip("LivesOutTooltip".Localized());
+
+            string tooltipLang = "LivesOutTooltip";
+
+            if (Plugin.StateService.PlayerData.Revives > 0)
+                tooltipLang = "Revive" + tooltipLang;
+            
+            ____playButton.SetDisabledTooltip(tooltipLang.Localized());
         }
         
         TextMeshProUGUI lifeText = MainMenuAwakePatch.LifeCountObj.GetComponent<TextMeshProUGUI>();

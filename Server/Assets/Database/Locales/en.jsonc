@@ -134,7 +134,8 @@
   "LocationExfils": "{0} Exfil Requirement(s)",
   
   //tooltips
-  "LivesOutTooltip": "You are out of attempts. You can retry by deleting the state and wiping the profile.",
+  "LivesOutTooltip": "You are out of attempts and revives. You can retry by deleting the state and wiping the profile.",
+  "ReviveLivesOutTooltip": "You are out of attempts. Talk to Fence and try to get a revive.",
   
   //errors
   "KoTProfileInvalid": "This profile is not allowed for this playthrough. Please make a new one.",

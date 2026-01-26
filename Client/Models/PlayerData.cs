@@ -9,6 +9,9 @@ public class PlayerData
     
     [JsonProperty("lives")]
     public int Lives { get; set; }
+    
+    [JsonProperty("revives")]
+    public int Revives { get; set; }
 }
 
 public class ProfileLockedResponse
