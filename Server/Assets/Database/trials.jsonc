@@ -219,6 +219,7 @@
       "name": "The Beginning",
       "color": "#ebebeb",
       "min": 1,
+      "max": 1,
       "modPool": []
     },
     "69634713f3ed3f71243d25ce":

@@ -39,7 +39,7 @@ public class KingProfileHelper(SaveServer saveServer,
                 quest.EndTime = 0;
             }
 
-            if (!newTrial) continue;
+            if (newTrial) continue;
 
             LevelUpPlayer(playerData, config.Difficulty.Trial.LevelPerTrial);
         }

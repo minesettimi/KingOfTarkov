@@ -28,7 +28,7 @@ public class TrialGenerator(DataService dataService,
         }
         else
         {
-            typePool = trialConfig.Types.Where(type => type.Value.Min >= trialNum && type.Value.Max <= trialNum)
+            typePool = trialConfig.Types.Where(type => trialNum >= type.Value.Min && trialNum <= type.Value.Max)
                 .Select(p => p.Key).ToList();
         }
 
