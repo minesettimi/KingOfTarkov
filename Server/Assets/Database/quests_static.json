@@ -60,14 +60,14 @@
               "_id": "69631db3b25d5707953d25c4",
               "_tpl": "5449016a4bdc2d6f028b456f",
               "upd": {
-                "StackObjectsCount": 100000000
+                "StackObjectsCount": 1000000
               }
             }
           ],
           "target": "69631db3b25d5707953d25c4",
           "type": "Item",
           "unknown": false,
-          "value": 1000000000
+          "value": 10000000
         },
         {
           "availableInGameEditions": [],
