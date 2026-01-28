@@ -31,8 +31,12 @@ public class KingProfileHelper(SaveServer saveServer,
         {
             if (saveServer.IsProfileInvalidOrUnloadable(session))
                 continue;
-
+            
             PmcData playerData = profile.CharacterData!.PmcData!;
+
+            if (!saveService.CurrentSave.Profile.Profiles.ContainsKey(playerData.Id!.Value) || 
+                profile.ProfileInfo!.Edition != "KingOfTarkov")
+                continue;
 
             foreach (PmcDataRepeatableQuest quest in playerData.RepeatableQuests!)
             {
