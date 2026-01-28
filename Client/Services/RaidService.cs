@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using EFT;
 using EFT.Communications;
+using EFT.UI;
 
 namespace KoTClient.Services;
 
@@ -34,7 +35,13 @@ public class RaidService
         if (ExfilQuests.Count == CompletedQuests.Count)
         {
             ExfiltrationControllerClass.Instance.EnableExitsInteraction();
-            NotificationManagerClass.DisplayMessageNotification("ExfilCompleted".Localized(), ENotificationDurationType.Long);
+            NotificationManagerClass.DisplayNotification(new GClass2555
+            {
+                Text = "ExfilCompleted".Localized(),
+                Duration = ENotificationDurationType.Long,
+                ShowImmediately = true,
+                SoundType = EUISoundType.QuestCompleted
+            });
         }
         
         //TODO: Update UI
