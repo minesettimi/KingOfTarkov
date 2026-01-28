@@ -79,13 +79,13 @@
   "69711a302c3056c5eb74f9cc": "Complete the 3rd trial",
   
   "697120b1774b176fea74f9dd name": "Climbing The Ladder",
-  "697120b1774b176fea74f9dd description": "",
+  "697120b1774b176fea74f9dd description": "You have been making steady progress. Reach the halfway point and I'll have more gifts for you.",
   "697120b1774b176fea74f9dd successMessageText": "You are halfway there, gladiator. I am starting to believe in you will be victorious.",
   "697124ba4b876bc6a274f9e7": "Complete the 5th trial",
   
   "6976728138aae1f559667752 name": "Approaching The Summit",
-  "6976728138aae1f559667752 description": "",
-  "6976728138aae1f559667752 successMessageText": "You have climbed far. Your hope ",
+  "6976728138aae1f559667752 description": "You have made great strides getting this far. This next stretch will be your hardest yet. I have no more to say to you.\n\nStay strong, champion",
+  "6976728138aae1f559667752 successMessageText": "You have climbed far. Don't let that progress go to waste. Good luck.",
   "697672ce09a518391c667753": "Complete the 8th trial",
   
   "696319c33a65c367b83d25c1 name": "King Of Tarkov",
