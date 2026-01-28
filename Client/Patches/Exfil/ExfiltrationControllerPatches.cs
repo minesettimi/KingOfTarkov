@@ -18,7 +18,7 @@ public class IsMyPlayerBannedPatch : ModulePatch
         if (GamePlayerOwner.MyPlayer == null)
             return true;
 
-        __result = Plugin.RaidService.ExfilQuests.Count == Plugin.RaidService.CompletedQuests.Count;
+        __result = Plugin.RaidService.ExfilQuests.Count != Plugin.RaidService.CompletedQuests.Count;
         
         return false;
     }
