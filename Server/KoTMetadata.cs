@@ -12,8 +12,8 @@ public static class KoTMetadata
         public override string Name { get; init; } = "King Of Tarkov";
         public override string Author { get; init; } = "minesettimi";
         public override List<string>? Contributors { get; init; }
-        public override Version Version { get; init; } = new(0, 8, 0);
-        public override Range SptVersion { get; init; } = new("~4.0.0");
+        public override Version Version { get; init; } = new(0, 9, 0);
+        public override Range SptVersion { get; init; } = new("~4.0.4");
 
         public override List<string>? Incompatibilities { get; init; }
         public override Dictionary<string, Range>? ModDependencies { get; init; }
