@@ -2,7 +2,7 @@
   "sandbox":
   [
     {
-      "BossChance": 30,
+      "BossChance": 20,
       "BossDifficult": "normal",
       "BossEscortAmount": "2",
       "BossEscortDifficult": "normal",
@@ -25,7 +25,7 @@
       "TriggerName": ""
     },
     {
-      "BossChance": 22,
+      "BossChance": 12,
       "BossDifficult": "normal",
       "BossEscortAmount": "3,4",
       "BossEscortDifficult": "normal",

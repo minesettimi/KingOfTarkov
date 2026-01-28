@@ -8,11 +8,13 @@ public class RaidService
 {
     public MongoID? CurrentLocation;
     public List<MongoID> ExfilQuests = [];
+    public List<MongoID> CompletedQuests = [];
 
     public void SetupRaidStart(MongoID locationId)
     {
         CurrentLocation = locationId;
         ExfilQuests.Clear();
+        CompletedQuests.Clear();
 
         //avoid copying the ref from the data
         foreach (MongoID quest in Plugin.StateService.StateData.location[locationId].exfilRequirements)
@@ -25,8 +27,11 @@ public class RaidService
 
     public void ExfilQuestCompleted(QuestClass quest)
     {
-        ExfilQuests.Remove(quest.Id);
-        if (ExfilQuests.Count == 0)
+        if (CompletedQuests.Contains(quest.Id))
+            return;
+        
+        CompletedQuests.Add(quest.Id);
+        if (ExfilQuests.Count == CompletedQuests.Count)
         {
             ExfiltrationControllerClass.Instance.EnableExitsInteraction();
             NotificationManagerClass.DisplayMessageNotification("ExfilCompleted".Localized(), ENotificationDurationType.Long);
