@@ -47,6 +47,7 @@
         </ItemGroup>
         <Delete Files="@(CompileFiles)" />
         <Exec Command="cp -a $(TargetDir) $(SolutionDir)../../../SPTDevelopment/SPT/user/mods/" />
+        <Exec Command="cp -a $(TargetDir) $(SolutionDir)release/SPT/user/mods/" />
     </Target>
 
 </Project>
