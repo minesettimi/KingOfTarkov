@@ -15,6 +15,7 @@ public class TrialService(KingProfileHelper profileHelper,
     QuestGenerator questGenerator,
     LocationHelper locationHelper,
     LocationService locationService,
+    ConfigService config,
     ISptLogger<TrialService> logger)
 {
     public Task Load()
@@ -69,7 +70,7 @@ public class TrialService(KingProfileHelper profileHelper,
         
         SaveState currentSave = save.CurrentSave;
 
-        if (currentSave.Trial.TrialNum == 10)
+        if (currentSave.Trial.TrialNum == 10 && !config.BaseConfig.EndlessMode)
             return;
         
         int newTrialNum = currentSave.Trial.TrialNum + 1;

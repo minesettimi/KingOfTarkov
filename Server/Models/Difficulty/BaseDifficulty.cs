@@ -10,6 +10,9 @@ public class BaseDifficulty
     [JsonPropertyName("trial")]
     public TrialDifficulty Trial { get; set; } = new();
     
+    [JsonPropertyName("endless")]
+    public EndlessDifficulty Endless { get; set; } = new();
+    
     [JsonPropertyName("location")]
     public LocationDifficulty Location { get; set; } = new();
 }

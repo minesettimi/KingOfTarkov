@@ -20,6 +20,9 @@ public class TrialTypeData
     [JsonPropertyName("exclusive")]
     public bool Exclusive { get; set; } = false;
     
+    [JsonPropertyName("endless")]
+    public bool AllowEndless { get; set; } = true;
+    
     [JsonPropertyName("modPool")]
     public List<MongoId> ModPool { get; set; } = [];
 }

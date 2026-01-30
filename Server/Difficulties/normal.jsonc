@@ -11,6 +11,11 @@
     "levelPerRaid": 2, //how many levels are gained per raid completion
     "levelPerTrial": 3 //how many level are gained per trial completion
   },
+  "endless":
+  {
+    "globalIncrement": 3, //how many endless location modifiers to increase global modifiers
+    "locationCount": 5 //how many locations per endless trial
+  },
   "location":
   {
     "staticLootAdditive": 0, //how much to add to the static loot multiplier

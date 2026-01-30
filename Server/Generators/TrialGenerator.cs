@@ -13,6 +13,7 @@ namespace KingOfTarkov.Generators;
 public class TrialGenerator(DataService dataService,
     RandomUtil randomUtil,
     KingMathUtil kingMathUtil,
+    ConfigService config,
     ISptLogger<TrialGenerator> logger)
 {
     public TrialState GenerateTrial(int trialNum)
@@ -20,18 +21,41 @@ public class TrialGenerator(DataService dataService,
         TrialData trialConfig = dataService.TrialConfig;
 
         List<MongoId> typePool;
-        TrialNumData newTrialConfig = trialConfig.Trials[trialNum];
+        TrialNumData newTrialConfig;
 
-        if ((newTrialConfig.TypeWhitelist?.Count ?? 0) > 0)
+        //endless mode
+        if (trialNum > 10)
         {
-            typePool = newTrialConfig.TypeWhitelist!;
+            int trialVal = trialNum - 10;
+            int endlessVal = config.Difficulty.Endless.GlobalIncrement;
+
+            newTrialConfig = new TrialNumData()
+            {
+                GlobalModCount = trialVal / endlessVal,
+                LocationModCount = trialVal % endlessVal,
+                LocationCount = config.Difficulty.Endless.LocationCount
+            };
+
+            typePool = trialConfig.Types.Where(type => type.Value.AllowEndless)
+                .Select(p => p.Key)
+                .ToList();
         }
         else
         {
-            typePool = trialConfig.Types.Where(type => trialNum >= type.Value.Min && trialNum <= type.Value.Max)
-                .Select(p => p.Key).ToList();
+            newTrialConfig = trialConfig.Trials[trialNum];
+            
+            if ((newTrialConfig.TypeWhitelist?.Count ?? 0) > 0)
+            {
+                typePool = newTrialConfig.TypeWhitelist!;
+            }
+            else
+            {
+                typePool = trialConfig.Types.Where(type => trialNum >= type.Value.Min && trialNum <= type.Value.Max)
+                    .Select(p => p.Key)
+                    .ToList();
+            }
         }
-
+        
 
         MongoId typeId = randomUtil.DrawRandomFromList(typePool)[0];
         
@@ -41,7 +65,7 @@ public class TrialGenerator(DataService dataService,
         {
             TrialType = typeId,
             TrialNum = trialNum,
-            Mods = GenerateMods(selectedType, newTrialConfig.GlobalModCount, [])
+            Mods = GenerateMods(selectedType, newTrialConfig.GlobalModCount, [], trialNum)
         };
     }
 
@@ -57,18 +81,18 @@ public class TrialGenerator(DataService dataService,
         {
             locationState.Active.Add(id, new LocationDataState
             {
-                Mods = GenerateMods(currentType, newData.LocationModCount, trialSave.Mods, id)
+                Mods = GenerateMods(currentType, newData.LocationModCount, trialSave.Mods, trialNum, id)
             });
         }
 
         return locationState;
     }
 
-    private List<MongoId> GenerateMods(TrialTypeData trialType, int number, List<MongoId> blacklist, MongoId? location = null)
+    private List<MongoId> GenerateMods(TrialTypeData trialType, int number, List<MongoId> blacklist, int trialNum, MongoId? location = null)
     {
         List<MongoId> modPool = trialType.ModPool.Except(blacklist).ToList();
 
-        if (!trialType.Exclusive)
+        if (!trialType.Exclusive || trialNum > 10)
         {
             modPool.AddRange(dataService.TrialConfig.GlobalMods);
         }
