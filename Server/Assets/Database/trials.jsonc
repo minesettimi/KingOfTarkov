@@ -87,8 +87,8 @@
     {
       "min": 1,
       "max": 8,
-      "minWeight": 2.0,
-      "maxWeight": 0.5
+      "minWeight": 3.5,
+      "maxWeight": 0.75
     },
     "55f2d3fd4bdc2d5f408b4567":
     {
@@ -108,7 +108,7 @@
     {
       "min": 3,
       "max": 8,
-      "minWeight": 2.0,
+      "minWeight": 5.0,
       "maxWeight": 0.5
     },
     "5b0fc42d86f7744a585f9105":
@@ -154,7 +154,11 @@
       "min": 1,
       "max": 5,
       "minWeight": 3.0,
-      "maxWeight": 6.0
+      "maxWeight": 6.0,
+      "blacklist": 
+      [
+        "697d8ea6814677e13bd6e8f6"
+      ]
     },
     "5704e4dad2720bb55b8b4567":
     {
@@ -184,7 +188,8 @@
       [
         "69641f0d1a7fda7de51c3295",
         "69641f35f803fa7a201c3297",
-        "6971568817fa49e7d374f9e9"
+        "6971568817fa49e7d374f9e9",
+        "697d8ea6814677e13bd6e8f6"
       ]
     },
     "6733700029c367a3d40b02af":
@@ -301,7 +306,8 @@
         "69641c76dcf788fcf81c3289", //poison bullets
         "69635493661702de5b3d25d5", //oops all killa
         "69641c39c12fc4b3661c3287", //sudden blizzard
-        "697d64248db356b3c72a7b15" //big pipe
+        "697d64248db356b3c72a7b15", //big pipe
+        "697d8ea6814677e13bd6e8f6" //black div
       ]
     },
     "696348b8da2f8535603d25d1":
@@ -317,7 +323,8 @@
         "69743b8a9ff301273ab9cfe3", //vengeful
         "69641cf7e8f4ea1f731c328b", //training
         "69641bcda88a8c37ed1c3285", //lights
-        "697d0c6bc775a882672a7b0e" //radiation
+        "697d0c6bc775a882672a7b0e", //radiation
+        "697d8ea6814677e13bd6e8f6" //black div
       ]
     },
     "69667f2169c162c0838995b6":
@@ -352,7 +359,8 @@
         "697d0c6bc775a882672a7b0e", //radiation leak
         "697d0c0bb08e0a804a2a7b0c", //bolstered
         "69641cdb3a6474c01a1c328a", //cursed
-        "697d64248db356b3c72a7b15" //big pipe
+        "697d64248db356b3c72a7b15", //big pipe
+        "697d8ea6814677e13bd6e8f6" //black div
       ]
     },
     "6963ed4908d8d15b601c3282":
