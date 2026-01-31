@@ -25,4 +25,5 @@ public static class ModIds
     public const string RADIATION_LEAK = "697d0c6bc775a882672a7b0e";
     public const string BAD_BACK = "697d44b270afae2a0e2a7b10";
     public const string BIG_PIPE = "697d64248db356b3c72a7b15";
+    public const string PICKED_DRY = "697d85e2a8892f58782a7b16";
 }

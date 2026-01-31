@@ -1,6 +1,7 @@
 using KingOfTarkov.Overrides.Controllers;
 using KingOfTarkov.Overrides.Generators;
 using KingOfTarkov.Overrides.Helpers;
+using KingOfTarkov.Overrides.Modifiers.Loot;
 using KingOfTarkov.Overrides.Services;
 using KingOfTarkov.Services;
 using SPTarkov.DI.Annotations;
@@ -22,7 +23,8 @@ public class PreLoad(ConfigService config) : IOnLoad
         new GetNumberOfExitsOverride(),
         new GetQuestFromDbOverride(),
         new CompleteQuestOverride(),
-        new GetQuestDbRewardOverride()
+        new GetQuestDbRewardOverride(),
+        new GenerateLootOverride()
     ];
     
     public async Task OnLoad()

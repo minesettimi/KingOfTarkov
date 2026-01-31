@@ -7,8 +7,8 @@ public class ModifierData
     [JsonPropertyName("name")]
     public string Name { get; set; } = "ERROR";
     
-    [JsonPropertyName("nonGlobal")]
-    public bool NonGlobal { get; set; } = false;
+    [JsonPropertyName("global")]
+    public bool Global { get; set; } = true;
     
     [JsonPropertyName("free")]
     public bool Free { get; set; } = false;

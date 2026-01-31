@@ -101,7 +101,7 @@ public class TrialGenerator(DataService dataService,
         {
             Dictionary<MongoId, ModifierData> modPoolData = 
                 dataService.Mods.Where(mod => modPool.Contains(mod.Key)).ToDictionary();
-            modPool.RemoveAll(mod => modPoolData[mod].NonGlobal);
+            modPool.RemoveAll(mod => !modPoolData[mod].Global);
         }
         else
         {

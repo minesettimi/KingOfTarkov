@@ -57,28 +57,25 @@
   "69641f0d1a7fda7de51c3295":
   {
     "name": "Slow Engine",
-    "nonGlobal": true,
-    "free": true,
+    "global": false,
     "image": "/files/modifiers/icon/orange.png"
   },
   "69641f26d1723deca91c3296":
   {
     "name": "No Survivors",
-    "nonGlobal": true,
+    "global": false,
     "image": "/files/modifiers/icon/blue.png"
   },
   "69641f35f803fa7a201c3297":
   {
     "name": "Taxi Tax",
-    "nonGlobal": true,
-    "free": true,
+    "global": false,
     "image": "/files/modifiers/icon/orange.png"
   },
   "6971568817fa49e7d374f9e9":
   {
     "name": "Anti Aircraft",
-    "nonGlobal": true,
-    "free": true,
+    "global": false,
     "image": "/files/modifiers/icon/blue.png"
   },
   "6971a16640ca8d842155fe95":
@@ -120,5 +117,11 @@
   {
     "name": "Big Pipe, Big Pipe & Big Pipe",
     "image": "/files/modifiers/icon/red.png"
+  },
+  "697d85e2a8892f58782a7b16":
+  {
+    "name": "Picked Dry",
+    "global": false,
+    "image": "/files/modifiers/icon/yellow.png"
   }
 }

@@ -18,7 +18,7 @@
   },
   "location":
   {
-    "staticLootAdditive": 0, //how much to add to the static loot multiplier
+    "staticLootAdditive": 0.1, //how much to add to the static loot multiplier
     "looseLootAdditive": 2.0 //how much to add to the loose loot multiplier
   }
 }
