@@ -15,4 +15,7 @@ public class ModifierData
     
     [JsonPropertyName("modReq")]
     public string? ModRequirement { get; set; }
+
+    [JsonIgnore] 
+    public bool Enabled { get; set; } = true;
 }

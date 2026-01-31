@@ -88,13 +88,19 @@ public class DataService(ConfigService config,
 
     private void FilterModRequirements()
     {
-        int modCount = Mods.Count;
-        Mods = Mods.Where(p => p.Value.ModRequirement == null || 
-            modList.Any(m => m.ModMetadata.ModGuid == p.Value.ModRequirement))
-            .ToDictionary(p => p.Key, p => p.Value);
+        int dif = 0;
+        foreach (ModifierData modData in Mods.Values)
+        {
+            if (modData.ModRequirement == null)
+                continue;
 
-        int dif = modCount - Mods.Count;
+            if (modList.Any(m => m.ModMetadata.ModGuid == modData.ModRequirement)) continue;
+            
+            dif++;
+            modData.Enabled = false;
+        }
+
         if (dif > 0)
-            logger.Debug($"[KoT] Removed {dif} modifier(s) requiring non-present mods");
+            logger.Debug($"[KoT] Disabled {dif} modifier(s) requiring non-present mods");
     }
 }
