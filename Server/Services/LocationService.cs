@@ -134,6 +134,15 @@ public class LocationService(LocationUtil locationUtil,
         }
     }
 
+    private readonly Dictionary<string, MongoId> _modBossSpawns = new()
+    {
+        {"sectantPriest", ModIds.NOBODY_EXPECTS_CULT},
+        {"sectantPredvestnik", ModIds.FORGOTTEN_SOLDIERS},
+        {"followerBigPipe", ModIds.BIG_PIPE},
+        {"ravangeZryachiyEvent", ModIds.VENGEFUL},
+        {"blackDivAssault", ModIds.CLEANING_HOUSE}
+    };
+
     private void HandleLocationModifiers(LocationBase location, MongoId locationId)
     {
         
@@ -165,32 +174,32 @@ public class LocationService(LocationUtil locationUtil,
                 }
             }
         }
+
+        //reduce calculation time in the loop
+        List<string> bossesToApply = _modBossSpawns.Where(p => modService.HasMod(p.Value, locationId))
+            .Select(p => p.Key)
+            .ToList();
+
+        bool bolsteredNumbers = modService.HasMod(ModIds.BOLSTERED_NUMBERS, locationId);
         
         //bot spawns
         foreach (BossLocationSpawn bossSetting in location.BossLocationSpawn)
         {
-            switch (bossSetting.BossName)
+            if (bossesToApply.Contains(bossSetting.BossName))
             {
-                case "sectantPriest" when modService.HasMod(ModIds.NOBODY_EXPECTS_CULT, locationId):
-                case "sectantPredvestnik" when modService.HasMod(ModIds.FORGOTTEN_SOLDIERS, locationId):
-                case "followerBigPipe" when modService.HasMod(ModIds.BIG_PIPE, locationId):
-                case "ravangeZryachiyEvent" when modService.HasMod(ModIds.VENGEFUL, locationId):
-                    bossSetting.ForceSpawn = true;
-                    bossSetting.BossChance = 100;
-                    break;
+                bossSetting.ForceSpawn = true;
+                bossSetting.BossChance = 100;
             }
 
-            if (modService.HasMod(ModIds.BOLSTERED_NUMBERS, locationId))
-            {
-                bossSetting.BossEscortAmount = IncreaseBotCount(bossSetting.BossEscortAmount!, 2);
+            if (!bolsteredNumbers) continue;
+            
+            bossSetting.BossEscortAmount = IncreaseBotCount(bossSetting.BossEscortAmount!, 1.5);
 
-                if (bossSetting.Supports != null)
-                {
-                    foreach (BossSupport support in bossSetting.Supports)
-                    {
-                        support.BossEscortAmount = IncreaseBotCount(support.BossEscortAmount!, 1);
-                    }
-                }
+            if (bossSetting.Supports == null) continue;
+                
+            foreach (BossSupport support in bossSetting.Supports)
+            {
+                support.BossEscortAmount = IncreaseBotCount(support.BossEscortAmount!, 1.25);
             }
         }
         
@@ -203,7 +212,7 @@ public class LocationService(LocationUtil locationUtil,
         }
     }
 
-    private string IncreaseBotCount(string numbers, int increase)
+    private string IncreaseBotCount(string numbers, double increase)
     {
         string[] followerStrings = numbers.Split(",");
         int[] followerNumbers = Array.ConvertAll(followerStrings, int.Parse);
@@ -216,7 +225,7 @@ public class LocationService(LocationUtil locationUtil,
             if (count == 0)
                 count = 1;
                     
-            followerNumbers[i] = (int)Math.Ceiling(count * 1.5);
+            followerNumbers[i] = (int)Math.Ceiling(count * increase);
         }
 
         return string.Join(",", followerNumbers);

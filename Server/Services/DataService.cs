@@ -5,6 +5,7 @@ using SPTarkov.Server.Core.Models.Common;
 using SPTarkov.Server.Core.Models.Eft.Common;
 using SPTarkov.Server.Core.Models.Eft.Common.Tables;
 using SPTarkov.Server.Core.Models.Spt.Config;
+using SPTarkov.Server.Core.Models.Spt.Mod;
 using SPTarkov.Server.Core.Models.Utils;
 using SPTarkov.Server.Core.Servers;
 using SPTarkov.Server.Core.Services;
@@ -19,6 +20,7 @@ public class DataService(ConfigService config,
     ConfigServer configServer,
     DatabaseService databaseService,
     DatabaseServer databaseServer,
+    IReadOnlyList<SptMod> modList,
     ISptLogger<DataService> logger)
 {
     public TrialData TrialConfig;
@@ -32,24 +34,20 @@ public class DataService(ConfigService config,
     public async Task Load()
     {
         string dataPath = Path.Join(config.ModPath, "Assets", "Database");
-        
-        TrialData? data = await jsonUtil.DeserializeFromFileAsync<TrialData>(Path.Join(dataPath, "trials.jsonc"));
 
-        TrialConfig = data ?? throw new Exception("[KoT] TrialConfig data not found.");
+        TrialConfig = await jsonUtil.DeserializeFromFileAsync<TrialData>(Path.Join(dataPath, "trials.jsonc")) ??
+                      throw new Exception("[KoT] TrialConfig data not found.");
         
-        Dictionary<MongoId, ModifierData>? modData = 
-            await jsonUtil.DeserializeFromFileAsync<Dictionary<MongoId, ModifierData>>(Path.Join(dataPath, "modifiers.json"));
+        Mods = await jsonUtil.DeserializeFromFileAsync<Dictionary<MongoId, ModifierData>>(Path.Join(dataPath, "modifiers.json")) 
+               ?? throw new Exception("[KoT] Mod data not found.");
         
-        Mods = modData ?? throw new Exception("[KoT] Mod data not found.");
+        FilterModRequirements();
         
         //custom profiles
         Dictionary<string, ProfileSides> customProfiles =
             await jsonUtil.DeserializeFromFileAsync<Dictionary<string, ProfileSides>>(Path.Join(dataPath, "profiles.json")) ?? [];
         
-        foreach ((string name, ProfileSides profile) in customProfiles)    
-        {
-            databaseService.GetProfileTemplates().Add(name, profile);
-        }
+        databaseService.GetProfileTemplates().AddRange(customProfiles);
         
         //quest data
         _customQuestData = await jsonUtil.DeserializeFromFileAsync<CustomQuestData>(Path.Join(dataPath, "questdata.json")) 
@@ -72,9 +70,7 @@ public class DataService(ConfigService config,
         
         databaseServer.GetTables().Globals.Configuration
             .Health.Effects.Stimulator.Buffs.AddRange(CustomBuffs);
-
-        var buffs = databaseServer.GetTables().Globals.Configuration
-            .Health.Effects.Stimulator.Buffs;
+        
         
         logger.Info("[KoT] Finished loading data.");
     }
@@ -88,5 +84,17 @@ public class DataService(ConfigService config,
         
         //add custom
         questConfig.RepeatableQuests.Add(_customQuestData.CustomRepeatable);
+    }
+
+    private void FilterModRequirements()
+    {
+        int modCount = Mods.Count;
+        Mods = Mods.Where(p => p.Value.ModRequirement == null || 
+            modList.Any(m => m.ModMetadata.ModGuid == p.Value.ModRequirement))
+            .ToDictionary(p => p.Key, p => p.Value);
+
+        int dif = modCount - Mods.Count;
+        if (dif > 0)
+            logger.Debug($"[KoT] Removed {dif} modifier(s) requiring non-present mods");
     }
 }

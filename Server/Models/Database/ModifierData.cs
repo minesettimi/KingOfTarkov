@@ -10,9 +10,9 @@ public class ModifierData
     [JsonPropertyName("global")]
     public bool Global { get; set; } = true;
     
-    [JsonPropertyName("free")]
-    public bool Free { get; set; } = false;
-    
     [JsonPropertyName("image")]
     public string Image { get; set; } = "/files/modifiers/icon/error.png";
+    
+    [JsonPropertyName("modReq")]
+    public string? ModRequirement { get; set; }
 }

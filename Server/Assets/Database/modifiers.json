@@ -123,5 +123,11 @@
     "name": "Picked Dry",
     "global": false,
     "image": "/files/modifiers/icon/yellow.png"
+  },
+  "697d8ea6814677e13bd6e8f6":
+  {
+    "name": "Cleaning House",
+    "image": "/files/modifiers/icon/black.png",
+    "modReq": "com.blackdiv.taticaltoaster"
   }
 }
