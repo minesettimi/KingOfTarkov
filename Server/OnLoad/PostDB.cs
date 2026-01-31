@@ -6,7 +6,7 @@ using SPTarkov.Server.Core.Models.Utils;
 namespace KingOfTarkov.OnLoad;
 
 //override SVM
-[Injectable(TypePriority = OnLoadOrder.PostDBModLoader + 8)]
+[Injectable(TypePriority = OnLoadOrder.PostDBModLoader + 90000)]
 public class PostDB(QuestService questService,
     LocaleService localeService, 
     ConfigService configService,
