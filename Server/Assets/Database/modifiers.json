@@ -115,5 +115,10 @@
   {
     "name": "Bad Back",
     "image": "/files/modifiers/icon/yellow.png"
+  },
+  "697d64248db356b3c72a7b15":
+  {
+    "name": "Big Pipe, Big Pipe & Big Pipe",
+    "image": "/files/modifiers/icon/red.png"
   }
 }

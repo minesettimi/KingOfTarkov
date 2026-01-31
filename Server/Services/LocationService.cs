@@ -173,6 +173,7 @@ public class LocationService(LocationUtil locationUtil,
             {
                 case "sectantPriest" when modService.HasMod(ModIds.NOBODY_EXPECTS_CULT, locationId):
                 case "sectantPredvestnik" when modService.HasMod(ModIds.FORGOTTEN_SOLDIERS, locationId):
+                case "followerBigPipe" when modService.HasMod(ModIds.BIG_PIPE, locationId):
                 case "ravangeZryachiyEvent" when modService.HasMod(ModIds.VENGEFUL, locationId):
                     bossSetting.ForceSpawn = true;
                     bossSetting.BossChance = 100;
@@ -181,21 +182,15 @@ public class LocationService(LocationUtil locationUtil,
 
             if (modService.HasMod(ModIds.BOLSTERED_NUMBERS, locationId))
             {
-                string[] followerStrings = bossSetting.BossEscortAmount!.Split(",");
-                int[] followerNumbers = Array.ConvertAll(followerStrings, int.Parse);
+                bossSetting.BossEscortAmount = IncreaseBotCount(bossSetting.BossEscortAmount!, 2);
 
-                for (int i = 0; i < followerNumbers.Length; i++)
+                if (bossSetting.Supports != null)
                 {
-                    double count = followerNumbers[i];
-                    
-                    //surprise add followers to solo bosses
-                    if (count == 0)
-                        count = 1;
-                    
-                    followerNumbers[i] = (int)Math.Ceiling(count * 1.5);
+                    foreach (BossSupport support in bossSetting.Supports)
+                    {
+                        support.BossEscortAmount = IncreaseBotCount(support.BossEscortAmount!, 1);
+                    }
                 }
-
-                bossSetting.BossEscortAmount = string.Join(",", followerNumbers);
             }
         }
         
@@ -206,5 +201,24 @@ public class LocationService(LocationUtil locationUtil,
             location.EscapeTimeLimitCoop = newTimeLimit;
             location.EscapeTimeLimitPVE = newTimeLimit;
         }
+    }
+
+    private string IncreaseBotCount(string numbers, int increase)
+    {
+        string[] followerStrings = numbers.Split(",");
+        int[] followerNumbers = Array.ConvertAll(followerStrings, int.Parse);
+
+        for (int i = 0; i < followerNumbers.Length; i++)
+        {
+            double count = followerNumbers[i];
+                    
+            //surprise add followers
+            if (count == 0)
+                count = 1;
+                    
+            followerNumbers[i] = (int)Math.Ceiling(count * 1.5);
+        }
+
+        return string.Join(",", followerNumbers);
     }
 }

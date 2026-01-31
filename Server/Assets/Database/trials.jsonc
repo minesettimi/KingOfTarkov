@@ -252,7 +252,8 @@
         "69641bcda88a8c37ed1c3285", //lights
         "69641c39c12fc4b3661c3287", //blizzard
         "6971568817fa49e7d374f9e9", //anti-aircraft
-        "697d0c20cdde2fdbe32a7b0d" //bad batch
+        "697d0c20cdde2fdbe32a7b0d", //bad batch
+        "697d64248db356b3c72a7b15" //big pipe
       ]
     },
     "6977ac7d7748c92129daa4df":
@@ -283,7 +284,8 @@
         "697d0c6bc775a882672a7b0e", //radiation
         "6971568817fa49e7d374f9e9", //anti-aircraft
         "69641bcda88a8c37ed1c3285", //who turned off the lights
-        "69641cf7e8f4ea1f731c328b" //scav training
+        "69641cf7e8f4ea1f731c328b", //scav training
+        "697d64248db356b3c72a7b15" //big pipe
       ]
     },
     "697d622ba7417973182a7b14": 
@@ -298,7 +300,8 @@
         "697d0c20cdde2fdbe32a7b0d", //bad batch
         "69641c76dcf788fcf81c3289", //poison bullets
         "69635493661702de5b3d25d5", //oops all killa
-        "69641c39c12fc4b3661c3287" //sudden blizzard
+        "69641c39c12fc4b3661c3287", //sudden blizzard
+        "697d64248db356b3c72a7b15" //big pipe
       ]
     },
     "696348b8da2f8535603d25d1":
@@ -348,7 +351,8 @@
         "69641c5d0e8b8f30ec1c3288", //explosive bullets
         "697d0c6bc775a882672a7b0e", //radiation leak
         "697d0c0bb08e0a804a2a7b0c", //bolstered
-        "69641cdb3a6474c01a1c328a" //cursed
+        "69641cdb3a6474c01a1c328a", //cursed
+        "697d64248db356b3c72a7b15" //big pipe
       ]
     },
     "6963ed4908d8d15b601c3282":

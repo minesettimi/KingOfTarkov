@@ -88,6 +88,7 @@ public class TrialService(KingProfileHelper profileHelper,
         profileHelper.SetupTrialForProfiles(newTrialNum == 1);
         GenerateExfilQuests();
         
+        GC.Collect(GC.MaxGeneration, GCCollectionMode.Aggressive, true, true);
         logger.Info($"[KoT] Started new Trial {newTrialNum}");
     }
 

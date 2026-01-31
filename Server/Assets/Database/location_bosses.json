@@ -347,6 +347,54 @@
       "Time": -1,
       "TriggerId": "",
       "TriggerName": ""
+    },
+    {
+      "BossChance": 0,
+      "BossDifficult": "normal",
+      "BossEscortAmount": "2",
+      "BossEscortDifficult": "normal",
+      "BossEscortType": "exUsec",
+      "BossName": "followerBigPipe",
+      "BossPlayer": false,
+      "BossZone": "",
+      "Delay": 0,
+      "DependKarma": false,
+      "DependKarmaPVE": false,
+      "ForceSpawn": true,
+      "IgnoreMaxBots": true,
+      "RandomTimeSpawn": false,
+      "ShowOnTarkovMap": false,
+      "ShowOnTarkovMapPvE": false,
+      "SpawnMode": [
+        "regular",
+        "pve"
+      ],
+      "Supports": [
+        {
+          "BossEscortAmount": "1",
+          "BossEscortDifficult": [
+            "normal"
+          ],
+          "BossEscortType": "followerBigPipe"
+        },
+        {
+          "BossEscortAmount": "1",
+          "BossEscortDifficult": [
+            "normal"
+          ],
+          "BossEscortType": "followerBigPipe"
+        },
+        {
+          "BossEscortAmount": "0",
+          "BossEscortDifficult": [
+            "normal"
+          ],
+          "BossEscortType": "followerGluharScout"
+        }
+      ],
+      "Time": -1,
+      "TriggerId": "",
+      "TriggerName": ""
     }
   ]
 }
