@@ -178,6 +178,25 @@ public class LocationService(LocationUtil locationUtil,
                     bossSetting.BossChance = 100;
                     break;
             }
+
+            if (modService.HasMod(ModIds.BOLSTERED_NUMBERS, locationId))
+            {
+                string[] followerStrings = bossSetting.BossEscortAmount!.Split(",");
+                int[] followerNumbers = Array.ConvertAll(followerStrings, int.Parse);
+
+                for (int i = 0; i < followerNumbers.Length; i++)
+                {
+                    double count = followerNumbers[i];
+                    
+                    //surprise add followers to solo bosses
+                    if (count == 0)
+                        count = 1;
+                    
+                    followerNumbers[i] = (int)Math.Ceiling(count * 1.5);
+                }
+
+                bossSetting.BossEscortAmount = string.Join(",", followerNumbers);
+            }
         }
         
         if (modService.HasMod(ModIds.BETTER_THINGS_TO_DO, locationId))

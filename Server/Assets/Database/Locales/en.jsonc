@@ -8,8 +8,10 @@
   "69634713f3ed3f71243d25ce name": "Fire",
   "69667e5cfb9284cdfe8995b4 name": "Rock",
   "6977ac7d7748c92129daa4df name": "Blood",
+  "697d60ead13f5b9ee52a7b13 name": "Power",
   "696348b8da2f8535603d25d1 name": "Poison",
   "69667f2169c162c0838995b6 name": "Void",
+  "697d5fbb1c2d67a3e82a7b12 name": "Death",
   "6963ed4908d8d15b601c3282 name": "The End",
   
   //modifiers
@@ -38,7 +40,7 @@
   "69641c5d0e8b8f30ec1c3288 description": "Each bullet is packed with nitroglycerin",
 
   "69641cdb3a6474c01a1c328a name": "Cursed",
-  "69641cdb3a6474c01a1c328a description": "You cannot escape their wrath.",
+  "69641cdb3a6474c01a1c328a description": "You cannot escape their wrath",
 
   "69641cf7e8f4ea1f731c328b name": "Scav Training",
   "69641cf7e8f4ea1f731c328b description": "Scavs have been trained by a group of PMCs",
@@ -65,7 +67,19 @@
   "69743b8a9ff301273ab9cfe3 description": "The ghost of Zryachiy has come for revenge",
   
   "697665d21a0af5a3ec667751 name": "Forgotten Soldiers",
-  "697665d21a0af5a3ec667751 description": "Long lost soldiers of the cult have been spotted in the area.",
+  "697665d21a0af5a3ec667751 description": "Long lost soldiers of the cult have been spotted in the area",
+  
+  "697d0c0bb08e0a804a2a7b0c name": "Bolstered Numbers",
+  "697d0c0bb08e0a804a2a7b0c description": "Bosses and PMCs in the area have been getting more followers",
+  
+  "697d0c20cdde2fdbe32a7b0d name": "Bad Batch",
+  "697d0c20cdde2fdbe32a7b0d description": "All weapons have been malfunctioning lately",
+
+  "697d0c6bc775a882672a7b0e name": "Radiation Leak",
+  "697d0c6bc775a882672a7b0e description": "The area is covered in radiation, worse than a gaskmask can handle",
+  
+  "697d44b270afae2a0e2a7b10 name": "Bad Back",
+  "697d44ece28e8740372a7b10 description": "Must've slept bad, weight limit reduced",
   
   //quests
   //trial quests

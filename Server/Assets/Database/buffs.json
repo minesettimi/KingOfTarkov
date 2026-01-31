@@ -1,0 +1,53 @@
+{
+  "Buffs_BadBatch": [
+    {
+      "AbsoluteValue": true,
+      "BuffType": "MisfireEffect",
+      "Chance": 1,
+      "Delay": 0,
+      "Duration": 3000000,
+      "SkillName": "",
+      "Value": 0
+    }
+  ],
+  "Buffs_RadLeak": [
+    {
+      "AbsoluteValue": true,
+      "BuffType": "HealthRate",
+      "Chance": 1,
+      "Delay": 20,
+      "Duration": 3000000,
+      "SkillName": "",
+      "Value": -0.25
+    },
+    {
+      "AbsoluteValue": true,
+      "BuffType": "HydrationRate",
+      "Chance": 1,
+      "Delay": 20,
+      "Duration": 3000000,
+      "SkillName": "",
+      "Value": -0.05
+    },
+    {
+      "AbsoluteValue": true,
+      "BuffType": "EnergyRate",
+      "Chance": 1,
+      "Delay": 20,
+      "Duration": 3000000,
+      "SkillName": "",
+      "Value": -0.05
+    }
+  ],
+  "Buffs_BadBack": [
+    {
+      "AbsoluteValue": false,
+      "BuffType": "WeightLimit",
+      "Chance": 1,
+      "Delay": 0,
+      "Duration": 3000000,
+      "SkillName": "",
+      "Value": -0.25
+    }
+  ] 
+}

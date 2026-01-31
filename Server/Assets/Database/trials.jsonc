@@ -210,7 +210,8 @@
     "69641bfddc2b21a1c11c3286", //extreme meta
     "69641d1c93259454391c328c", //cult
     "69641f35f803fa7a201c3297", //taxi tax
-    "69641f0d1a7fda7de51c3295" //slow engine
+    "69641f0d1a7fda7de51c3295", //slow engine
+    "697d44b270afae2a0e2a7b10" //bad back
   ],
   "types":
   {
@@ -235,7 +236,8 @@
         "69641cf7e8f4ea1f731c328b", //raider
         "69641f26d1723deca91c3296", //snipers
         "69641cdb3a6474c01a1c328a", //cursed
-        "69713e68a14861969174f9e8" //desert
+        "69713e68a14861969174f9e8", //desert
+        "697d0c6bc775a882672a7b0e" //radiation leak
       ]
     },
     "69667e5cfb9284cdfe8995b4":
@@ -249,7 +251,8 @@
         "69641cf7e8f4ea1f731c328b", //cursed
         "69641bcda88a8c37ed1c3285", //lights
         "69641c39c12fc4b3661c3287", //blizzard
-        "6971568817fa49e7d374f9e9" //anti-aircraft
+        "6971568817fa49e7d374f9e9", //anti-aircraft
+        "697d0c20cdde2fdbe32a7b0d" //bad batch
       ]
     },
     "6977ac7d7748c92129daa4df":
@@ -264,7 +267,38 @@
         "697665d21a0af5a3ec667751", //forgotten
         "69641cf7e8f4ea1f731c328b", //training
         "69641f26d1723deca91c3296", //snipers
-        "69641bcda88a8c37ed1c3285" //lights
+        "69641bcda88a8c37ed1c3285", //lights
+        "697d0c0bb08e0a804a2a7b0c" //bolstered
+      ]
+    },
+    "697d60ead13f5b9ee52a7b13":
+    {
+      "name": "Power",
+      "color": "#d4b400",
+      "min": 4,
+      "max": 7,
+      "modPool": 
+      [
+        "69641c5d0e8b8f30ec1c3288", //explosive bullets
+        "697d0c6bc775a882672a7b0e", //radiation
+        "6971568817fa49e7d374f9e9", //anti-aircraft
+        "69641bcda88a8c37ed1c3285", //who turned off the lights
+        "69641cf7e8f4ea1f731c328b" //scav training
+      ]
+    },
+    "697d622ba7417973182a7b14": 
+    {
+      "name": "Pain",
+      "color": "#fa0019",
+      "min": 5,
+      "max": 5,
+      "modPool": 
+      [
+        "6971a16640ca8d842155fe95", //blackhole corpses
+        "697d0c20cdde2fdbe32a7b0d", //bad batch
+        "69641c76dcf788fcf81c3289", //poison bullets
+        "69635493661702de5b3d25d5", //oops all killa
+        "69641c39c12fc4b3661c3287" //sudden blizzard
       ]
     },
     "696348b8da2f8535603d25d1":
@@ -279,7 +313,8 @@
         "69641c39c12fc4b3661c3287", //blizzard
         "69743b8a9ff301273ab9cfe3", //vengeful
         "69641cf7e8f4ea1f731c328b", //training
-        "69641bcda88a8c37ed1c3285" //lights
+        "69641bcda88a8c37ed1c3285", //lights
+        "697d0c6bc775a882672a7b0e" //radiation
       ]
     },
     "69667f2169c162c0838995b6":
@@ -295,7 +330,25 @@
         "69641cdb3a6474c01a1c328a", //cursed
         "69641bcda88a8c37ed1c3285", //lights
         "6971568817fa49e7d374f9e9", //anti-air
-        "69641c5d0e8b8f30ec1c3288" //explosive bull
+        "69641c5d0e8b8f30ec1c3288", //explosive bull
+        "697d0c20cdde2fdbe32a7b0d" //bad batch
+      ]
+    },
+    "697d5fbb1c2d67a3e82a7b12":
+    {
+      "name": "Death",
+      "color": "#141212",
+      "min": 7,
+      "max": 9,
+      "modPool": 
+      [
+        "69743b8a9ff301273ab9cfe3", //vengeful
+        "697665d21a0af5a3ec667751", //forgotten
+        "69641cf7e8f4ea1f731c328b", //scav training
+        "69641c5d0e8b8f30ec1c3288", //explosive bullets
+        "697d0c6bc775a882672a7b0e", //radiation leak
+        "697d0c0bb08e0a804a2a7b0c", //bolstered
+        "69641cdb3a6474c01a1c328a" //cursed
       ]
     },
     "6963ed4908d8d15b601c3282":

@@ -9,7 +9,7 @@ using SPT.Reflection.Patching;
 
 namespace KoTClient.Patches.Health;
 
-public class ExistencePatch : ModulePatch
+public class HealthConstructorPatch : ModulePatch
 {
     protected override MethodBase GetTargetMethod()
     {
@@ -30,5 +30,24 @@ public class ExistencePatch : ModulePatch
 
         effects.Existence.EnergyLoopTime = ModService.HasMod(ModIds.EXTREME_METABOLISM) ? 45f : 60f;
         effects.Existence.HydrationLoopTime = ModService.HasMod(ModIds.DESERT_WEATHER) ? 45f : 60f;
+    }
+
+    [PatchPostfix]
+    public static void Postfix(GClass3010 __instance)
+    {
+        if (ModService.HasMod(ModIds.BAD_BATCH))
+        {
+            __instance.DoExternalBuff("Buffs_BadBatch", 1f);
+        }
+
+        if (ModService.HasMod(ModIds.RADIATION_LEAK))
+        {
+            __instance.DoExternalBuff("Buffs_RadLeak", 1f);
+        }
+
+        if (ModService.HasMod(ModIds.BAD_BACK))
+        {
+            __instance.DoExternalBuff("Buffs_BadBack", 1f);
+        }
     }
 }

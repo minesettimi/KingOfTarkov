@@ -95,5 +95,25 @@
   {
     "name": "Forgotten Soldiers",
     "image": "/files/modifiers/icon/cyan.png"
+  },
+  "697d0c0bb08e0a804a2a7b0c":
+  {
+    "name": "Bolstered Numbers",
+    "image": "/files/modifiers/icon/red.png"
+  },
+  "697d0c20cdde2fdbe32a7b0d":
+  {
+    "name": "Bad Batch",
+    "image": "/files/modifiers/icon/blue.png"
+  },
+  "697d0c6bc775a882672a7b0e":
+  {
+    "name": "Radiation Leak",
+    "image": "/files/modifiers/icon/yellow.png"
+  },
+  "697d44b270afae2a0e2a7b10":
+  {
+    "name": "Bad Back",
+    "image": "/files/modifiers/icon/yellow.png"
   }
 }

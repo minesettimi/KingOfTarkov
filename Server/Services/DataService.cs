@@ -1,4 +1,5 @@
 using KingOfTarkov.Models.Database;
+using MonoMod.Utils;
 using SPTarkov.DI.Annotations;
 using SPTarkov.Server.Core.Models.Common;
 using SPTarkov.Server.Core.Models.Eft.Common;
@@ -17,12 +18,14 @@ public class DataService(ConfigService config,
     JsonUtil jsonUtil,
     ConfigServer configServer,
     DatabaseService databaseService,
+    DatabaseServer databaseServer,
     ISptLogger<DataService> logger)
 {
     public TrialData TrialConfig;
     public Dictionary<MongoId, ModifierData> Mods;
     public Dictionary<MongoId, Quest> ReplaceableQuests = new();
     public Dictionary<string, List<BossLocationSpawn>> CustomBossSpawns = new();
+    public Dictionary<string, IEnumerable<Buff>> CustomBuffs = new();
     
     private CustomQuestData _customQuestData;
 
@@ -62,6 +65,18 @@ public class DataService(ConfigService config,
         }
         
         CustomBossSpawns = await jsonUtil.DeserializeFromFileAsync<Dictionary<string, List<BossLocationSpawn>>>(Path.Join(dataPath, "location_bosses.json")) ?? throw new Exception("[KoT] CustomBossSpawns data not found.");
+
+        CustomBuffs =
+            await jsonUtil.DeserializeFromFileAsync<Dictionary<string, IEnumerable<Buff>>>(Path.Join(dataPath,
+                "buffs.json")) ?? throw new Exception("[KoT] CustomBuffs data not found.");
+        
+        databaseServer.GetTables().Globals.Configuration
+            .Health.Effects.Stimulator.Buffs.AddRange(CustomBuffs);
+
+        var buffs = databaseServer.GetTables().Globals.Configuration
+            .Health.Effects.Stimulator.Buffs;
+        
+        logger.Info("[KoT] Finished loading data.");
     }
     
     private void SetupCustomRepeatables()
