@@ -1,8 +1,10 @@
 using KingOfTarkov.Generators;
+using KingOfTarkov.Models.Response;
 using KingOfTarkov.Models.Save;
 using KingOfTarkov.Services;
 using KingOfTarkov.Utils;
 using SPTarkov.DI.Annotations;
+using SPTarkov.Server.Core.Helpers;
 using SPTarkov.Server.Core.Models.Common;
 using SPTarkov.Server.Core.Models.Eft.Common;
 using SPTarkov.Server.Core.Models.Eft.Common.Tables;
@@ -13,14 +15,15 @@ namespace KingOfTarkov.Helpers;
 
 [Injectable(InjectionType.Singleton)]
 public class LocationController(SaveService save,
-    KingProfileHelper profileHelper,
+    KingProfileHelper kingProfileHelper,
+    ProfileHelper profileHelper,
     LocationUtil locationUtil,
     TrialService trialService,
     QuestGenerator questGenerator,
     ConfigService config,
     ISptLogger<LocationController> logger)
 {
-
+    
     public void HandlePostRaid(MongoId sessionId,
         SptProfile profile,
         bool isDead,
@@ -32,32 +35,38 @@ public class LocationController(SaveService save,
 
         if (profileData == null)
             return;
-        
-        if (isDead)
+
+        if (!isDead) return;
+
+        if (--profileData.Lives == 0 && config.Difficulty.Core.Revives && profileData.Revives > 0)
         {
-            if (--profileData.Lives == 0 && config.Difficulty.Core.Revives && profileData.Revives > 0)
-            {
-                profileData.Revives--;
-                GivePlayerReviveQuest(pmcProfile.Id!.Value);
-            }
+            profileData.Revives--;
+            GivePlayerReviveQuest(pmcProfile.Id!.Value);
+        }
             
-            save.SaveCurrentState();
-            return;
-        }
-        
-        //not dead but not survived, ran through. No reward.
-        if (!isSurvived)
+        save.SaveCurrentState();
+    }
+
+    public void HandleMatchEnd(MatchEndRequest matchEndRequest, MongoId sessionId)
+    {
+        PmcData? profile = profileHelper.GetPmcProfile(sessionId);
+
+        if (profile == null)
         {
+            logger.Error("[KoT] Unable to retrieve profile for match end route.");
             return;
         }
+
+        if (!matchEndRequest.Survived || matchEndRequest.TrialId != save.CurrentSave.Id)
+            return;
         
-        MongoId locationId = locationUtil.GetMapId(locationName)!;
+        MongoId locationId = locationUtil.GetMapId(matchEndRequest.LocationName.ToLower());
         locationId = locationUtil.GetMapOther(locationId);
 
         trialService.CompleteLocation(locationId);
         
-        //level player up
-        profileHelper.LevelUpPlayer(pmcProfile!, config.Difficulty.Trial.LevelPerRaid);
+        //level all players up
+        kingProfileHelper.LevelUpAllProfiles(config.Difficulty.Trial.LevelPerRaid);
     }
     
     public void GivePlayerReviveQuest(MongoId playerId)

@@ -25,7 +25,7 @@ public class GenerateLootOverride : AbstractPatch
     [PatchPrefix]
     public static bool Prefix(string locationId, ref List<SpawnpointTemplate> __result)
     {
-        MongoId location = _locationUtils.GetMapId(locationId);
+        MongoId location = _locationUtils.GetMapId(locationId.ToLower());
 
         if (!_modifierService.HasMod(ModIds.PICKED_DRY, location))
             return true;

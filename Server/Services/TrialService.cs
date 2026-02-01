@@ -32,19 +32,18 @@ public class TrialService(KingProfileHelper profileHelper,
 
     public void CompleteLocation(MongoId locationId)
     {
-        //TODO: FIKA SUPPORT
-
         LocationDataState currentLocation = save.CurrentSave.Location.Active[locationId];
-        if (!currentLocation.Completed)
-        {
-            currentLocation.Completed = true;
-            save.RemainingRaids--;
 
-            //delete exfil quests
-            foreach (MongoId questId in currentLocation.ExfilRequirements)
-            {
-                save.CurrentSave.Quests.Exfil.Remove(questId);
-            }
+        if (currentLocation.Completed)
+            return;
+        
+        currentLocation.Completed = true;
+        save.RemainingRaids--;
+
+        //delete exfil quests
+        foreach (MongoId questId in currentLocation.ExfilRequirements)
+        {
+            save.CurrentSave.Quests.Exfil.Remove(questId);
         }
 
         //mark trial as different

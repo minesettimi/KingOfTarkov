@@ -56,26 +56,4 @@ public class ModifierUI : UIElement
         modIcon.ModSprite.sprite = modifierData.Sprite;
         modIcon.ShowGameObject();
     }
-    
-    // private async Task ShowModList(ISession session)
-    // {
-    //     Plugin.PluginLogger.LogInfo("Test");
-    //     
-    //     foreach ((MongoID id, ModifierData modData) in _modList)
-    //     {
-    //         if (modData.Sprite == null)
-    //         {
-    //             await modData.LoadIconSprite(session);
-    //         }
-    //         
-    //         GameObject newModImg = Instantiate(ModifierTemplate, transform);
-    //         ModifierIconUI modIcon = newModImg.GetComponent<ModifierIconUI>();
-    //
-    //         modIcon.ModSprite.sprite = modData.Sprite;
-    //         modIcon.SetEnabledTooltip($"{id} name".Localized());
-    //         
-    //         _modIcons.Add(newModImg);
-    //         newModImg.SetActive(true);
-    //     }
-    // }
 }

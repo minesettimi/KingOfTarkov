@@ -21,7 +21,6 @@ public class ModifierData
 
     public async Task LoadIconSprite(GInterface221 session)
     {
-        Plugin.PluginLogger.LogInfo(Image);
         Sprite newSprite = await GClass855.LoadIconSprite(session, Image);
         Sprite = newSprite;
     }

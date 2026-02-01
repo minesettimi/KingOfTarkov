@@ -36,10 +36,10 @@ public class DataService(ConfigService config,
         string dataPath = Path.Join(config.ModPath, "Assets", "Database");
 
         TrialConfig = await jsonUtil.DeserializeFromFileAsync<TrialData>(Path.Join(dataPath, "trials.jsonc")) ??
-                      throw new Exception("[KoT] TrialConfig data not found.");
+                      throw new NullReferenceException("[KoT] TrialConfig data not found.");
         
         Mods = await jsonUtil.DeserializeFromFileAsync<Dictionary<MongoId, ModifierData>>(Path.Join(dataPath, "modifiers.json")) 
-               ?? throw new Exception("[KoT] Mod data not found.");
+               ?? throw new NullReferenceException("[KoT] Mod data not found.");
         
         FilterModRequirements();
         
@@ -51,7 +51,7 @@ public class DataService(ConfigService config,
         
         //quest data
         _customQuestData = await jsonUtil.DeserializeFromFileAsync<CustomQuestData>(Path.Join(dataPath, "questdata.json")) 
-                           ?? throw new Exception("[KoT] Quest data not found.");
+                           ?? throw new NullReferenceException("[KoT] Quest data not found.");
         
         SetupCustomRepeatables();
         
@@ -62,11 +62,11 @@ public class DataService(ConfigService config,
             logger.Warning("[KoT] There are no dynamic quests available.");
         }
         
-        CustomBossSpawns = await jsonUtil.DeserializeFromFileAsync<Dictionary<string, List<BossLocationSpawn>>>(Path.Join(dataPath, "location_bosses.json")) ?? throw new Exception("[KoT] CustomBossSpawns data not found.");
+        CustomBossSpawns = await jsonUtil.DeserializeFromFileAsync<Dictionary<string, List<BossLocationSpawn>>>(Path.Join(dataPath, "location_bosses.json")) ?? throw new NullReferenceException("[KoT] CustomBossSpawns data not found.");
 
         CustomBuffs =
             await jsonUtil.DeserializeFromFileAsync<Dictionary<string, IEnumerable<Buff>>>(Path.Join(dataPath,
-                "buffs.json")) ?? throw new Exception("[KoT] CustomBuffs data not found.");
+                "buffs.json")) ?? throw new NullReferenceException("[KoT] CustomBuffs data not found.");
         
         databaseServer.GetTables().Globals.Configuration
             .Health.Effects.Stimulator.Buffs.AddRange(CustomBuffs);

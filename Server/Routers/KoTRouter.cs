@@ -1,4 +1,6 @@
 using KingOfTarkov.Controllers;
+using KingOfTarkov.Helpers;
+using KingOfTarkov.Models.Response;
 using KingOfTarkov.Services;
 using KoTServer.Controllers;
 using SPTarkov.DI.Annotations;
@@ -46,6 +48,15 @@ public class KoTRouter(JsonUtil jsonUtil, KoTCallbacks koTCallbacks) : StaticRou
             sessionId,
             output
         ) => await koTCallbacks.HandleModifierList()
+    ),
+    new RouteAction<MatchEndRequest>(
+        "/kot/match/end",
+        async (
+            url,
+            info,
+            sessionId,
+            output
+        ) => await koTCallbacks.HandleMatchEnd(info, sessionId)
     )
 ])
 { }
@@ -55,6 +66,7 @@ public class KoTCallbacks(HttpResponseUtil httpResponseUtil,
     ProfileController profileController,
     SaveService save,
     DataService dataService,
+    LocationController locationController,
     TrialController trialController)
 {
     public ValueTask<string> HandleGetState()
@@ -75,5 +87,11 @@ public class KoTCallbacks(HttpResponseUtil httpResponseUtil,
     public ValueTask<string> HandleModifierList()
     {
         return new ValueTask<string>(httpResponseUtil.NoBody(dataService.Mods));
+    }
+
+    public ValueTask<string> HandleMatchEnd(MatchEndRequest info, MongoId sessionId)
+    {
+        locationController.HandleMatchEnd(info, sessionId);
+        return new ValueTask<string>(httpResponseUtil.NullResponse());
     }
 }

@@ -49,7 +49,15 @@ public class KingProfileHelper(SaveServer saveServer,
         }
     }
 
-    public void LevelUpPlayer(PmcData profile, int number)
+    public void LevelUpAllProfiles(int number)
+    {
+        foreach (PmcData playerData in saveServer.GetProfiles().Values.Select(profile => profile.CharacterData!.PmcData!))
+        {
+            LevelUpPlayer(playerData, number);
+        }
+    }
+
+    private void LevelUpPlayer(PmcData profile, int number)
     {
         int playerLevel = profile.Info?.Level ?? 1;
         

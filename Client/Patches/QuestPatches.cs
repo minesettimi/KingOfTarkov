@@ -126,7 +126,6 @@ public class SetStatusPatch : ModulePatch
             
             TaskConditionCounterClass? counter = __instance.ConditionCountersManager.GetCounter(counterCreator.id);
             
-            Plugin.PluginLogger.LogInfo($"[KoT] {JsonConvert.SerializeObject(counter)}");
             counter.Reset();
             
             __instance.ProgressCheckers[condition].Reset();
