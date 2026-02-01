@@ -7,6 +7,7 @@ using SPTarkov.Server.Core.Models.Eft.Common;
 using SPTarkov.Server.Core.Models.Enums;
 using SPTarkov.Server.Core.Models.Utils;
 using SPTarkov.Server.Core.Services;
+using SPTarkov.Server.Core.Utils.Cloners;
 
 namespace KingOfTarkov.Services;
 
@@ -16,7 +17,7 @@ public class LocationService(LocationUtil locationUtil,
     DatabaseService databaseService,
     ModifierService modService,
     LocationHelper locationHelper,
-    SPTarkov.Server.Core.Utils.Cloners.FastCloner cloner,
+    ICloner cloner,
     ISptLogger<LocationService> logger)
 {
     public readonly Dictionary<MongoId, List<string>> BossCache = new();
@@ -47,8 +48,8 @@ public class LocationService(LocationUtil locationUtil,
                 continue;
             }
             
-            locationDb[mapName].Base.BossLocationSpawn.AddRange(bossSpawn);
-            locationDb[mapName].Base.BossLocationSpawn.AddRange(dataService.CustomBossSpawns["global"]);
+            locationDb[mapName].Base.BossLocationSpawn.AddRange(cloner.Clone(bossSpawn)!);
+            locationDb[mapName].Base.BossLocationSpawn.AddRange(cloner.Clone(dataService.CustomBossSpawns["global"])!);
         }
     }
     
