@@ -50,8 +50,8 @@ public class ProfileService(SaveServer saveServer,
             Revives = configService.Difficulty.Core.ReviveLimit
         });
         
-        //TODO: FIKA support
-        save.CurrentSave.Profile.Locked = !configService.BaseConfig.Developer;
+        if (!configService.FikaPresent)
+            save.CurrentSave.Profile.Locked = !configService.BaseConfig.Developer;
         
         save.SaveCurrentState();
     }

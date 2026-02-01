@@ -6,6 +6,7 @@ using SPTarkov.Server.Core.Helpers;
 using SPTarkov.Server.Core.Models.Common;
 using SPTarkov.Server.Core.Models.Eft.Common;
 using SPTarkov.Server.Core.Models.Spt.Config;
+using SPTarkov.Server.Core.Models.Spt.Mod;
 using SPTarkov.Server.Core.Models.Utils;
 using SPTarkov.Server.Core.Servers;
 using SPTarkov.Server.Core.Utils;
@@ -18,12 +19,15 @@ public class ConfigService(ModHelper modHelper,
     ConfigServer configServer,
     DatabaseServer databaseServer,
     JsonUtil jsonUtil,
+    IReadOnlyList<SptMod> modList,
     ISptLogger<ConfigService> logger)
 {
     public readonly string ModPath = modHelper.GetAbsolutePathToModFolder(Assembly.GetExecutingAssembly());
     
     public BaseConfig BaseConfig;
     public BaseDifficulty Difficulty;
+
+    public bool FikaPresent;
 
     public async Task Load()
     {
@@ -45,6 +49,8 @@ public class ConfigService(ModHelper modHelper,
             logger.Info($"[KoT] Initializing for {BaseConfig.Difficulty} difficulty.");
             Difficulty = selectedDifficulty;
         }
+
+        FikaPresent = modList.Any(m => m.ModMetadata.ModGuid.Contains("Fika"));
         
         await File.WriteAllTextAsync(configPath, jsonUtil.Serialize(BaseConfig, true));
     }

@@ -36,12 +36,17 @@ public class LocationController(SaveService save,
         if (profileData == null)
             return;
 
-        if (!isDead) return;
-
-        if (--profileData.Lives == 0 && config.Difficulty.Core.Revives && profileData.Revives > 0)
+        if (isDead)
         {
-            profileData.Revives--;
-            GivePlayerReviveQuest(pmcProfile.Id!.Value);
+            if (--profileData.Lives == 0 && config.Difficulty.Core.Revives && profileData.Revives > 0)
+            {
+                profileData.Revives--;
+                GivePlayerReviveQuest(pmcProfile.Id!.Value);
+            }
+        }
+        else if (isSurvived) //only if survived, not if run-through
+        {
+            kingProfileHelper.LevelUpPlayer(pmcProfile, config.Difficulty.Trial.LevelPerRaid);
         }
             
         save.SaveCurrentState();
@@ -64,9 +69,6 @@ public class LocationController(SaveService save,
         locationId = locationUtil.GetMapOther(locationId);
 
         trialService.CompleteLocation(locationId);
-        
-        //level all players up
-        kingProfileHelper.LevelUpAllProfiles(config.Difficulty.Trial.LevelPerRaid);
     }
     
     public void GivePlayerReviveQuest(MongoId playerId)

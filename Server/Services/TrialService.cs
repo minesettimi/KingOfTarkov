@@ -40,6 +40,9 @@ public class TrialService(KingProfileHelper profileHelper,
         currentLocation.Completed = true;
         save.RemainingRaids--;
 
+        if (config.FikaPresent)
+            save.CurrentSave.Profile.Locked = true;
+
         //delete exfil quests
         foreach (MongoId questId in currentLocation.ExfilRequirements)
         {
