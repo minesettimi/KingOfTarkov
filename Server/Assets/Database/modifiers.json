@@ -2,132 +2,132 @@
   "69635493661702de5b3d25d5":
   {
     "name": "Oops All Killa",
-    "image": "/files/modifiers/icon/blue.png"
+    "image": "/files/modifiers/icon/oopsallkilla.png"
   },
   "69641baf8e22a5d7181c3284":
   {
     "name": "Better Things To Do",
-    "image": "/files/modifiers/icon/white.png"
+    "image": "/files/modifiers/icon/timelimit.png"
   },
   "69641bcda88a8c37ed1c3285":
   {
     "name": "Who Turned Off The Lights",
-    "image": "/files/modifiers/icon/black.png"
+    "image": "/files/modifiers/icon/lights.png"
   },
   "69641bfddc2b21a1c11c3286":
   {
     "name": "Extreme Metabolism",
-    "image": "/files/modifiers/icon/yellow.png"
+    "image": "/files/modifiers/icon/extrememetabolism.png"
   },
   "69713e68a14861969174f9e8":
   {
     "name": "Desert Weather",
-    "image": "/files/modifiers/icon/yellow.png"
+    "image": "/files/modifiers/icon/desertweather.png"
   },
   "69641c39c12fc4b3661c3287":
   {
     "name": "Sudden Blizzard",
-    "image": "/files/modifiers/icon/white.png"
+    "image": "/files/modifiers/icon/suddenblizzard.png"
   },
   "69641c76dcf788fcf81c3289":
   {
     "name": "Poison Bullets",
-    "image": "/files/modifiers/icon/purple.png"
+    "image": "/files/modifiers/icon/poisonbullets.png"
   },
   "69641c5d0e8b8f30ec1c3288":
   {
     "name": "Explosive Bullets",
-    "image": "/files/modifiers/icon/red.png"
+    "image": "/files/modifiers/icon/explosivebullets.png"
   },
   "69641cdb3a6474c01a1c328a":
   {
     "name": "Cursed",
-    "image": "/files/modifiers/icon/black.png"
+    "image": "/files/modifiers/icon/cursed.png"
   },
   "69641cf7e8f4ea1f731c328b":
   {
     "name": "Scav Training",
-    "image": "/files/modifiers/icon/red.png"
+    "image": "/files/modifiers/icon/scavtraining.png"
   },
   "69641d1c93259454391c328c":
   {
     "name": "Nobody Ever Expects The Cult",
-    "image": "/files/modifiers/icon/black.png"
+    "image": "/files/modifiers/icon/cult.png"
   },
   "69641f0d1a7fda7de51c3295":
   {
     "name": "Slow Engine",
     "global": false,
-    "image": "/files/modifiers/icon/orange.png"
+    "image": "/files/modifiers/icon/slowengine.png"
   },
   "69641f26d1723deca91c3296":
   {
     "name": "No Survivors",
     "global": false,
-    "image": "/files/modifiers/icon/blue.png"
+    "image": "/files/modifiers/icon/nosurvivors.png"
   },
   "69641f35f803fa7a201c3297":
   {
     "name": "Taxi Tax",
     "global": false,
-    "image": "/files/modifiers/icon/orange.png"
+    "image": "/files/modifiers/icon/taxitax.png"
   },
   "6971568817fa49e7d374f9e9":
   {
     "name": "Anti Aircraft",
     "global": false,
-    "image": "/files/modifiers/icon/blue.png"
+    "image": "/files/modifiers/icon/antiaircraft.png"
   },
   "6971a16640ca8d842155fe95":
   {
     "name": "Blackhole Corpses",
-    "image": "/files/modifiers/icon/black.png"
+    "image": "/files/modifiers/icon/blackholecorpses.png"
   },
   "69743b8a9ff301273ab9cfe3":
   {
     "name": "The Vengeful",
-    "image": "/files/modifiers/icon/cyan.png"
+    "image": "/files/modifiers/icon/vengeful.png"
   },
   "697665d21a0af5a3ec667751":
   {
     "name": "Forgotten Soldiers",
-    "image": "/files/modifiers/icon/cyan.png"
+    "image": "/files/modifiers/icon/forgottensoldiers.png"
   },
   "697d0c0bb08e0a804a2a7b0c":
   {
     "name": "Bolstered Numbers",
-    "image": "/files/modifiers/icon/red.png"
+    "image": "/files/modifiers/icon/bolsterednumbers.png"
   },
   "697d0c20cdde2fdbe32a7b0d":
   {
     "name": "Bad Batch",
-    "image": "/files/modifiers/icon/blue.png"
+    "image": "/files/modifiers/icon/badbatch.png"
   },
   "697d0c6bc775a882672a7b0e":
   {
     "name": "Radiation Leak",
-    "image": "/files/modifiers/icon/yellow.png"
+    "image": "/files/modifiers/icon/radiationleak.png"
   },
   "697d44b270afae2a0e2a7b10":
   {
-    "name": "Bad Back",
-    "image": "/files/modifiers/icon/yellow.png"
+    "name": "High Gravity",
+    "image": "/files/modifiers/icon/highgravity.png"
   },
   "697d64248db356b3c72a7b15":
   {
     "name": "Big Pipe, Big Pipe & Big Pipe",
-    "image": "/files/modifiers/icon/red.png"
+    "image": "/files/modifiers/icon/bigpipex3.png"
   },
   "697d85e2a8892f58782a7b16":
   {
     "name": "Picked Dry",
     "global": false,
-    "image": "/files/modifiers/icon/yellow.png"
+    "image": "/files/modifiers/icon/pickeddry.png"
   },
   "697d8ea6814677e13bd6e8f6":
   {
     "name": "Cleaning House",
-    "image": "/files/modifiers/icon/black.png",
+    "image": "/files/modifiers/icon/cleaninghouse.png",
     "modReq": "com.blackdiv.taticaltoaster"
   }
 }
