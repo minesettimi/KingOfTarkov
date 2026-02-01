@@ -8,7 +8,7 @@
         <Nullable>enable</Nullable>
         <OutputType>Library</OutputType>
         
-        <Version>0.10.0</Version>
+        <Version>0.11.0</Version>
         <RootNamespace>KoTServer</RootNamespace>
         <AssemblyName>KingOfTarkov</AssemblyName>
         

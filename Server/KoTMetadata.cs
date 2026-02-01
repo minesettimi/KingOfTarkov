@@ -12,10 +12,10 @@ public static class KoTMetadata
         public override string Name { get; init; } = "King Of Tarkov";
         public override string Author { get; init; } = "minesettimi";
         public override List<string>? Contributors { get; init; }
-        public override Version Version { get; init; } = new(0, 10, 0);
+        public override Version Version { get; init; } = new(0, 11, 0);
         public override Range SptVersion { get; init; } = new("~4.0.4");
 
-        public override List<string>? Incompatibilities { get; init; } = ["Fika"];
+        public override List<string>? Incompatibilities { get; init; }
         public override Dictionary<string, Range>? ModDependencies { get; init; }
 
         public override string? Url { get; init; } = "https://github.com/minesettimi/FleaSimulator";
