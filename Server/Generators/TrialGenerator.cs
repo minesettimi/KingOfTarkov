@@ -134,7 +134,7 @@ public class TrialGenerator(DataService dataService,
 
         if (finalPool.Count < trialNum)
         {
-            logger.Debug("[KoT] Not enough locations for an unique selection.");
+            logger.Warning("[KoT] Not enough locations for an unique selection.");
             finalPool = originalPool;
         }
 

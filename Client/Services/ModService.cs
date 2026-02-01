@@ -30,7 +30,7 @@ public class ModService
         }
     }
 
-    public Dictionary<MongoID, ModifierData> GetModifiersFromList(List<MongoID> modIds)
+    public Dictionary<MongoID, ModifierData> GetModifiersFromList(IEnumerable<MongoID> modIds)
     {
         Dictionary<MongoID, ModifierData> result = new();
         foreach (MongoID id in modIds)

@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EFT;
-using EFT.InputSystem;
 using EFT.UI;
 using KoTClient.Models;
 using UnityEngine;
@@ -19,14 +18,14 @@ public class ModifierUI : UIElement
     private Dictionary<MongoID, ModifierData> _modList;
     private ISession _session;
 
-    public void Show(ISession session, List<MongoID> modifiers)
+    public void Show(ISession session, IEnumerable<MongoID> modifiers)
     {
         UI.Dispose();
 
         ShowGameObject();
         _session = session;
         
-        if (modifiers.Count == 0)
+        if (modifiers.IsNullOrEmpty())
              return;
         
         _modList = Plugin.ModService.GetModifiersFromList(modifiers);
