@@ -1,5 +1,7 @@
 using System.Reflection;
 using HarmonyLib;
+using KingOfTarkov.Models;
+using KoTClient.Services;
 using SPT.Reflection.Patching;
 
 namespace KoTClient.Patches.Modifiers.Bots;
@@ -14,6 +16,6 @@ public class ZoneLeaveControllerPatch : ModulePatch
     [PatchPrefix]
     public static bool Prefix()
     {
-        return false;
+        return !ModService.HasMod(ModIds.NOBODY_EXPECTS_CULT);
     }
 }
