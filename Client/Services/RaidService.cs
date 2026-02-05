@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using EFT;
 using EFT.Communications;
+using EFT.Interactive;
+using EFT.Interactive.SecretExfiltrations;
 using EFT.UI;
 
 namespace KoTClient.Services;
@@ -35,6 +37,13 @@ public class RaidService
         if (ExfilQuests.Count == CompletedQuests.Count)
         {
             ExfiltrationControllerClass.Instance.EnableExitsInteraction();
+            
+            //enable secret exits
+            foreach (SecretExfiltrationPoint exfilPoint in ExfiltrationControllerClass.Instance.SecretExfiltrationPoints)
+            {
+                exfilPoint.EnableInteraction();
+            }
+            
             NotificationManagerClass.DisplayNotification(new GClass2555
             {
                 Text = "ExfilCompleted".Localized(),

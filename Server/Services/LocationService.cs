@@ -4,17 +4,19 @@ using KingOfTarkov.Utils;
 using SPTarkov.DI.Annotations;
 using SPTarkov.Server.Core.Models.Common;
 using SPTarkov.Server.Core.Models.Eft.Common;
+using SPTarkov.Server.Core.Models.Eft.Common.Tables;
 using SPTarkov.Server.Core.Models.Enums;
 using SPTarkov.Server.Core.Models.Utils;
 using SPTarkov.Server.Core.Services;
 using SPTarkov.Server.Core.Utils.Cloners;
+using Locations = SPTarkov.Server.Core.Models.Spt.Server.Locations;
 
 namespace KingOfTarkov.Services;
 
 [Injectable(InjectionType.Singleton)]
 public class LocationService(LocationUtil locationUtil,
     DataService dataService,
-    DatabaseService databaseService,
+    DatabaseService dbService,
     ModifierService modService,
     LocationHelper locationHelper,
     ICloner cloner,
@@ -25,7 +27,7 @@ public class LocationService(LocationUtil locationUtil,
 
     public Task Load()
     {
-        Dictionary<string, Location> locations = databaseService.GetLocations().GetDictionary();
+        Dictionary<string, Location> locations = dbService.GetLocations().GetDictionary();
         AddCustomBossSpawns(locations);
         CacheBosses();
         
@@ -68,7 +70,7 @@ public class LocationService(LocationUtil locationUtil,
     {
         string locationKey = locationUtil.GetMapKey(locationId);
 
-        List<BossLocationSpawn>? spawns = databaseService.GetLocation(locationKey)?.Base.BossLocationSpawn;
+        List<BossLocationSpawn>? spawns = dbService.GetLocation(locationKey)?.Base.BossLocationSpawn;
 
         if (spawns == null)
         {
@@ -86,6 +88,18 @@ public class LocationService(LocationUtil locationUtil,
     {
         foreach ((string key, Location oldLoc) in locationDb)
         {
+            if (key == "Laboratory" || key == "Labyrinth")
+            {
+                oldLoc.Base.IsSecret = false;
+                oldLoc.Base.AccessKeys = [];
+                oldLoc.Base.AccessKeysPvE = [];
+                oldLoc.Base.Enabled = true;
+            }
+            else if (key == "Terminal")
+            {
+                oldLoc.Base.Enabled = false;
+            }
+            
             LocationBase locCopy = cloner.Clone(oldLoc.Base)!;
             
             _locationCache.Add(key, locCopy);
@@ -96,8 +110,8 @@ public class LocationService(LocationUtil locationUtil,
 
     public void SetupNewLocations()
     {
-        Dictionary<string, Location> locationDb = databaseService.GetLocations().GetDictionary();
-
+        Dictionary<string, Location> locationDb = dbService.GetLocations().GetDictionary();
+        
         foreach ((string key, LocationBase oldLoc) in _locationCache)
         {
             locationDb[key].Base = cloner.Clone(oldLoc)!;

@@ -25,7 +25,7 @@ public class BotCreationPatch : ModulePatch
             botData.WildSpawnType_0 = WildSpawnType.pmcBot;
         }
         
-        if (ModService.HasMod(ModIds.OOPS_ALL_KILLA) && !botData.IsBossOrFollower())
+        if (ModService.HasMod(ModIds.OOPS_ALL_KILLA))
         {
             botData.WildSpawnType_0 = WildSpawnType.bossKilla;
         }
