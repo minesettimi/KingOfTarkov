@@ -9,6 +9,7 @@ using SPTarkov.Server.Core.Models.Common;
 using SPTarkov.Server.Core.Models.Eft.Common.Tables;
 using SPTarkov.Server.Core.Models.Spt.Config;
 using SPTarkov.Server.Core.Models.Utils;
+using SPTarkov.Server.Core.Routers;
 using SPTarkov.Server.Core.Servers;
 using SPTarkov.Server.Core.Services;
 using SPTarkov.Server.Core.Utils;
@@ -22,6 +23,7 @@ public class QuestService(
     DatabaseServer databaseServer,
     DatabaseService databaseService,
     ConfigService config,
+    ImageRouter imageRouter,
     ISptLogger<QuestService> logger)
 {
 
@@ -40,6 +42,16 @@ public class QuestService(
         foreach ((MongoId key, Quest value) in staticQuests)
         {
             databaseServer.GetTables().Templates.Quests[key] = value;
+        }
+        
+        string questImagePath = Path.Join(config.ModPath, "Assets", "Images", "Quests");
+        
+        IEnumerable<string> imageFiles = Directory.EnumerateFiles(questImagePath, "*", SearchOption.TopDirectoryOnly);
+        foreach (string imagePath in imageFiles)
+        {
+            string imageName = Path.GetFileNameWithoutExtension(imagePath);
+            
+            imageRouter.AddRoute($"/files/quest/icon/{imageName}", imagePath);
         }
     }
 
