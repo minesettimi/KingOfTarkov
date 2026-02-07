@@ -23,7 +23,7 @@ public static class ModIds
     public const string BOLSTERED_NUMBERS = "697d0c0bb08e0a804a2a7b0c";
     public const string BAD_BATCH = "697d0c20cdde2fdbe32a7b0d";
     public const string RADIATION_LEAK = "697d0c6bc775a882672a7b0e";
-    public const string BAD_BACK = "697d44b270afae2a0e2a7b10";
+    public const string HIGH_GRAVITY = "697d44b270afae2a0e2a7b10";
     public const string BIG_PIPE = "697d64248db356b3c72a7b15";
     public const string PICKED_DRY = "697d85e2a8892f58782a7b16";
     public const string CLEANING_HOUSE = "697d8ea6814677e13bd6e8f6";

@@ -148,6 +148,6 @@ public class ConfigService(ModHelper modHelper,
         globals.Configuration.SkillMinEffectiveness = skills.MinimumFatigue;
         globals.Configuration.SkillFatiguePerPoint = skills.FatiguePerPoint;
         globals.Configuration.SkillFreshPoints = skills.FreshSkills;
-        globals.Configuration.SkillFreshEffectiveness = skills.PreSkillsFatigue;
+        globals.Configuration.SkillPointsBeforeFatigue = skills.PreSkillsFatigue;
     }
 }

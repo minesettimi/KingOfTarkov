@@ -15,10 +15,10 @@ public class IsMyPlayerBannedPatch : ModulePatch
     [PatchPrefix]
     public static bool Prefix(ref bool __result)
     {
-        if (GamePlayerOwner.MyPlayer == null || Plugin.RaidService.ExfilQuests.Count == Plugin.RaidService.CompletedQuests.Count)
+        if (GamePlayerOwner.MyPlayer == null)
             return true;
 
-        __result = false;
+        __result = Plugin.RaidService.ExfilQuests.Count != Plugin.RaidService.CompletedQuests.Count;
         
         return false;
     }

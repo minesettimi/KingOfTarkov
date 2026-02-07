@@ -45,7 +45,7 @@ public class HealthConstructorPatch : ModulePatch
             __instance.DoExternalBuff("Buffs_RadLeak", 1f);
         }
 
-        if (ModService.HasMod(ModIds.BAD_BACK))
+        if (ModService.HasMod(ModIds.HIGH_GRAVITY))
         {
             __instance.DoExternalBuff("Buffs_BadBack", 1f);
         }
