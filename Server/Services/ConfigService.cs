@@ -138,5 +138,16 @@ public class ConfigService(ModHelper modHelper,
 
         //FiR flea
         globals.Configuration.RagFair.IsOnlyFoundInRaidAllowed = true;
+        
+        //skills
+        SkillDifficulty skills = Difficulty.Skills;
+
+        globals.Configuration.SkillsSettings.SkillProgressRate = skills.GeneralSkill;
+        globals.Configuration.SkillsSettings.WeaponSkillProgressRate = skills.WeaponSkill;
+        
+        globals.Configuration.SkillMinEffectiveness = skills.MinimumFatigue;
+        globals.Configuration.SkillFatiguePerPoint = skills.FatiguePerPoint;
+        globals.Configuration.SkillFreshPoints = skills.FreshSkills;
+        globals.Configuration.SkillFreshEffectiveness = skills.PreSkillsFatigue;
     }
 }

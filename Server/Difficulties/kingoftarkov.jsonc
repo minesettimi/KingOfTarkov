@@ -1,14 +1,14 @@
 {
   "core":
   {
-    "lives": 3, //lives per profile
-    "revives": true, //can a player buy back their lives
+    "lives": 1, //lives per profile
+    "revives": false, //can a player buy back their lives
     "reviveCost": 1000000, //how much does it cost
     "reviveLimit": 1 //how many revives are allowed per playthrough
   },
   "trial":
   {
-    "levelPerRaid": 2, //how many levels are gained per raid completion
+    "levelPerRaid": 1, //how many levels are gained per raid completion
     "levelPerTrial": 3 //how many level are gained per trial completion
   },
   "endless":
@@ -18,16 +18,16 @@
   },
   "location":
   {
-    "staticLootAdditive": 1.0, //how much to add to the static loot multiplier
-    "looseLootAdditive": 2.0 //how much to add to the loose loot multiplier
+    "staticLootAdditive": 0.5, //how much to add to the static loot multiplier
+    "looseLootAdditive": 0.5 //how much to add to the loose loot multiplier
   },
   "skills":
   {
-    "generalSkill": 1.0,
-    "weaponSkill": 1.5,
+    "generalSkill": 0.4,
+    "weaponSkill": 1.0,
     "minimumFatigue": 0.01,
     "fatiguePerPoint": 0.6,
-    "freshSkills": 15,
-    "preSkillsFatigue": 25
+    "freshSkills": 1,
+    "preSkillsFatigue": 1
   }
 }

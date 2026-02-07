@@ -2,7 +2,7 @@
   "core":
   {
     "lives": 3, //lives per profile
-    "revives": true, //can a player buy back their lives
+    "revives": false, //can a player buy back their lives
     "reviveCost": 1000000, //how much does it cost
     "reviveLimit": 1 //how many revives are allowed per playthrough
   },
@@ -18,7 +18,7 @@
   },
   "location":
   {
-    "staticLootAdditive": 1.0, //how much to add to the static loot multiplier
+    "staticLootAdditive": 0.75, //how much to add to the static loot multiplier
     "looseLootAdditive": 2.0 //how much to add to the loose loot multiplier
   },
   "skills":

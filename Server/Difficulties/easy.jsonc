@@ -1,7 +1,7 @@
 {
   "core":
   {
-    "lives": 3, //lives per profile
+    "lives": 5, //lives per profile
     "revives": true, //can a player buy back their lives
     "reviveCost": 1000000, //how much does it cost
     "reviveLimit": 1 //how many revives are allowed per playthrough
@@ -18,16 +18,16 @@
   },
   "location":
   {
-    "staticLootAdditive": 1.0, //how much to add to the static loot multiplier
-    "looseLootAdditive": 2.0 //how much to add to the loose loot multiplier
+    "staticLootAdditive": 1.5, //how much to add to the static loot multiplier
+    "looseLootAdditive": 2.5 //how much to add to the loose loot multiplier
   },
   "skills":
   {
-    "generalSkill": 1.0,
+    "generalSkill": 1.1,
     "weaponSkill": 1.5,
     "minimumFatigue": 0.01,
-    "fatiguePerPoint": 0.6,
-    "freshSkills": 15,
+    "fatiguePerPoint": 0.8,
+    "freshSkills": 20,
     "preSkillsFatigue": 25
   }
 }

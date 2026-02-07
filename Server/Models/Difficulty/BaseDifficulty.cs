@@ -15,4 +15,7 @@ public class BaseDifficulty
     
     [JsonPropertyName("location")]
     public LocationDifficulty Location { get; set; } = new();
+    
+    [JsonPropertyName("skills")]
+    public SkillDifficulty Skills { get; set; } = new();
 }
