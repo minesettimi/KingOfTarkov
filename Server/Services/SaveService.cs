@@ -33,6 +33,7 @@ public class SaveService(ConfigService config,
             CurrentSave = tempSave;
             RemainingRaids = CurrentSave.Location.Active.Count(i => !i.Value.Completed);
             
+            
             if (CurrentSave.Trial.TrialNum > 10 && !config.BaseConfig.EndlessMode)
                 logger.Error("[KoT] Trial number is greater than 10 but endless mode is disabled!");
             

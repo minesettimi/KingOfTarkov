@@ -146,7 +146,6 @@
   "QuestCondition/Elimination/Kill/BotRole/bossKnight": "Knight",
   "QuestCondition/Elimination/Kill/BotRole/bossBoar": "Kaban",
   "QuestCondition/Elimination/Kill/BotRole/bossBoarSniper": "Kaban's Sniper",
-  
   //UI
   //UI Labels
   "TrialTitleNumber": "Trial {0}:",

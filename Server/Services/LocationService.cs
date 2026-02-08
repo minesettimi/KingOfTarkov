@@ -88,16 +88,25 @@ public class LocationService(LocationUtil locationUtil,
     {
         foreach ((string key, Location oldLoc) in locationDb)
         {
-            if (key == "Laboratory" || key == "Labyrinth")
+            switch (key)
             {
-                oldLoc.Base.IsSecret = false;
-                oldLoc.Base.AccessKeys = [];
-                oldLoc.Base.AccessKeysPvE = [];
-                oldLoc.Base.Enabled = true;
-            }
-            else if (key == "Terminal")
-            {
-                oldLoc.Base.Enabled = false;
+                case "Laboratory":
+                case "Labyrinth":
+                {
+                    oldLoc.Base.IsSecret = false;
+                    oldLoc.Base.AccessKeys = [];
+                    oldLoc.Base.AccessKeysPvE = [];
+                    oldLoc.Base.Enabled = true;
+                    if (key == "Labyrinth")
+                    {
+                        oldLoc.Base.IconY = 325;
+                    }
+
+                    break;
+                }
+                case "Terminal":
+                    oldLoc.Base.Enabled = false;
+                    break;
             }
             
             LocationBase locCopy = cloner.Clone(oldLoc.Base)!;

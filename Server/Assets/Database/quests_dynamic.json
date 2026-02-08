@@ -16,7 +16,7 @@
           "id": "696940e245aced2dfefda9ca",
           "index": 0,
           "isNecessary": false,
-          "isResetOnConditionFailed": true,
+          "isResetOnConditionFailed": false,
           "oneSessionOnly": true,
           "parentId": "",
           "type": "Elimination",
@@ -100,7 +100,7 @@
           "id": "696941b7b38d22006bfda9cd",
           "index": 0,
           "isNecessary": false,
-          "isResetOnConditionFailed": true,
+          "isResetOnConditionFailed": false,
           "oneSessionOnly": true,
           "parentId": "",
           "type": "Elimination",
@@ -111,30 +111,12 @@
           "counter": {
             "conditions": [
               {
-                "bodyPart": [],
-                "compareMethod": ">=",
-                "conditionType": "Kills",
-                "daytime": {
-                  "from": 0,
-                  "to": 0
-                },
-                "distance": {
-                  "compareMethod": ">=",
-                  "value": 0
-                },
+                "conditionType": "BossDied",
                 "dynamicLocale": true,
-                "enemyEquipmentExclusive": [],
-                "enemyEquipmentInclusive": [],
-                "enemyHealthEffects": [],
                 "id": "696941bdf695aed1b0fda9ce",
                 "resetOnSessionEnd": true,
-                "savageRole": [],
-                "target": "Savage",
-                "value": 1,
-                "weapon": [],
-                "weaponCaliber": [],
-                "weaponModsExclusive": [],
-                "weaponModsInclusive": []
+                "target": "",
+                "value": 1
               }
             ],
             "id": "696940f4f6fde1aef3fda9cb"

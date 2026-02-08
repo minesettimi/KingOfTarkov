@@ -1,18 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Reflection.Emit;
-using Comfort.Common;
-using EFT;
 using EFT.Quests;
 using EFT.UI;
 using HarmonyLib;
 using KoTClient.Quests;
-using Newtonsoft.Json;
-using SPT.Common.Utils;
 using SPT.Reflection.Patching;
-using SPT.Reflection.Utils;
 using UnityEngine;
 
 namespace KoTClient.Patches;
@@ -27,7 +18,7 @@ public class ConditionIsCounterPatch : ModulePatch
     [PatchPrefix]
     public static bool Prefix(Condition condition, ref bool __result)
     {
-        if (condition is ConditionTrialNumber)
+        if (condition is ConditionTrialNumber || condition is ConditionBossDied)
         {
             __result = true;
             return false;
@@ -47,13 +38,17 @@ public class GetQuestIconPatch : ModulePatch
     [PatchPrefix]
     public static bool Prefix(Condition condition, StaticIcons __instance, ref Sprite __result)
     {
-        if (condition is ConditionTrialNumber)
+        switch (condition)
         {
-            __result = __instance.QuestTypeSprites[RawQuestClass.EQuestType.Levelling];
-            return false;
+            case ConditionTrialNumber:
+                __result = __instance.QuestTypeSprites[RawQuestClass.EQuestType.Levelling];
+                return false;
+            case ConditionBossDied:
+                __result = __instance.QuestTypeSprites[RawQuestClass.EQuestType.Elimination];
+                return false;
+            default:
+                return true;
         }
-
-        return true;
     }
 }
 
@@ -68,6 +63,22 @@ public class ConditionTypePatch : ModulePatch
     public static void Prefix(GClass1871 __instance)
     {
         __instance.List_0.Add(typeof(ConditionTrialNumber));
+        __instance.List_0.Add(typeof(ConditionBossDied));
+    }
+}
+
+public class ConditionLocalizationPatch : ModulePatch
+{
+    protected override MethodBase GetTargetMethod()
+    {
+        return AccessTools.Constructor(typeof(ConditionCounterCreator));
+    }
+
+    [PatchPostfix]
+    public static void Postfix()
+    {
+        //WHY IS THIS ALREADY SET??????
+        ConditionCounterCreator.LocalizationTypes[typeof(ConditionBossDied)] = "{kill}";
     }
 }
 
@@ -120,7 +131,7 @@ public class SetStatusPatch : ModulePatch
 
         __instance.CompletedConditions.Clear();
         
-        foreach (Condition? condition in __instance.Conditions[EQuestStatus.AvailableForFinish])
+        foreach (EFT.Quests.Condition? condition in __instance.Conditions[EQuestStatus.AvailableForFinish])
         {
             ConditionCounterCreator counterCreator = condition as ConditionCounterCreator;
             

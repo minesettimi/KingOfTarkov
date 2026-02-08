@@ -67,7 +67,7 @@ public class QuestGenerator(DataService dataService,
         string selectedBoss = possibleBosses[0];
         
         QuestConditionCounterCondition elimCondition = baseQuest.Conditions.AvailableForFinish![0].Counter!.Conditions![0];
-        elimCondition.SavageRole!.Add(selectedBoss);
+        elimCondition.Target = new ListOrT<string>(null, selectedBoss);
 
         return new KeyValuePair<string, Quest>(selectedBoss, baseQuest);
     }

@@ -2,6 +2,7 @@ using System.Reflection;
 using EFT;
 using HarmonyLib;
 using KingOfTarkov.Models;
+using KoTClient.Quests;
 using KoTClient.Services;
 using SPT.Reflection.Patching;
 
@@ -17,6 +18,24 @@ public class CreateCorpsePatch : ModulePatch
     [PatchPostfix]
     public static void Postfix(Player __instance)
     {
+        if (__instance.IsAI)
+        {
+            foreach (Player player in __instance.GameWorld.AllAlivePlayersList)
+            {
+                if (player.IsAI)
+                    continue;
+                
+                foreach (GInterface518 type in player.IEnumerable_0)
+                {
+                    if (type is not AbstractQuestControllerClass questController)
+                        continue;
+            
+                    questController.ConditionalBook.TestConditions(1, [new GStruct458(typeof(ConditionBossDied))
+                        .Test(__instance.Profile.Info.Settings.Role.ToStringNoBox())]);
+                }
+            }
+        }
+        
         if (!ModService.HasMod(ModIds.BLACKHOLE_CORPSES)) return;
         
         __instance.ReleaseHand();
