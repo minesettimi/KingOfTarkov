@@ -21,13 +21,13 @@
     "staticLootAdditive": 1.0, //how much to add to the static loot multiplier
     "looseLootAdditive": 2.0 //how much to add to the loose loot multiplier
   },
-  "skills":
+  "skills": //vanilla SPT settings for skills
   {
-    "generalSkill": 1.0,
-    "weaponSkill": 1.5,
-    "minimumFatigue": 0.01,
-    "fatiguePerPoint": 0.6,
-    "freshSkills": 15,
-    "preSkillsFatigue": 25
+    "generalSkill": 1.0, //general skill mult
+    "weaponSkill": 1.5, //weapon skill mult
+    "minimumFatigue": 0.01, //minimum fatigue to have
+    "fatiguePerPoint": 0.6, //fatigue given per skill point
+    "freshSkills": 15, //skill points that are fresh.
+    "preSkillsFatigue": 25 //skill points before fatigue sets in
   }
 }

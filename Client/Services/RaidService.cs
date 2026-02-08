@@ -39,10 +39,10 @@ public class RaidService
             ExfiltrationControllerClass.Instance.EnableExitsInteraction();
             
             //enable secret exits
-            foreach (SecretExfiltrationPoint exfilPoint in ExfiltrationControllerClass.Instance.SecretExfiltrationPoints)
-            {
-                exfilPoint.EnableInteraction();
-            }
+            // foreach (SecretExfiltrationPoint exfilPoint in ExfiltrationControllerClass.Instance.SecretExfiltrationPoints)
+            // {
+            //     exfilPoint.EnableInteraction();
+            // }
             
             NotificationManagerClass.DisplayNotification(new GClass2555
             {

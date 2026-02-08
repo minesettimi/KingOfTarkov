@@ -8,6 +8,7 @@ namespace KoTClient
 {
     
     [BepInPlugin("com.minesettimi.kingoftarkov", "King Of Tarkov", "0.11.0")]
+    [BepInDependency("me.sol.sain", BepInDependency.DependencyFlags.SoftDependency)]
     public class Plugin : BaseUnityPlugin
     {
         public static BundleLoader BundleLoader;
