@@ -1,5 +1,6 @@
 using System.Reflection;
 using EFT;
+using EFT.Quests;
 using HarmonyLib;
 using KingOfTarkov.Models;
 using KoTClient.Quests;
@@ -29,9 +30,11 @@ public class CreateCorpsePatch : ModulePatch
                 {
                     if (type is not AbstractQuestControllerClass questController)
                         continue;
-            
-                    questController.ConditionalBook.TestConditions(1, [new GStruct458(typeof(ConditionBossDied))
-                        .Test(__instance.Profile.Info.Settings.Role.ToStringNoBox())]);
+
+                    questController.ConditionalBook.TestConditions(1, 
+                        new GStruct458(typeof(ConditionBossDied))
+                            .Test(__instance.Profile.Info.Settings.Role.ToStringNoBox()),
+                        new GStruct458(typeof(ConditionLocation)).Test(__instance.Location));
                 }
             }
         }
