@@ -4,12 +4,10 @@ using KingOfTarkov.Utils;
 using SPTarkov.DI.Annotations;
 using SPTarkov.Server.Core.Models.Common;
 using SPTarkov.Server.Core.Models.Eft.Common;
-using SPTarkov.Server.Core.Models.Eft.Common.Tables;
 using SPTarkov.Server.Core.Models.Enums;
 using SPTarkov.Server.Core.Models.Utils;
 using SPTarkov.Server.Core.Services;
 using SPTarkov.Server.Core.Utils.Cloners;
-using Locations = SPTarkov.Server.Core.Models.Spt.Server.Locations;
 
 namespace KingOfTarkov.Services;
 
@@ -32,7 +30,7 @@ public class LocationService(LocationUtil locationUtil,
         CacheBosses();
         
         CacheLocations(locations);
-        SetupTrialLocations(locations);
+        SetupTrialLocations();
         
         return Task.CompletedTask;
     }
@@ -126,11 +124,13 @@ public class LocationService(LocationUtil locationUtil,
             locationDb[key].Base = cloner.Clone(oldLoc)!;
         }
         
-        SetupTrialLocations(locationDb);
+        SetupTrialLocations();
     }
     
-    private void SetupTrialLocations(Dictionary<string, Location> locationDb)
+    private void SetupTrialLocations()
     {
+        Dictionary<string, Location> locationDb = dbService.GetLocations().GetDictionary();
+        
         List<MongoId> activeMaps = locationHelper.GetActiveMaps();
         foreach ((string key, Location oldLoc) in locationDb)
         {
