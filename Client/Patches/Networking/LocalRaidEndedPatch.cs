@@ -1,4 +1,5 @@
 using System.Reflection;
+using System.Threading.Tasks;
 using EFT;
 using HarmonyLib;
 using KoTClient.Models;
@@ -15,9 +16,11 @@ public class LocalRaidEndedPatch : ModulePatch
         return AccessTools.Method(typeof(Class308), nameof(Class308.LocalRaidEnded));
     }
 
-    [PatchPrefix]
-    public static void Prefix(LocalRaidSettings settings, RaidEndDescriptorClass results)
+    [PatchPostfix]
+    public static async Task Postfix(Task __result, LocalRaidSettings settings, RaidEndDescriptorClass results)
     {
+        await __result;
+        
         MatchEndRequest requestData = new()
         {
             LocationName = settings.location,
@@ -25,6 +28,6 @@ public class LocalRaidEndedPatch : ModulePatch
             TrialId = Plugin.StateService.StateData!.Id
         };
         
-        RequestHandler.PutJson("/kot/match/end", JsonConvert.SerializeObject(requestData));
+        await RequestHandler.PutJsonAsync("/kot/match/end", JsonConvert.SerializeObject(requestData));
     }
 }

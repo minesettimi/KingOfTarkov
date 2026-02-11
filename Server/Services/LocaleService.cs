@@ -19,7 +19,7 @@ public class LocaleService(FileUtil fileUtil,
 
         List<string> localeFiles = fileUtil.GetFiles(localeDir, false, "*.jsonc");
 
-        Dictionary<string, Dictionary<string, string>> locales = new();
+        Dictionary<string, Dictionary<string, string>?> locales = new();
         
         foreach (string file in localeFiles)
         {
@@ -43,7 +43,10 @@ public class LocaleService(FileUtil fileUtil,
                 if (localeData == null) 
                     return localeData;
 
-                Dictionary<string, string> customLocales = locales[locale];
+                locales.TryGetValue(locale, out Dictionary<string, string>? customLocales);
+
+                if (customLocales == null)
+                    return localeData;
 
                 foreach ((string key, string value) in customLocales)
                     localeData[key] = value;

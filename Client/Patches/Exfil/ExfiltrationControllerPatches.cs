@@ -35,6 +35,7 @@ public class InitExfiltrationPatch : ModulePatch
     [PatchPostfix]
     public static void Postfix(ExfiltrationControllerClass __instance)
     {
-        __instance.DisableExitsInteraction();
+        if (Plugin.RaidService.ExfilQuests.Count > 0)
+            __instance.DisableExitsInteraction();
     }
 }
