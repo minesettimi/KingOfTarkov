@@ -37,7 +37,8 @@
   "69641c5d0e8b8f30ec1c3288":
   {
     "name": "Explosive Bullets",
-    "image": "/files/modifiers/icon/explosivebullets.png"
+    "image": "/files/modifiers/icon/explosivebullets.png",
+    "performance": false
   },
   "69641cdb3a6474c01a1c328a":
   {

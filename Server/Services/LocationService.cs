@@ -125,6 +125,9 @@ public class LocationService(LocationUtil locationUtil,
         }
         
         SetupTrialLocations();
+        
+        //clear out old location data
+        GC.Collect(GC.MaxGeneration, GCCollectionMode.Optimized, true, true);
     }
     
     private void SetupTrialLocations()

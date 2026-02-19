@@ -71,7 +71,6 @@ public class DataService(ConfigService config,
         databaseServer.GetTables().Globals.Configuration
             .Health.Effects.Stimulator.Buffs.AddRange(CustomBuffs);
         
-        
         logger.Info("[KoT] Finished loading data.");
     }
     

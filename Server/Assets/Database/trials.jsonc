@@ -167,6 +167,7 @@
       "max": 10,
       "minWeight": 1.0,
       "maxWeight": 9.0,
+      "performance": false,
       "blacklist": 
       [
         "69641f26d1723deca91c3296"
@@ -177,7 +178,8 @@
       "min": 3,
       "max": 7,
       "minWeight": 0.75,
-      "maxWeight": 6.0
+      "maxWeight": 6.0,
+      "performance": false
     },
     "653e6760052c01c1c805532f":
     {

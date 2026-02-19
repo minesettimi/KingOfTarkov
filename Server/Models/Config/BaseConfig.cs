@@ -10,6 +10,9 @@ public class BaseConfig
     [JsonPropertyName("disableStockProfiles")]
     public bool DisableStockProfiles { get; set; } = true;
     
+    [JsonPropertyName("performanceMode")] 
+    public bool Performance { get; set; } = false;
+    
     [JsonPropertyName("endlessMode")]
     public bool EndlessMode { get; set; } = true;
     

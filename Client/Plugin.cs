@@ -7,7 +7,7 @@ using SPT.Reflection.Patching;
 namespace KoTClient
 {
     
-    [BepInPlugin("com.minesettimi.kingoftarkov", "King Of Tarkov", "0.12.1")]
+    [BepInPlugin("com.minesettimi.kingoftarkov", "King Of Tarkov", "0.12.2")]
     [BepInDependency("me.sol.sain", BepInDependency.DependencyFlags.SoftDependency)]
     public class Plugin : BaseUnityPlugin
     {

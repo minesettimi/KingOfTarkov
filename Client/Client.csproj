@@ -7,7 +7,7 @@
         <OutputType>Library</OutputType>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
         
-        <Version>0.12.1</Version>
+        <Version>0.12.2</Version>
         <RootNamespace>KoTClient</RootNamespace>
         
         <AssemblyName>KingOfTarkov</AssemblyName>

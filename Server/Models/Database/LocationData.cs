@@ -5,9 +5,6 @@ namespace KingOfTarkov.Models.Database;
 
 public class LocationData
 {
-    [JsonPropertyName("name")]
-    public string Name { get; set; } = "";
-    
     [JsonPropertyName("min")]
     public int Min { get; set; } = 1;
     
@@ -19,6 +16,9 @@ public class LocationData
     
     [JsonPropertyName("maxWeight")]
     public double MaxWeight { get; set; } = 1.0;
+    
+    [JsonPropertyName("performance")]
+    public bool Performance { get; set; } = true;
     
     [JsonPropertyName("blacklist")]
     public List<MongoId> ModBlacklist { get; set; } = new();

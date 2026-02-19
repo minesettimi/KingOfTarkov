@@ -96,11 +96,18 @@ public class TrialGenerator(DataService dataService,
         {
             modPool.AddRange(dataService.TrialConfig.GlobalMods);
         }
+        
+        Dictionary<MongoId, ModifierData> modPoolData = 
+            dataService.Mods.Where(mod => modPool.Contains(mod.Key)).ToDictionary();
+
+        if (config.BaseConfig.Performance)
+        {
+            modPool.RemoveAll(mod => !modPoolData[mod].Performance);
+        }
 
         if (location == null)
         {
-            Dictionary<MongoId, ModifierData> modPoolData = 
-                dataService.Mods.Where(mod => modPool.Contains(mod.Key)).ToDictionary();
+            
             modPool.RemoveAll(mod => !modPoolData[mod].Global || !modPoolData[mod].Enabled);
         }
         else
@@ -108,6 +115,7 @@ public class TrialGenerator(DataService dataService,
             List<MongoId> locationBlacklist = dataService.TrialConfig.Locations[location.Value].ModBlacklist;
             modPool.RemoveAll(mod => locationBlacklist.Contains(mod));
         }
+        
         
         if (modPool.Count < number)
         {
@@ -124,7 +132,7 @@ public class TrialGenerator(DataService dataService,
 
         foreach ((MongoId id, LocationData data) in dataService.TrialConfig.Locations)
         {
-            if (data.Max < trialNum || data.Min > trialNum)
+            if (data.Max < trialNum || data.Min > trialNum || (config.BaseConfig.Performance && !data.Performance))
                 continue;
             
             originalPool.Add(id);
