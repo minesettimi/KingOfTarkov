@@ -76,12 +76,42 @@ public class TrialService(KingProfileHelper profileHelper,
             return;
         
         int newTrialNum = currentSave.Trial.TrialNum + 1;
-        
-        currentSave.Trial = trialGenerator.GenerateTrial(newTrialNum);
 
-        LocationState locationState = currentSave.Location;
+        LocationState? locationState = null;
+        LocationState? newState = null;
         
-        LocationState newState = trialGenerator.GenerateLocationState(newTrialNum, currentSave.Trial, locationState.Previous);
+        for (int i = 0; i < 5; i++)
+        {
+            currentSave.Trial = trialGenerator.GenerateTrial(newTrialNum);
+
+            locationState = currentSave.Location;
+
+            newState =
+                trialGenerator.GenerateLocationState(newTrialNum, currentSave.Trial, locationState.Previous);
+
+            List<MongoId> modList = [];
+            
+            modList.AddRange(currentSave.Trial.Mods);
+
+            bool checkFailed = false;
+            foreach ((MongoId locId, LocationDataState dataState) in newState.Active)
+            {
+                if (!modList.Intersect(dataState.Mods).Any()) continue;
+                
+                checkFailed = true;
+                break;
+
+            }
+
+            if (!checkFailed)
+                break;
+        }
+
+        if (newState == null || locationState == null)
+        {
+            throw new Exception("[KoT] Couldn't generate trial with all unique ids!");
+        }
+
         newState.Previous.AddRange(locationState.Active.Keys);
         save.RemainingRaids = newState.Active.Count;
         

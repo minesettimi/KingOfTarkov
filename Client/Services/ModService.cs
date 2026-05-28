@@ -26,6 +26,12 @@ public class ModService
 
         foreach (MongoID locationId in currentData.location[location].mods)
         {
+            if (ModifierCache.ContainsKey(locationId))
+            {
+                Plugin.PluginLogger.LogError($"Repeat modifier found: {locationId}! Skipping.");
+                continue;
+            }
+            
             ModifierCache.Add(locationId, _modifierData[locationId]);
         }
     }

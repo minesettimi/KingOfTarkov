@@ -131,7 +131,7 @@ public class SetStatusPatch : ModulePatch
 
         __instance.CompletedConditions.Clear();
         
-        foreach (EFT.Quests.Condition? condition in __instance.Conditions[EQuestStatus.AvailableForFinish])
+        foreach (Condition? condition in __instance.Conditions[EQuestStatus.AvailableForFinish])
         {
             ConditionCounterCreator counterCreator = condition as ConditionCounterCreator;
             
